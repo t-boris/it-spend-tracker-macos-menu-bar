@@ -87,21 +87,44 @@ struct MonthlyHistory: View {
             .chartLegend(position: .bottom, alignment: .leading)
             .growingChartHeight(minimum: 260, fraction: 0.40)
 
-            Grid(alignment: .leading, horizontalSpacing: 12, verticalSpacing: 6) {
-                GridRow {
-                    Text("Month").font(.caption.weight(.semibold))
-                    Text("Total").font(.caption.weight(.semibold)).gridColumnAlignment(.trailing)
+            ScrollView(.horizontal, showsIndicators: false) {
+                MonthlyTable(services: services, months: months)
+            }
+        }
+    }
+}
+
+/// Spend of every selected service per month, then the total. A month with no data says so; a month with zero spend
+/// shows $0.00, so the two never look alike (REQ-004).
+struct MonthlyTable: View {
+    @Environment(AppModel.self) private var model
+    let services: [TrackedService]
+    let months: [Month]
+
+    var body: some View {
+        Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 6) {
+            GridRow {
+                Text("Month").font(.caption.weight(.semibold))
+                ForEach(services) { service in
+                    Text(service.spendIsEstimate ? "≈ \(service.name)" : service.name)
+                        .font(.caption.weight(.semibold)).lineLimit(1)
+                        .gridColumnAlignment(.trailing)
                 }
-                Divider()
-                ForEach(months.reversed(), id: \.self) { month in
-                    GridRow {
-                        Text(Format.monthLong(month))
-                        AmountText(amount: model.total(in: month), approximate: model.totalIsApproximate(in: month))
+                Text("Total").font(.caption.weight(.semibold)).gridColumnAlignment(.trailing)
+            }
+            Divider()
+            ForEach(months.reversed(), id: \.self) { month in
+                GridRow {
+                    Text(Format.monthLong(month))
+                    ForEach(services) { service in
+                        AmountText(amount: service.ledger.spend(in: month), approximate: service.spendIsEstimate)
                     }
+                    AmountText(amount: model.total(in: month), approximate: model.totalIsApproximate(in: month))
+                        .fontWeight(.semibold)
                 }
             }
-            .font(.callout)
         }
+        .font(.callout)
     }
 }
 
