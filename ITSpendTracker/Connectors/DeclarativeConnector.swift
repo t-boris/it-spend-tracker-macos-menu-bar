@@ -51,6 +51,9 @@ struct ConnectorDefinition: Codable, Sendable, Equatable {
     var serviceName: String
     var baseURL: String
     var docsURL: String?
+    /// Page where the user sees billing or usage, and page where they manage API keys. Optional, https only (REQ-011).
+    var consoleURL: String? = nil
+    var keysConsoleURL: String? = nil
     var auth: Auth
     var credentialFields: [Field]
     var spend: SpendEndpoint?
@@ -69,6 +72,11 @@ struct ConnectorDefinition: Codable, Sendable, Equatable {
         }
         if spend == nil && tokens == nil && keys == nil {
             problems.append("no spend, tokens or keys endpoint")
+        }
+        for (name, value) in [("consoleURL", consoleURL), ("keysConsoleURL", keysConsoleURL)] {
+            if let value, !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, Self.safeLink(value) == nil {
+                problems.append("\(name) must be an https URL without credentials")
+            }
         }
         let secretFields = credentialFields.filter(\.secret).map(\.id)
         if !secretFields.contains(auth.credentialField) {
@@ -97,6 +105,14 @@ struct ConnectorDefinition: Codable, Sendable, Equatable {
     }
 
     var host: String { URL(string: baseURL)?.host() ?? "" }
+
+    /// A link taken from an AI-proposed definition: only https with a host and without credentials is clickable.
+    static func safeLink(_ text: String?) -> URL? {
+        guard let text = text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty,
+              let url = URL(string: text), url.scheme?.lowercased() == "https", let host = url.host(), !host.isEmpty,
+              url.user == nil, url.password == nil else { return nil }
+        return url
+    }
 
     static func placeholderNames(in path: String) -> [String] {
         let regex = try! Regex(#"\{([A-Za-z0-9_.\-]+)\}"#)

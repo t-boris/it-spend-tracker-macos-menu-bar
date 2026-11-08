@@ -64,7 +64,7 @@ struct KeyDetailView: View {
                 if WarningRules.isExpiringSoon(expiresAt: key.expiresAt, now: Date()) {
                     Label("Expires within 14 days", systemImage: "key.fill").foregroundStyle(.orange)
                 }
-                if let url = key.consoleURL ?? service.connector?.keysConsoleURL {
+                if let url = key.consoleURL ?? service.connector?.keysConsoleURL ?? ConnectorDefinition.safeLink(service.definition?.keysConsoleURL) {
                     Link(destination: url) { Label("Open in provider console", systemImage: "arrow.up.right.square") }
                 }
             } header: {

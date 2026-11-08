@@ -64,6 +64,8 @@ enum AssistantPrompts {
             "serviceName": "<name>",
             "baseURL": "https://<api host>",
             "docsURL": "<documentation URL>",
+            "consoleURL": "<https URL of the page where the user sees billing or usage, or null>",
+            "keysConsoleURL": "<https URL of the page where the user creates and manages API keys, or null>",
             "auth": {"scheme": "bearer" or "header", "headerName": "<header name, only for scheme header>", "credentialField": "<id of the secret field>"},
             "credentialFields": [{"id": "apiKey", "label": "<label in \(language)>", "help": "<where to get it, in \(language), with the direct https link>", "secret": true}],
             "spend": null or {"path": "/path?start={from}&end={to}", "itemsPath": "<dot path to the array of daily items, empty for root>", "datePath": "<field with the date>", "amountPath": "<field with the amount>", "amountUnit": "usd" or "cents"},

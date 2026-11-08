@@ -726,18 +726,41 @@ struct ProviderNotesView: View {
 struct ConsoleLinks: View {
     let service: TrackedService
 
+    enum Kind: Equatable { case billing, keys, documentation }
+    struct Item: Equatable {
+        let kind: Kind
+        let url: URL
+    }
+
+    /// Built-in connectors link to their consoles; an approved definition links to what the AI found (https only), and
+    /// falls back to the service's own link; manual services carry an optional link of their own (DEC-041).
+    static func items(connector: ConnectorID?, definition: ConnectorDefinition?, manualLink: URL?) -> [Item] {
+        if let connector {
+            return [Item(kind: .billing, url: connector.billingConsoleURL), Item(kind: .keys, url: connector.keysConsoleURL)]
+        }
+        var items: [Item] = []
+        if let definition {
+            if let url = ConnectorDefinition.safeLink(definition.consoleURL) { items.append(Item(kind: .billing, url: url)) }
+            if let url = ConnectorDefinition.safeLink(definition.keysConsoleURL) { items.append(Item(kind: .keys, url: url)) }
+            if let url = ConnectorDefinition.safeLink(definition.docsURL) { items.append(Item(kind: .documentation, url: url)) }
+        }
+        if items.isEmpty, let manualLink { items.append(Item(kind: .billing, url: manualLink)) }
+        return items
+    }
+
     var body: some View {
-        if let connector = service.connector {
+        let items = Self.items(connector: service.connector, definition: service.definition, manualLink: service.consoleLinkURL)
+        if !items.isEmpty {
             HStack(spacing: 16) {
-                Link(destination: connector.billingConsoleURL) { Label("Billing console", systemImage: "creditcard") }
-                Link(destination: connector.keysConsoleURL) { Label("Manage keys", systemImage: "key") }
+                ForEach(items, id: \.url) { item in
+                    switch item.kind {
+                    case .billing: Link(destination: item.url) { Label("Billing console", systemImage: "creditcard") }
+                    case .keys: Link(destination: item.url) { Label("Manage keys", systemImage: "key") }
+                    case .documentation: Link(destination: item.url) { Label("Provider documentation", systemImage: "safari") }
+                    }
+                }
             }
             .font(.callout)
-        } else if let docs = service.definition?.docsURL.flatMap(URL.init(string:)), docs.scheme == "https" {
-            Link(destination: docs) { Label("Provider documentation", systemImage: "safari") }.font(.callout)
-        } else if let link = service.consoleLinkURL {
-            // Manual services carry an optional link of their own (DEC-041).
-            Link(destination: link) { Label("Billing console", systemImage: "creditcard") }.font(.callout)
         }
     }
 }

@@ -505,3 +505,63 @@ private func definition(baseURL: String = "https://api.example-ai.test", spendPa
         #expect(table["Refresh"] == "Обновить")
     }
 }
+
+/// REQ-011 / REQ-016: an AI-proposed definition may name the pages where billing and keys are managed; only safe https
+/// links are accepted and shown.
+@Suite struct DefinitionConsoleLinkTests {
+    private func with(console: String?, keys: String?) -> ConnectorDefinition {
+        var value = definition()
+        value.consoleURL = console
+        value.keysConsoleURL = keys
+        return value
+    }
+
+    @Test func httpsLinksAreAccepted() {
+        let value = with(console: "https://console.example-ai.test/billing", keys: "https://console.example-ai.test/keys")
+        #expect(value.validationProblems().isEmpty)
+        #expect(ConnectorDefinition.safeLink(value.consoleURL)?.absoluteString == "https://console.example-ai.test/billing")
+        #expect(with(console: nil, keys: nil).validationProblems().isEmpty)   // both are optional
+        #expect(with(console: "", keys: "  ").validationProblems().isEmpty)    // empty means "not given"
+    }
+
+    @Test func otherSchemesAndCredentialsAreRejected() {
+        for bad in ["http://console.example-ai.test", "file:///etc/passwd", "javascript:alert(1)", "https://user:pw@console.example-ai.test",
+                    "https://", "x-apple.systempreferences:com.apple.preference", "not a url"] {
+            #expect(!with(console: bad, keys: nil).validationProblems().isEmpty, "\(bad) as consoleURL")
+            #expect(!with(console: nil, keys: bad).validationProblems().isEmpty, "\(bad) as keysConsoleURL")
+            #expect(ConnectorDefinition.safeLink(bad) == nil)
+        }
+    }
+
+    @Test func proposedLinksAreParsedFromTheAssistantAnswer() throws {
+        let answer = """
+        {"status":"api","explanation":"ok","definition":{"serviceName":"XDataAI","baseURL":"https://api.example-ai.test",
+         "docsURL":"https://docs.example-ai.test","consoleURL":"https://console.example-ai.test/billing","keysConsoleURL":"https://console.example-ai.test/keys",
+         "auth":{"scheme":"bearer","credentialField":"apiKey"},
+         "credentialFields":[{"id":"apiKey","label":"Key","secret":true}],
+         "spend":{"path":"/v1/usage","itemsPath":"data","datePath":"date","amountPath":"cost","amountUnit":"usd"}}}
+        """
+        let parsed = try #require(ResearchResult.parse(answer).definition)
+        #expect(parsed.consoleURL == "https://console.example-ai.test/billing")
+        #expect(parsed.keysConsoleURL == "https://console.example-ai.test/keys")
+        // Definitions saved before the fields existed still decode.
+        let old = try JSONDecoder().decode(ConnectorDefinition.self, from: Data(try JSONEncoder().encode(definition())))
+        #expect(old.consoleURL == nil && old.keysConsoleURL == nil)
+        #expect(AssistantPrompts.research(intro: ServiceIntro(serviceName: "X", accountIdentifier: "", note: ""), language: "English")
+            .contains("keysConsoleURL"))
+    }
+
+    @Test @MainActor func serviceLinksComeFromTheDefinitionAndFallBackToTheManualLink() {
+        let manual = URL(string: "https://billing.example.com")
+        let linked = with(console: "https://console.example-ai.test/billing", keys: "https://console.example-ai.test/keys")
+        let items = ConsoleLinks.items(connector: nil, definition: linked, manualLink: manual)
+        #expect(items.map(\.kind) == [.billing, .keys, .documentation])
+        #expect(items.first?.url.absoluteString == "https://console.example-ai.test/billing")
+        // An unsafe proposal is dropped; with nothing left the service's own link is used.
+        var unsafe = with(console: "http://insecure.example", keys: nil)
+        unsafe.docsURL = nil
+        #expect(ConsoleLinks.items(connector: nil, definition: unsafe, manualLink: manual) == [.init(kind: .billing, url: manual!)])
+        #expect(ConsoleLinks.items(connector: nil, definition: nil, manualLink: nil).isEmpty)
+        #expect(ConsoleLinks.items(connector: .openAI, definition: nil, manualLink: nil).map(\.kind) == [.billing, .keys])
+    }
+}

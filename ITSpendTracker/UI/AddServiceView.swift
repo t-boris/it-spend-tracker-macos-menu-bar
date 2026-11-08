@@ -390,8 +390,14 @@ struct DefinitionReview: View {
                 Text(definition.auth.scheme == .bearer ? "Authorization: Bearer …" : "\(definition.auth.headerName ?? ""): …")
                     .font(.caption.monospaced())
             }
-            if let docs = definition.docsURL, let url = URL(string: docs), url.scheme == "https" {
+            if let url = ConnectorDefinition.safeLink(definition.docsURL) {
                 Link("Provider documentation", destination: url)
+            }
+            if let url = ConnectorDefinition.safeLink(definition.consoleURL) {
+                LabeledContent("Billing console") { Link(url.host() ?? url.absoluteString, destination: url) }
+            }
+            if let url = ConnectorDefinition.safeLink(definition.keysConsoleURL) {
+                LabeledContent("Manage keys") { Link(url.host() ?? url.absoluteString, destination: url) }
             }
             if problems.isEmpty {
                 Toggle("I reviewed this and allow the app to call these endpoints", isOn: $approved)
