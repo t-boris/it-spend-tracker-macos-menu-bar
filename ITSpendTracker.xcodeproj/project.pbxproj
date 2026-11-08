@@ -66,6 +66,7 @@
 		DA322921D96C919E15B64AEA /* RefreshPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C777FE283DDDEB9945AFF884 /* RefreshPolicy.swift */; };
 		DC77EC51D0C792A81868C65A /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C7B770B9D71C3B87F2F021 /* HistoryView.swift */; };
 		E18F5B8E35DAE722EA3A7A01 /* Breakdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E21C8B09537006CEE51BE6F /* Breakdown.swift */; };
+		E2696153906921ED5AA8A250 /* ApproximateFiguresTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5DE29862C3EBF9B23ECC80 /* ApproximateFiguresTests.swift */; };
 		EC28FA803EBF31923D178B65 /* AnthropicConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3AED0F0B874E5ADA349838 /* AnthropicConnector.swift */; };
 		F00F5A1CDB303ABC55DFDB5C /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FE4697D58D943C9311FDF /* AppModel.swift */; };
 		F062AB5728C31E6737F14775 /* SpendStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E083D030F4C10D96E4B7B169 /* SpendStore.swift */; };
@@ -115,6 +116,7 @@
 		55CE9212E0B1AE587605F2D4 /* AssistantIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantIntegrationTests.swift; sourceTree = "<group>"; };
 		573B1330AF7EC0C8F1354021 /* BreakdownGroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakdownGroupTests.swift; sourceTree = "<group>"; };
 		583C93B4F17AE9044207F4BC /* CalendarDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDay.swift; sourceTree = "<group>"; };
+		5E5DE29862C3EBF9B23ECC80 /* ApproximateFiguresTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproximateFiguresTests.swift; sourceTree = "<group>"; };
 		5EB4BAFC88C65DF3AC0663F9 /* AssistantCLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantCLI.swift; sourceTree = "<group>"; };
 		60328BB2E4A813B815BADEC1 /* ITSpendTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITSpendTrackerApp.swift; sourceTree = "<group>"; };
 		62DD8E7AAEFF951B8DC25E54 /* ServiceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailView.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 		E25A85632FF86DCD150B693F /* ITSpendTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				5E5DE29862C3EBF9B23ECC80 /* ApproximateFiguresTests.swift */,
 				550A94942603788427C341D4 /* AssistantGuidanceTests.swift */,
 				55CE9212E0B1AE587605F2D4 /* AssistantIntegrationTests.swift */,
 				573B1330AF7EC0C8F1354021 /* BreakdownGroupTests.swift */,
@@ -486,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2696153906921ED5AA8A250 /* ApproximateFiguresTests.swift in Sources */,
 				94A28AFAE0BE840A019A2109 /* AssistantGuidanceTests.swift in Sources */,
 				5C0104647DA94CB410332582 /* AssistantIntegrationTests.swift in Sources */,
 				AC89E183C8150A9ADBAB51D0 /* BreakdownGroupTests.swift in Sources */,
