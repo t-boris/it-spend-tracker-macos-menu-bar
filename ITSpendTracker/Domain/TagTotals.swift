@@ -44,8 +44,23 @@ struct TagTotal: Identifiable, Equatable, Sendable {
         var costIsEstimate = false
         /// Whether `cost` is part of the tag's total.
         var isCounted = false
+        /// The tagged service of the same tag already contains this cost, so it is shown but not added (REQ-020).
+        var isCoveredByService = false
 
         var id: String { "\(serviceID?.uuidString ?? serviceName)|\(target.kind.rawValue)|\(target.scope)|\(target.reference)" }
+
+        /// Costs in one class are provably disjoint from each other; costs in different classes may be the same money
+        /// seen from two sides (DEC-035).
+        fileprivate var disjointClass: String {
+            switch target.kind {
+            case .service: "service"
+            case .key: "key"
+            case .breakdownItem: "item:" + target.scope
+            case .usageProject: "usage"
+            }
+        }
+
+        fileprivate var groupKey: String { serviceID?.uuidString ?? serviceName }
 
         fileprivate var sortRank: Int {
             switch target.kind {
@@ -59,8 +74,10 @@ struct TagTotal: Identifiable, Equatable, Sendable {
 
     var tag: String
     var members: [Member]
-    /// Sum of the counted members.
+    /// Sum of the counted members; `nil` when some service's tagged targets may overlap and the data cannot tell (DEC-034).
     var total: Decimal?
+    /// Services whose part of this tag cannot be resolved, which is why `total` is `nil`.
+    var unresolvedServices: [String] = []
     var id: String { tag }
 
     var hasUnavailable: Bool { members.contains { $0.cost == nil } }
@@ -83,7 +100,7 @@ struct TagTotal: Identifiable, Equatable, Sendable {
             }
         }
         return byTag.values.map { $0.settled() }.sorted {
-            ($0.total ?? 0) != ($1.total ?? 0) ? ($0.total ?? 0) > ($1.total ?? 0)
+            ($0.total ?? -1) != ($1.total ?? -1) ? ($0.total ?? -1) > ($1.total ?? -1)
                 : $0.tag.localizedStandardCompare($1.tag) == .orderedAscending
         }
     }
@@ -105,7 +122,11 @@ struct TagTotal: Identifiable, Equatable, Sendable {
                       name: assignment.displayName, isPresent: false, cost: nil)
     }
 
-    /// Orders the members and works out which of them make up the total.
+    /// Orders the members and works out which of them make up the total, one tracked service at a time (REQ-020):
+    /// - a tagged service contributes its spend once and covers every other tagged target of that service;
+    /// - otherwise the targets with a known cost are added only when they are provably disjoint (one class, DEC-035);
+    /// - if they are not, the service is unresolved and the whole tag's total is unavailable (DEC-034).
+    /// Targets without a cost are listed but take no part in any of this. Different services never overlap.
     private func settled() -> TagTotal {
         var result = self
         result.members.sort {
@@ -113,10 +134,23 @@ struct TagTotal: Identifiable, Equatable, Sendable {
             if $0.sortRank != $1.sortRank { return $0.sortRank < $1.sortRank }
             return $0.name.localizedStandardCompare($1.name) == .orderedAscending
         }
-        for index in result.members.indices {
-            result.members[index].isCounted = result.members[index].cost != nil
+        var unresolved: [String] = []
+        let groups = Dictionary(grouping: result.members.indices) { result.members[$0].groupKey }
+        for indices in groups.values.sorted(by: { $0[0] < $1[0] }) {
+            if let service = indices.first(where: { result.members[$0].target.kind == .service }) {
+                for index in indices where index != service { result.members[index].isCoveredByService = true }
+                result.members[service].isCounted = result.members[service].cost != nil
+            } else {
+                let costed = indices.filter { result.members[$0].cost != nil }
+                if Set(costed.map { result.members[$0].disjointClass }).count > 1 {
+                    unresolved.append(result.members[indices[0]].serviceName)
+                } else {
+                    for index in costed { result.members[index].isCounted = true }
+                }
+            }
         }
-        result.total = result.members.filter(\.isCounted).compactMap(\.cost).reduce(0, +)
+        result.unresolvedServices = unresolved
+        result.total = unresolved.isEmpty ? result.members.filter(\.isCounted).compactMap(\.cost).reduce(0, +) : nil
         return result
     }
 }
