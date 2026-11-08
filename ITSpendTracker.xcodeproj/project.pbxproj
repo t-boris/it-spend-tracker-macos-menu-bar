@@ -49,6 +49,7 @@
 		9E40FECF0AFCF8BA114D48C6 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FEDFBF560CC958859C911 /* ChatView.swift */; };
 		A15EF27D207594F06CD9E0ED /* OpenAIConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD7455DDA65BDAE990EB65 /* OpenAIConnector.swift */; };
 		A2F4669663416A5C9BFA2EF2 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC71EB736E3FE00D69AB42A /* KeychainStore.swift */; };
+		AC89E183C8150A9ADBAB51D0 /* BreakdownGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573B1330AF7EC0C8F1354021 /* BreakdownGroupTests.swift */; };
 		B01AFA911CBA9E7F59E48185 /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137404D402464B6474DA81ED /* Forms.swift */; };
 		B5A768ECEEF613773BBDD7D4 /* DeclarativeConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCC0C7BE69A02037598E335 /* DeclarativeConnector.swift */; };
 		B66A26A196263BA8EA85D6E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A645AA4012BF51F62519D773 /* Assets.xcassets */; };
@@ -108,6 +109,7 @@
 		4E2DF64840895FAC42C3E8E8 /* NeonConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonConnector.swift; sourceTree = "<group>"; };
 		550A94942603788427C341D4 /* AssistantGuidanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantGuidanceTests.swift; sourceTree = "<group>"; };
 		55CE9212E0B1AE587605F2D4 /* AssistantIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantIntegrationTests.swift; sourceTree = "<group>"; };
+		573B1330AF7EC0C8F1354021 /* BreakdownGroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakdownGroupTests.swift; sourceTree = "<group>"; };
 		583C93B4F17AE9044207F4BC /* CalendarDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDay.swift; sourceTree = "<group>"; };
 		5EB4BAFC88C65DF3AC0663F9 /* AssistantCLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantCLI.swift; sourceTree = "<group>"; };
 		60328BB2E4A813B815BADEC1 /* ITSpendTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITSpendTrackerApp.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			children = (
 				550A94942603788427C341D4 /* AssistantGuidanceTests.swift */,
 				55CE9212E0B1AE587605F2D4 /* AssistantIntegrationTests.swift */,
+				573B1330AF7EC0C8F1354021 /* BreakdownGroupTests.swift */,
 				F007A1BF1886E4B8F87D6DC5 /* ChartGrowthTests.swift */,
 				1A0C1AB50E7505305EE37E73 /* ClineTests.swift */,
 				74C1BB97986CD421AAD38E3B /* ConnectorTests.swift */,
@@ -475,6 +478,7 @@
 			files = (
 				94A28AFAE0BE840A019A2109 /* AssistantGuidanceTests.swift in Sources */,
 				5C0104647DA94CB410332582 /* AssistantIntegrationTests.swift in Sources */,
+				AC89E183C8150A9ADBAB51D0 /* BreakdownGroupTests.swift in Sources */,
 				5598820495E389A51080F699 /* ChartGrowthTests.swift in Sources */,
 				36E8579F8768960C62517E6D /* ClineTests.swift in Sources */,
 				637D28BCC4E3E537A56FC09B /* ConnectorTests.swift in Sources */,

@@ -470,16 +470,31 @@ struct ServiceDetailView: View {
                 } else if rows.isEmpty {
                     Text("No usage this month.").foregroundStyle(.secondary)
                 } else {
-                    let accounts = rows.filter { $0.dimensionRaw == BreakdownDimension.account.rawValue }
-                    if !accounts.isEmpty {
-                        BreakdownList(title: "By account / organization", rows: accounts)
+                    let counts = Dictionary(grouping: rows.compactMap { BreakdownDimension(rawValue: $0.dimensionRaw) }, by: { $0 })
+                        .mapValues(\.count)
+                    ForEach(BreakdownGroup.groups(offered: capabilities?.breakdownDimensions ?? [], counts: counts)) { group in
+                        if group.hasData {
+                            BreakdownList(title: Self.title(of: group.dimension),
+                                          rows: rows.filter { $0.dimensionRaw == group.dimension.rawValue })
+                        } else {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(Self.title(of: group.dimension)).font(.callout.weight(.semibold))
+                                Text("no data").foregroundStyle(.secondary)
+                            }
+                        }
                     }
-                    BreakdownList(title: "By model / line item", rows: rows.filter { $0.dimensionRaw == BreakdownDimension.lineItem.rawValue })
-                    BreakdownList(title: "By project", rows: rows.filter { $0.dimensionRaw == BreakdownDimension.project.rawValue })
                 }
             }
         } header: {
             Text("Usage breakdown")
+        }
+    }
+
+    private static func title(of dimension: BreakdownDimension) -> LocalizedStringKey {
+        switch dimension {
+        case .account: "By account / organization"
+        case .lineItem: "By model / line item"
+        case .project: "By project"
         }
     }
 

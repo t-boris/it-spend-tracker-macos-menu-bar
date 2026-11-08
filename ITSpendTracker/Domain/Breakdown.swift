@@ -12,6 +12,33 @@ enum BreakdownDimension: String, Codable, CaseIterable, Sendable, Identifiable {
     var id: String { rawValue }
 }
 
+extension ConnectorCapabilities {
+    /// The breakdown groups this connector can fill, in display order.
+    var breakdownDimensions: [BreakdownDimension] {
+        var result: [BreakdownDimension] = []
+        if breakdownByAccount { result.append(.account) }
+        if breakdownByLineItem { result.append(.lineItem) }
+        if breakdownByProject { result.append(.project) }
+        return result
+    }
+}
+
+/// One group of a service's usage breakdown for the selected month (REQ-015).
+struct BreakdownGroup: Equatable, Identifiable, Sendable {
+    let dimension: BreakdownDimension
+    let rowCount: Int
+
+    var id: BreakdownDimension { dimension }
+    /// A group the connector offers but has no rows for shows "no data"; it is never an empty list.
+    var hasData: Bool { rowCount > 0 }
+
+    /// Groups to show: exactly those the connector offers. A grouping it does not provide is left out
+    /// instead of appearing as an empty heading.
+    static func groups(offered: [BreakdownDimension], counts: [BreakdownDimension: Int]) -> [BreakdownGroup] {
+        offered.map { BreakdownGroup(dimension: $0, rowCount: counts[$0] ?? 0) }
+    }
+}
+
 struct BreakdownRow: Sendable, Equatable {
     var month: Month
     var dimension: BreakdownDimension
