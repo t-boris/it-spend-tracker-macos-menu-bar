@@ -420,6 +420,14 @@ RU = {
 "Included in the tagged service": "Входит в сумму отмеченного сервиса",
 "Items without a cost this month are not included in the total.": "Позиции без суммы за этот месяц не входят в итог.",
 "The tagged costs in %@ may overlap, so this total is not shown. Each item shows its own amount.": "Отмеченные расходы в %@ могут пересекаться, поэтому итог не показан. У каждой позиции указана её собственная сумма.",
+"Last 12 months": "Последние 12 месяцев",
+"Months without a total: %lld": "Месяцев без итога: %lld",
+"Month by month": "По месяцам",
+"Tagged items": "Помеченные позиции",
+"A tag applies to every month, whenever it was assigned. Months before an item's data begins have no data, and items without a cost in a month are left out of that month's total.": "Тег действует на все месяцы, независимо от того, когда он назначен. Месяцы до начала данных позиции показаны как «нет данных», а позиции без суммы в месяце в итог этого месяца не входят.",
+"Tags over time": "Теги по месяцам",
+"Tag totals can overlap, so the lines are not added up.": "Итоги тегов могут пересекаться, поэтому линии не складываются.",
+"◇ marks a month without a total (unavailable or no data). Faded bars are approximate (≈).": "◇ — месяц без итога (недоступно или нет данных). Приглушённые столбцы — приблизительные суммы (≈).",
 }
 
 path = pathlib.Path(__file__).resolve().parent.parent / "ITSpendTracker/Resources/Localizable.xcstrings"

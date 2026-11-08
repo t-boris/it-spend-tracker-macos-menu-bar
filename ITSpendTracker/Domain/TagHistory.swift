@@ -48,10 +48,27 @@ struct TagHistory: Identifiable, Equatable, Sendable {
         var id: Int { month.index }
     }
 
+    /// One tagged target with its own amount in every month of the history.
+    struct TargetSeries: Identifiable, Equatable, Sendable {
+        /// The target as the newest month shows it: its name, type, service and where it opens.
+        var member: TagTotal.Member
+        /// Its amount in each month, aligned with `points`; `nil` when it has no cost in that month.
+        var costs: [Decimal?]
+        var id: String { member.id }
+    }
+
     var tag: String
     /// One point for every month asked for, oldest first.
     var points: [Point]
     var id: String { tag }
+
+    /// Every tagged target with its amount per month, in the order the Tags tab lists them.
+    var targets: [TargetSeries] {
+        guard let newest = points.last else { return [] }
+        return newest.members.map { member in
+            TargetSeries(member: member, costs: points.map { point in point.members.first { $0.id == member.id }?.cost })
+        }
+    }
 
     var latest: Point? { points.last }
     /// The month before the latest one.

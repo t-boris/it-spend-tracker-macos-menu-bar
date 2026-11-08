@@ -4,6 +4,7 @@ enum Route: Hashable {
     case services
     case history
     case tags
+    case tag(String)
     case chat
     case service(UUID)
     case key(service: UUID, key: String)
@@ -45,6 +46,7 @@ struct MainView: View {
         case .services: OverviewView(selection: $selection)
         case .history: HistoryView()
         case .tags: TagsView(selection: $selection)
+        case .tag(let name): TagDetailView(selection: $selection, tag: name).id(name)
         case .chat: ChatView()
         case .service(let id): ServiceDetailView(serviceID: id, selection: $selection).id(id)
         case .key(let service, let key): KeyDetailView(serviceID: service, keyID: key, selection: $selection).id("\(service)|\(key)")

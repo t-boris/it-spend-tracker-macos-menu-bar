@@ -407,6 +407,16 @@
         }
       }
     },
+    "A tag applies to every month, whenever it was assigned. Months before an item's data begins have no data, and items without a cost in a month are left out of that month's total.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тег действует на все месяцы, независимо от того, когда он назначен. Месяцы до начала данных позиции показаны как «нет данных», а позиции без суммы в месяце в итог этого месяца не входят."
+          }
+        }
+      }
+    },
     "AI assistant": {
       "localizations": {
         "ru": {
@@ -1943,6 +1953,16 @@
         }
       }
     },
+    "Last 12 months": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Последние 12 месяцев"
+          }
+        }
+      }
+    },
     "Last month": {
       "localizations": {
         "ru": {
@@ -2083,6 +2103,16 @@
         }
       }
     },
+    "Month by month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "По месяцам"
+          }
+        }
+      }
+    },
     "Month so far": {
       "localizations": {
         "ru": {
@@ -2099,6 +2129,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ежемесячно"
+          }
+        }
+      }
+    },
+    "Months without a total: %lld": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Месяцев без итога: %lld"
           }
         }
       }
@@ -3243,12 +3283,42 @@
         }
       }
     },
+    "Tag totals can overlap, so the lines are not added up.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Итоги тегов могут пересекаться, поэтому линии не складываются."
+          }
+        }
+      }
+    },
+    "Tagged items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Помеченные позиции"
+          }
+        }
+      }
+    },
     "Tags": {
       "localizations": {
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Теги"
+          }
+        }
+      }
+    },
+    "Tags over time": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Теги по месяцам"
           }
         }
       }
@@ -4079,6 +4149,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "≈ — примерная стоимость по опубликованным тарифам Neon для вашего плана (%@) с учётом бесплатных лимитов. Она входит в итоги и историю со значком ≈."
+          }
+        }
+      }
+    },
+    "◇ marks a month without a total (unavailable or no data). Faded bars are approximate (≈).": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "◇ — месяц без итога (недоступно или нет данных). Приглушённые столбцы — приблизительные суммы (≈)."
           }
         }
       }

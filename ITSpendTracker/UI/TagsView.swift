@@ -8,6 +8,8 @@ struct TagsView: View {
 
     var body: some View {
         let totals = model.tagTotals
+        // Only tags with at least one known monthly total get a line (REQ-024).
+        let charted = model.tagHistory.filter { history in history.points.contains { $0.total != nil } }
         Group {
             if totals.isEmpty {
                 ContentUnavailableView {
@@ -18,21 +20,36 @@ struct TagsView: View {
                 .frame(maxHeight: .infinity)
             } else {
                 List {
+                    if !charted.isEmpty {
+                        Section {
+                            TagsOverTimeChart(histories: charted)
+                        } header: {
+                            Text("Tags over time")
+                        } footer: {
+                            Text("Tag totals can overlap, so the lines are not added up.")
+                        }
+                    }
                     ForEach(totals) { total in
                         Section {
                             ForEach(total.members) { member in
                                 TagMemberRow(member: member, open: { open(member) }, edit: { edit(member) })
                             }
                         } header: {
-                            HStack {
-                                TagChip(tag: total.tag)
-                                Spacer()
-                                if let sum = total.total {
-                                    Text(verbatim: (total.isApproximate ? "≈ " : "") + Format.usd(sum)).font(.headline).monospacedDigit()
-                                } else {
-                                    Text("unavailable").font(.headline).foregroundStyle(.secondary)
+                            // The header opens the page of the tag with its history (REQ-023).
+                            Button { selection = .tag(total.tag) } label: {
+                                HStack {
+                                    TagChip(tag: total.tag)
+                                    Spacer()
+                                    if let sum = total.total {
+                                        Text(verbatim: (total.isApproximate ? "≈ " : "") + Format.usd(sum)).font(.headline).monospacedDigit()
+                                    } else {
+                                        Text("unavailable").font(.headline).foregroundStyle(.secondary)
+                                    }
+                                    Image(systemName: "chevron.right").font(.caption).foregroundStyle(.tertiary)
                                 }
+                                .contentShape(Rectangle())
                             }
+                            .buttonStyle(.plain)
                         } footer: {
                             if !total.unresolvedServices.isEmpty {
                                 Text("The tagged costs in \(total.unresolvedServices.joined(separator: ", ")) may overlap, so this total is not shown. Each item shows its own amount.")
@@ -52,22 +69,8 @@ struct TagsView: View {
         }
     }
 
-    /// Opens the target: a key its page, a breakdown row or Neon project its section of the service page, anything else
-    /// (a service, or a target that is missing now) the service page (REQ-019).
     private func open(_ member: TagTotal.Member) {
-        guard let serviceID = member.serviceID else { return }
-        switch member.destination {
-        case .key(let id):
-            selection = .key(service: serviceID, key: id)
-        case .breakdownSection:
-            model.pendingServiceSection = .breakdown
-            selection = .service(serviceID)
-        case .usageSection:
-            model.pendingServiceSection = .usage
-            selection = .service(serviceID)
-        case .service:
-            selection = .service(serviceID)
-        }
+        if let route = model.route(opening: member) { selection = route }
     }
 
     private func edit(_ member: TagTotal.Member) {
@@ -84,9 +87,29 @@ struct TagEditRequest: Identifiable {
     var id: String { "\(serviceID)|\(target.kind.rawValue)|\(target.scope)|\(target.reference)" }
 }
 
-/// One tagged target: its name, type and parent service, and its current-month amount or "unavailable".
+extension AppModel {
+    /// Where opening a tagged target goes: a key its page, a breakdown row or Neon project its section of the service
+    /// page (which is asked to scroll there), anything else, including a target that is missing now, the service page (REQ-019).
+    func route(opening member: TagTotal.Member) -> Route? {
+        guard let serviceID = member.serviceID else { return nil }
+        switch member.destination {
+        case .key(let id): return .key(service: serviceID, key: id)
+        case .breakdownSection:
+            pendingServiceSection = .breakdown
+            return .service(serviceID)
+        case .usageSection:
+            pendingServiceSection = .usage
+            return .service(serviceID)
+        case .service: return .service(serviceID)
+        }
+    }
+}
+
+/// One tagged target: its name, type and parent service, and its current-month amount or "unavailable". With `history`
+/// (its amount in each of the last months) a small chart of those months is drawn before the amount.
 struct TagMemberRow: View {
     let member: TagTotal.Member
+    var history: [Decimal?]?
     let open: () -> Void
     let edit: () -> Void
 
@@ -111,6 +134,7 @@ struct TagMemberRow: View {
                         }
                     }
                     Spacer()
+                    if let history, history.contains(where: { $0 != nil }) { MonthSparkline(costs: history) }
                     amount
                     Image(systemName: "chevron.right").font(.caption).foregroundStyle(.tertiary)
                 }

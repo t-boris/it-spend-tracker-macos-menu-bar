@@ -51,6 +51,7 @@
 		770121BCE79B25672517D977 /* ITSpendTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60328BB2E4A813B815BADEC1 /* ITSpendTrackerApp.swift */; };
 		77B5821B02B67DECB8A0E5CF /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4374B0DE64CF0F3B162A0C5D /* HTTPClient.swift */; };
 		85902C88C272F01965659795 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7986D3F1E27AE975213846 /* LaunchAtLogin.swift */; };
+		88E1E5DFEC27E9613AF925DF /* TagHistoryModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01B77D7003D5B4C6275C7C /* TagHistoryModelTests.swift */; };
 		89BEB22AD715B173D3051599 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ECB9256D094DB7620D535D /* Formatting.swift */; };
 		93F07DEFB46049CCFF3C4869 /* GitHubConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105D76C4DDB97CEA56B35B64 /* GitHubConnector.swift */; };
 		94A28AFAE0BE840A019A2109 /* AssistantGuidanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A94942603788427C341D4 /* AssistantGuidanceTests.swift */; };
@@ -74,6 +75,7 @@
 		C4CF68F20D095F9422363CE8 /* Ledger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9E107866F43B30C555EDFF /* Ledger.swift */; };
 		C5BF529FB4DE24CFF2A7B69F /* MonthCompositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AE7EFD9BC1F8782EFACE26 /* MonthCompositionTests.swift */; };
 		CC75C9AF671DC0B158BC4D37 /* ClineAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF873A0330ADF90E881AD8E4 /* ClineAuth.swift */; };
+		CE82C39B1A715CA84C941767 /* TagDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52131EDDCAA113ACB83E0D6C /* TagDetailView.swift */; };
 		D1C1A6A52981906AE85A21A3 /* TagHistoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27FCEE301601DAF8147BC0E /* TagHistoryTests.swift */; };
 		D4CC253F8832A53D8954A460 /* InvoiceReadingConsentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EFE2708FD0053BF9E561C1 /* InvoiceReadingConsentTests.swift */; };
 		D6728C54B58ACB496F173CB8 /* ServiceSectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96ECCC4AAB42D6FBAA60AC /* ServiceSectionsTests.swift */; };
@@ -123,6 +125,7 @@
 		273E2C320D9D57924C567F70 /* HistoryRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRenderTests.swift; sourceTree = "<group>"; };
 		29EA2F628AB49799E5EE6C9C /* TagHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagHistory.swift; sourceTree = "<group>"; };
 		2E21C8B09537006CEE51BE6F /* Breakdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breakdown.swift; sourceTree = "<group>"; };
+		2F01B77D7003D5B4C6275C7C /* TagHistoryModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagHistoryModelTests.swift; sourceTree = "<group>"; };
 		3076102B70BB865BC6ADFD40 /* KeyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyDetailView.swift; sourceTree = "<group>"; };
 		316BEA16E0C60901B7B44646 /* CoverageStartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageStartTests.swift; sourceTree = "<group>"; };
 		325AD9DAC46EDAFDA095F97B /* InvoiceImportSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceImportSheet.swift; sourceTree = "<group>"; };
@@ -132,6 +135,7 @@
 		4374B0DE64CF0F3B162A0C5D /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		4E2DF64840895FAC42C3E8E8 /* NeonConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonConnector.swift; sourceTree = "<group>"; };
 		50EFE2708FD0053BF9E561C1 /* InvoiceReadingConsentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceReadingConsentTests.swift; sourceTree = "<group>"; };
+		52131EDDCAA113ACB83E0D6C /* TagDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDetailView.swift; sourceTree = "<group>"; };
 		550A94942603788427C341D4 /* AssistantGuidanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantGuidanceTests.swift; sourceTree = "<group>"; };
 		55CE9212E0B1AE587605F2D4 /* AssistantIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantIntegrationTests.swift; sourceTree = "<group>"; };
 		573B1330AF7EC0C8F1354021 /* BreakdownGroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakdownGroupTests.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 				92CA38C156A5E50BAD689A38 /* MainView.swift */,
 				62DD8E7AAEFF951B8DC25E54 /* ServiceDetailView.swift */,
 				B7AC63DDF5776F7290DB9AA6 /* SettingsView.swift */,
+				52131EDDCAA113ACB83E0D6C /* TagDetailView.swift */,
 				813C49379DAD9D55910196B0 /* TagEditing.swift */,
 				6BE256D378DA507A46266454 /* TagsView.swift */,
 			);
@@ -373,6 +378,7 @@
 				EB96ECCC4AAB42D6FBAA60AC /* ServiceSectionsTests.swift */,
 				759516E51052B01F0B9E4AE7 /* TagAmountTests.swift */,
 				0223AB1133CCA48309FDC52B /* TagAssignmentTests.swift */,
+				2F01B77D7003D5B4C6275C7C /* TagHistoryModelTests.swift */,
 				F27FCEE301601DAF8147BC0E /* TagHistoryTests.swift */,
 				5C4218B3C3A91A04C1492316 /* TagOverlapTests.swift */,
 			);
@@ -537,6 +543,7 @@
 				F062AB5728C31E6737F14775 /* SpendStore.swift in Sources */,
 				1AD20EC18AACD547A310F2D5 /* SpendingChat.swift in Sources */,
 				311FD829FB813CA859C6D7C3 /* StatusItemController.swift in Sources */,
+				CE82C39B1A715CA84C941767 /* TagDetailView.swift in Sources */,
 				4CEAD639970F3A2C76738EE7 /* TagEditing.swift in Sources */,
 				1537E602A685A81C74F1424B /* TagHistory.swift in Sources */,
 				6D862C9F31171B42BC02836D /* TagInput.swift in Sources */,
@@ -578,6 +585,7 @@
 				D6728C54B58ACB496F173CB8 /* ServiceSectionsTests.swift in Sources */,
 				590789F174B572C5E89AE80A /* TagAmountTests.swift in Sources */,
 				66DF6EFB7AEDA5E1FA4F59EE /* TagAssignmentTests.swift in Sources */,
+				88E1E5DFEC27E9613AF925DF /* TagHistoryModelTests.swift in Sources */,
 				D1C1A6A52981906AE85A21A3 /* TagHistoryTests.swift in Sources */,
 				62D47695150E594B3BE9CA00 /* TagOverlapTests.swift in Sources */,
 			);

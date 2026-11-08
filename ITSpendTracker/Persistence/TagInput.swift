@@ -5,7 +5,9 @@ extension TrackedService {
     ///
     /// Only rows of `month` count, so a key, breakdown item or project that has no row now has no cost; an earlier
     /// month's figure is never reused (REQ-018). Whether the service is included in the main total is irrelevant here.
-    func tagInput(in month: Month) -> TagServiceInput {
+    ///
+    /// A caller that asks for several months passes the service's `ledger` once: building it reads every daily cost.
+    func tagInput(in month: Month, ledger precomputed: ServiceLedger? = nil) -> TagServiceInput {
         let assignments = tagAssignments.compactMap { record in
             record.target.map { TagAssignment(target: $0, displayName: record.displayName, tags: record.tags) }
         }
@@ -45,7 +47,7 @@ extension TrackedService {
             }
         }
 
-        return TagServiceInput(serviceID: id, serviceName: name, spend: ledger.spend(in: month).decimal,
+        return TagServiceInput(serviceID: id, serviceName: name, spend: (precomputed ?? self.ledger).spend(in: month).decimal,
                                spendIsEstimate: isApproximate(in: month), present: present, assignments: assignments)
     }
 }
