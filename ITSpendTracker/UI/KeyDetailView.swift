@@ -13,7 +13,7 @@ struct KeyDetailView: View {
         if let service = model.store.service(id: serviceID),
            let key = service.keys.first(where: { $0.externalID == keyID }) {
             content(service: service, key: key)
-                .sheet(isPresented: $editingTags) { KeyTagsForm(service: service, key: key) }
+                .sheet(isPresented: $editingTags) { TagsForm(service: service, target: .key(key.externalID), name: key.name) }
         } else {
             ContentUnavailableView("Key not found", systemImage: "key",
                                    description: Text("The provider no longer reports this key."))

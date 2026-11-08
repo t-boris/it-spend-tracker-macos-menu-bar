@@ -129,6 +129,7 @@ struct ServiceDetailView: View {
                     LabeledContent("Account", value: service.accountIdentifier)
                 }
                 ConsoleLinks(service: service)
+                TagRow(service: service, target: .service, name: service.name)
                 if !service.note.isEmpty {
                     LabeledContent("Note", value: service.note)
                 }
@@ -475,7 +476,7 @@ struct ServiceDetailView: View {
                         .mapValues(\.count)
                     ForEach(BreakdownGroup.groups(offered: capabilities?.breakdownDimensions ?? [], counts: counts)) { group in
                         if group.hasData {
-                            BreakdownList(title: Self.title(of: group.dimension),
+                            BreakdownList(title: Self.title(of: group.dimension), service: service,
                                           rows: rows.filter { $0.dimensionRaw == group.dimension.rawValue })
                         } else {
                             VStack(alignment: .leading, spacing: 4) {
@@ -512,6 +513,7 @@ struct ServiceDetailView: View {
 /// Top entries of one breakdown dimension with proportional bars.
 struct BreakdownList: View {
     let title: LocalizedStringKey
+    let service: TrackedService
     let rows: [BreakdownRecord]
     @Environment(\.isLargeLayout) private var isLargeLayout
     @State private var showAll = false
@@ -524,13 +526,19 @@ struct BreakdownList: View {
         VStack(alignment: .leading, spacing: 6) {
             Text(title).font(.callout.weight(.semibold))
             ForEach(shown, id: \.label) { row in
+                // Every displayed row can be tagged; its identity is the dimension plus the exact label (REQ-017, REQ-018).
+                let target = BreakdownDimension(rawValue: row.dimensionRaw).map { TagTarget.breakdownItem(dimension: $0, label: row.label) }
                 VStack(alignment: .leading, spacing: 2) {
                     HStack {
                         Text(row.label).lineLimit(1).truncationMode(.middle)
                         Spacer()
                         Text(Format.usd(row.amount)).monospacedDigit()
+                        if let target { TagButton(service: service, target: target, name: row.label) }
                     }
                     .font(.caption)
+                    if let target, !service.tags(for: target).isEmpty {
+                        TagChips(tags: service.tags(for: target))
+                    }
                     GeometryReader { geometry in
                         Capsule().fill(Color.accentColor.opacity(0.35))
                             .frame(width: max(2, geometry.size.width * CGFloat(NSDecimalNumber(decimal: row.amount / maximum).doubleValue)))
@@ -633,6 +641,7 @@ struct UsageMetricsSection: View {
                 }
             }
             if covered, !records.isEmpty {
+                projectTags(records, showingOrganization: severalOrganizations)
                 LabeledContent("≈ Total for the month") {
                     Self.approximate(records).font(.body.weight(.semibold))
                 }
@@ -675,6 +684,25 @@ struct UsageMetricsSection: View {
     }
 
     /// "≈ $X" for the rows' approximate cost; "≈ ?" when a plan's rates are unknown.
+    /// Tags of the projects shown for the selected month; a project is identified by organization and name (DEC-025).
+    @ViewBuilder
+    private func projectTags(_ records: [UsageMetricRecord], showingOrganization: Bool) -> some View {
+        let projects = Dictionary(grouping: records) { TagTarget.usageProject(organization: $0.organization, name: $0.project) }
+        VStack(alignment: .leading, spacing: 3) {
+            Text("Tags").font(.callout.weight(.semibold))
+            ForEach(projects.keys.sorted { $0.reference < $1.reference }, id: \.self) { target in
+                let name = projects[target]?.first?.label(showingOrganization: showingOrganization) ?? target.reference
+                HStack {
+                    Text(name).lineLimit(1).truncationMode(.middle)
+                    TagChips(tags: service.tags(for: target))
+                    Spacer()
+                    TagButton(service: service, target: target, name: name)
+                }
+                .font(.caption)
+            }
+        }
+    }
+
     static func approximate(_ rows: [UsageMetricRecord]) -> Text {
         let costs = rows.map(\.approximateCost)
         if costs.contains(where: { $0 == nil }) && costs.allSatisfy({ $0 == nil }) {

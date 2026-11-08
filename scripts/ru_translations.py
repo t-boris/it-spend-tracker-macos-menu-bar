@@ -186,7 +186,6 @@ RU = {
 "Open a service and tag its keys, e.g. by project or client. Each tag's spend is summed here across services.": "Откройте сервис и назначьте ключам теги, например по проекту или клиенту. Здесь траты по каждому тегу суммируются по всем сервисам.",
 "Open in window": "Открыть в окне",
 "Remaining is estimated from this balance, later purchases and the usage cost reported by the provider. Leave empty to clear.": "Остаток оценивается по этой сумме, последующим покупкам и стоимости использования, которую сообщает провайдер. Оставьте пустым, чтобы сбросить.",
-"Separate tags with commas. Tags group keys across services on the Tags tab.": "Разделяйте теги запятыми. На вкладке «Теги» ключи группируются по тегам во всех сервисах.",
 "Tags": "Теги",
 "e.g. ci-bot, client X": "например, ci-bot, клиент X",
 
@@ -415,6 +414,9 @@ RU = {
 "The Cline session has ended. Sign in to Cline again.": "Сессия Cline завершилась. Войдите в Cline снова.",
 "The Cline sign-in code expired. Start the sign-in again.": "Срок действия кода для входа в Cline истёк. Начните вход заново.",
 "Waiting for confirmation…": "Ожидание подтверждения…",
+"Project": "Проект",
+"Model / line item": "Модель / статья",
+"Separate tags with commas. Tags group services, keys and items across services on the Tags tab.": "Разделяйте теги запятыми. На вкладке «Теги» сервисы, ключи и статьи группируются по тегам во всех сервисах.",
 }
 
 path = pathlib.Path(__file__).resolve().parent.parent / "ITSpendTracker/Resources/Localizable.xcstrings"

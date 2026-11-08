@@ -276,41 +276,6 @@ struct CredentialsUpdateForm: View {
     }
 }
 
-/// Edits the user's tags of one key (DEC-024). Tags are comma-separated; existing tags can be tapped to add.
-struct KeyTagsForm: View {
-    @Environment(AppModel.self) private var model
-    let service: TrackedService
-    let key: KeyRecord
-    @State private var text = ""
-
-    private var entered: [String] {
-        text.split(separator: ",").map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
-    }
-
-    var body: some View {
-        FormSheet(title: "Tags", canSave: true) {
-            try model.store.setTags(entered, forKey: key.externalID, of: service)
-        } content: {
-            LabeledContent("Key", value: key.name)
-            TextField("Tags", text: $text, prompt: Text("e.g. ci-bot, client X"))
-            Text("Separate tags with commas. Tags group keys across services on the Tags tab.")
-                .font(.caption).foregroundStyle(.secondary)
-            let suggestions = model.store.allTags.filter { tag in !entered.contains { $0.lowercased() == tag.lowercased() } }
-            if !suggestions.isEmpty {
-                LabeledContent("Existing tags") {
-                    HStack {
-                        ForEach(suggestions.prefix(8), id: \.self) { tag in
-                            Button { text = (entered + [tag]).joined(separator: ", ") } label: { TagChip(tag: tag) }
-                                .buttonStyle(.plain)
-                        }
-                    }
-                }
-            }
-        }
-        .onAppear { text = service.tags(forKey: key.externalID).joined(separator: ", ") }
-    }
-}
-
 struct TagChip: View {
     let tag: String
 
