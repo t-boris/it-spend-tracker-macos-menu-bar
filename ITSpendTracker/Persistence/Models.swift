@@ -62,8 +62,11 @@ final class TrackedService {
     /// `Month.index` from which per-key monthly costs are stored.
     var keyCostsStartMonthIndex: Int?
     @Relationship(deleteRule: .cascade, inverse: \CreditPurchaseRecord.service) var creditPurchases: [CreditPurchaseRecord] = []
-    /// User tags per key; kept separately because key records are replaced on every refresh (DEC-024).
+    /// Old per-key tag records (DEC-024). Converted into `tagAssignments` on launch and then empty (DEC-036).
     @Relationship(deleteRule: .cascade, inverse: \KeyTagRecord.service) var keyTags: [KeyTagRecord] = []
+    /// User tags per service, key, breakdown item and usage project; kept apart from the refreshed rows because those
+    /// are replaced on every refresh (REQ-018, DEC-036).
+    @Relationship(deleteRule: .cascade, inverse: \TagAssignmentRecord.service) var tagAssignments: [TagAssignmentRecord] = []
 
     init(name: String, accountIdentifier: String = "", note: String = "", connector: ConnectorID? = nil,
          definition: ConnectorDefinition? = nil) {
@@ -122,8 +125,12 @@ final class TrackedService {
         return (offersBreakdown && !breakdownBackfilled) || (offersKeyCosts && keyCostsStartMonthIndex == nil)
     }
 
+    func tags(for target: TagTarget) -> [String] {
+        tagAssignments.first { $0.target == target }?.tags ?? []
+    }
+
     func tags(forKey externalID: String) -> [String] {
-        keyTags.first { $0.keyExternalID == externalID }?.tags ?? []
+        tags(for: .key(externalID))
     }
 
     /// Subscriptions sorted by start date.
@@ -355,6 +362,8 @@ final class CreditPurchaseRecord {
     }
 }
 
+/// The first release's tags, one record per tagged key. Only read to convert old data into `TagAssignmentRecord`
+/// (`SpendStore.migrateLegacyKeyTags`); it stays in the schema because removing a model would need a versioned migration.
 @Model
 final class KeyTagRecord {
     var keyExternalID: String
@@ -367,9 +376,35 @@ final class KeyTagRecord {
     }
 }
 
+/// The tags of one target of one tracked service (REQ-017, REQ-018, DEC-036). Identity is the owning service plus
+/// kind, scope and reference; the month is never part of it.
+@Model
+final class TagAssignmentRecord {
+    var kindRaw: String
+    var scope: String
+    var reference: String
+    /// Name of the target when its tags were last edited; shown only while the target is missing (DEC-037).
+    var displayName: String
+    var tags: [String]
+    var service: TrackedService?
+
+    var target: TagTarget? {
+        TagTarget.Kind(rawValue: kindRaw).map { TagTarget(kind: $0, scope: scope, reference: reference) }
+    }
+
+    init(target: TagTarget, displayName: String, tags: [String]) {
+        kindRaw = target.kind.rawValue
+        scope = target.scope
+        reference = target.reference
+        self.displayName = displayName
+        self.tags = tags
+    }
+}
+
 enum Persistence {
     static let schema = Schema([TrackedService.self, DailyCost.self, KeyRecord.self, TokenUsageRecord.self,
                                 SubscriptionRecord.self, SubscriptionPriceRecord.self, CreditPurchaseRecord.self, KeyTagRecord.self,
+                                TagAssignmentRecord.self,
                                 BreakdownRecord.self, KeyCostRecord.self, UsageMetricRecord.self])
 
     /// The store lives in the app's Application Support directory (DEC-013).

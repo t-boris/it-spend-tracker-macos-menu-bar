@@ -444,15 +444,13 @@ private func definition(baseURL: String = "https://api.example-ai.test", spendPa
                                          keys: [ProviderKey(externalID: "k1", name: "Bot", currentMonthCost: 7),
                                                 ProviderKey(externalID: "k2", name: "Scripts", currentMonthCost: 3)],
                                          tokenUsage: nil)
-        try store.apply(snapshot, to: service, at: .now)
+        try store.apply(snapshot, to: service, at: Day(year: 2026, month: 9, day: 30).startDate())
         try store.setTags([" client X ", "bot", "Client x"], forKey: "k1", of: service)
         try store.setTags(["client X"], forKey: "k2", of: service)
-        try store.apply(snapshot, to: service, at: .now) // refresh replaces key records
+        try store.apply(snapshot, to: service, at: Day(year: 2026, month: 9, day: 30).startDate()) // refresh replaces key records
         #expect(service.tags(forKey: "k1") == ["client X", "bot"])
         #expect(store.allTags == ["bot", "client X"])
-        let keys = service.keys.map { TagTotal.TaggedKey(serviceName: service.name, keyName: $0.name, cost: $0.currentMonthCost,
-                                                          tags: service.tags(forKey: $0.externalID)) }
-        let totals = TagTotal.compute(keys)
+        let totals = TagTotal.compute([service.tagInput(in: Month(year: 2026, month: 9))])
         #expect(totals.first?.tag == "client X")
         #expect(totals.first?.total == 10)
         try store.setTags([], forKey: "k2", of: service)

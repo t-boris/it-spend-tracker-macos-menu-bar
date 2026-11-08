@@ -74,19 +74,37 @@ final class AppModel {
             .reduce(Amount.noData, +)
     }
 
+    /// The last 12 months of every tag, each month calculated from that month's data (REQ-023, REQ-024, DEC-042).
+    /// Kept until the store saves again or the month changes: a page reads it on every redraw.
+    var tagHistory: [TagHistory] {
+        let month = today.calendarMonth
+        let revision = store.revision // reading it also makes the views redraw after a save
+        if let cached = historyCache, cached.revision == revision, cached.month == month { return cached.value }
+        let services = store.services
+        // A service's ledger reads all its daily costs, so it is built once and not for every month.
+        let ledgers = Dictionary(services.filter { !$0.tagAssignments.isEmpty }.map { ($0.id, $0.ledger) },
+                                 uniquingKeysWith: { first, _ in first })
+        let value = TagHistory.compute(months: TagHistory.months(endingAt: month)) { month in
+            services.map { $0.tagInput(in: month, ledger: ledgers[$0.id]) }
+        }
+        historyCache = RevisionCache(revision: revision, month: month, value: value)
+        return value
+    }
+
+    @ObservationIgnored private var historyCache: RevisionCache<[TagHistory]>?
+    @ObservationIgnored private var totalsCache: RevisionCache<[TagTotal]>?
+
+    /// The part of the next opened service page to scroll to, set by the Tags view (REQ-019).
+    var pendingServiceSection: ServiceSection?
+
+    /// Current-month spend per tag across all services, for every kind of tagged target (REQ-019, REQ-020).
     var tagTotals: [TagTotal] {
         let month = today.calendarMonth
-        let keys = store.services.filter(\.isConnected).flatMap { service in
-            let availability = KeyFieldAvailability(service: service)
-            return service.keys.map { key in
-                TagTotal.TaggedKey(serviceID: service.id, keyExternalID: key.externalID,
-                                   serviceName: service.name, keyName: key.name,
-                                   cost: availability.spend ? key.monthCost(in: month) : nil,
-                                   costIsEstimate: availability.spendIsEstimate,
-                                   tags: service.tags(forKey: key.externalID))
-            }
-        }
-        return TagTotal.compute(keys)
+        let revision = store.revision
+        if let cached = totalsCache, cached.revision == revision, cached.month == month { return cached.value }
+        let value = TagTotal.compute(store.services.map { $0.tagInput(in: month) })
+        totalsCache = RevisionCache(revision: revision, month: month, value: value)
+        return value
     }
 
     /// Whether the total of `month` contains an approximate amount (DEC-033).
@@ -126,4 +144,17 @@ struct ServiceSummary: Identifiable {
     }
 
     var hasWarning: Bool { !expiringKeys.isEmpty || increase != nil }
+}
+
+/// A part of the service page that other pages can open directly.
+enum ServiceSection: Hashable {
+    case breakdown
+    case usage
+}
+
+/// A value worked out from the store's data, valid while the store has not saved again and the month is the same.
+struct RevisionCache<Value> {
+    var revision: Int
+    var month: Month
+    var value: Value
 }

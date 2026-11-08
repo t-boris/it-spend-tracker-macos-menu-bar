@@ -13,7 +13,7 @@ struct KeyDetailView: View {
         if let service = model.store.service(id: serviceID),
            let key = service.keys.first(where: { $0.externalID == keyID }) {
             content(service: service, key: key)
-                .sheet(isPresented: $editingTags) { KeyTagsForm(service: service, key: key) }
+                .sheet(isPresented: $editingTags) { TagsForm(service: service, target: .key(key.externalID), name: key.name) }
         } else {
             ContentUnavailableView("Key not found", systemImage: "key",
                                    description: Text("The provider no longer reports this key."))
@@ -88,7 +88,7 @@ struct KeyDetailView: View {
                     if tags.isEmpty {
                         Text("No tags").foregroundStyle(.secondary)
                     } else {
-                        ForEach(tags, id: \.self) { TagChip(tag: $0) }
+                        TagChips(tags: tags)
                     }
                     Spacer()
                     Button(tags.isEmpty ? "Add tag…" : "Edit tags…") { editingTags = true }

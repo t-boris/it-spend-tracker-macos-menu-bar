@@ -407,6 +407,16 @@
         }
       }
     },
+    "A tag applies to every month, whenever it was assigned. Months before an item's data begins have no data, and items without a cost in a month are left out of that month's total.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тег действует на все месяцы, независимо от того, когда он назначен. Месяцы до начала данных позиции показаны как «нет данных», а позиции без суммы в месяце в итог этого месяца не входят."
+          }
+        }
+      }
+    },
     "AI assistant": {
       "localizations": {
         "ru": {
@@ -1783,6 +1793,16 @@
         }
       }
     },
+    "Included in the tagged service": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Входит в сумму отмеченного сервиса"
+          }
+        }
+      }
+    },
     "Input": {
       "localizations": {
         "ru": {
@@ -1829,6 +1849,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Счёт %@ уже записан в этом сервисе."
+          }
+        }
+      }
+    },
+    "Items by month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Позиции по месяцам"
+          }
+        }
+      }
+    },
+    "Items without a cost this month are not included in the total.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Позиции без суммы за этот месяц не входят в итог."
           }
         }
       }
@@ -1883,16 +1923,6 @@
         }
       }
     },
-    "Keys without per-key spend from the provider are not included in the total.": {
-      "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ключи, по которым провайдер не сообщает траты, не входят в итог."
-          }
-        }
-      }
-    },
     "Kind": {
       "localizations": {
         "ru": {
@@ -1929,6 +1959,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Последние %lld полных дней"
+          }
+        }
+      }
+    },
+    "Last 12 months": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Последние 12 месяцев"
           }
         }
       }
@@ -2053,12 +2093,32 @@
         }
       }
     },
+    "Model / line item": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Модель / статья"
+          }
+        }
+      }
+    },
     "Month": {
       "localizations": {
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Месяц"
+          }
+        }
+      }
+    },
+    "Month by month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "По месяцам"
           }
         }
       }
@@ -2079,6 +2139,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ежемесячно"
+          }
+        }
+      }
+    },
+    "Months without a total: %lld": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Месяцев без итога: %lld"
           }
         }
       }
@@ -2243,6 +2313,16 @@
         }
       }
     },
+    "Not listed this month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В этом месяце не найден"
+          }
+        }
+      }
+    },
     "Not updated yet": {
       "localizations": {
         "ru": {
@@ -2259,16 +2339,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Заметка"
-          }
-        }
-      }
-    },
-    "Open a service and tag its keys, e.g. by project or client. Each tag's spend is summed here across services.": {
-      "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Откройте сервис и назначьте ключам теги, например по проекту или клиенту. Здесь траты по каждому тегу суммируются по всем сервисам."
           }
         }
       }
@@ -2545,6 +2615,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Трафик по частной сети"
+          }
+        }
+      }
+    },
+    "Project": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проект"
           }
         }
       }
@@ -2841,12 +2921,12 @@
         }
       }
     },
-    "Separate tags with commas. Tags group keys across services on the Tags tab.": {
+    "Separate tags with commas. Tags group services, keys and items across services on the Tags tab.": {
       "localizations": {
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Разделяйте теги запятыми. На вкладке «Теги» ключи группируются по тегам во всех сервисах."
+            "value": "Разделяйте теги запятыми. На вкладке «Теги» сервисы, ключи и статьи группируются по тегам во всех сервисах."
           }
         }
       }
@@ -3203,12 +3283,52 @@
         }
       }
     },
+    "Tag a service, a key or a breakdown row, e.g. by project or client. Each tag's spend is summed here across services.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Назначьте тег сервису, ключу или строке разбивки, например по проекту или клиенту. Здесь траты по каждому тегу суммируются во всех сервисах."
+          }
+        }
+      }
+    },
+    "Tag totals can overlap, so the lines are not added up.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Итоги тегов могут пересекаться, поэтому линии не складываются."
+          }
+        }
+      }
+    },
+    "Tagged items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Помеченные позиции"
+          }
+        }
+      }
+    },
     "Tags": {
       "localizations": {
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Теги"
+          }
+        }
+      }
+    },
+    "Tags over time": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Теги по месяцам"
           }
         }
       }
@@ -3449,6 +3569,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Провайдер не сообщает ни одного ключа."
+          }
+        }
+      }
+    },
+    "The tagged costs in %@ may overlap, so this total is not shown. Each item shows its own amount.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отмеченные расходы в %@ могут пересекаться, поэтому итог не показан. У каждой позиции указана её собственная сумма."
           }
         }
       }
@@ -4029,6 +4159,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "≈ — примерная стоимость по опубликованным тарифам Neon для вашего плана (%@) с учётом бесплатных лимитов. Она входит в итоги и историю со значком ≈."
+          }
+        }
+      }
+    },
+    "◇ marks a month without a total (unavailable or no data). Faded bars are approximate (≈).": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "◇ — месяц без итога (недоступно или нет данных). Приглушённые столбцы — приблизительные суммы (≈)."
           }
         }
       }

@@ -227,9 +227,14 @@ private func m(_ year: Int, _ month: Int) -> Month { Month(year: year, month: mo
 @Suite struct TagTotalTests {
     @Test func groupsCaseInsensitivelyAndSkipsUnavailableCosts() {
         let totals = TagTotal.compute([
-            .init(serviceName: "OpenAI", keyName: "bot", cost: 4, tags: ["Client X"]),
-            .init(serviceName: "Anthropic", keyName: "bot", cost: nil, tags: ["client x", "bots"]),
-            .init(serviceName: "OpenAI", keyName: "cron", cost: 1, tags: ["bots"]),
+            TagServiceInput(serviceName: "OpenAI", spend: nil,
+                            present: [TagTargetState(target: .key("bot"), name: "bot", cost: 4),
+                                      TagTargetState(target: .key("cron"), name: "cron", cost: 1)],
+                            assignments: [TagAssignment(target: .key("bot"), displayName: "bot", tags: ["Client X"]),
+                                          TagAssignment(target: .key("cron"), displayName: "cron", tags: ["bots"])]),
+            TagServiceInput(serviceName: "Anthropic", spend: nil,
+                            present: [TagTargetState(target: .key("bot"), name: "bot", cost: nil)],
+                            assignments: [TagAssignment(target: .key("bot"), displayName: "bot", tags: ["client x", "bots"])]),
         ])
         #expect(totals.map(\.tag) == ["Client X", "bots"])
         #expect(totals[0].total == 4)

@@ -94,7 +94,8 @@ struct ServiceDetailView: View {
         let summary = model.summary(for: service)
         let ledger = service.ledger
         let today = model.today
-        return Form {
+        return ScrollViewReader { proxy in
+        Form {
             Section {
                 LabeledContent("This month") {
                     AmountText(amount: summary.currentMonthSpend, approximate: summary.isApproximate).font(.title3.weight(.semibold))
@@ -129,6 +130,7 @@ struct ServiceDetailView: View {
                     LabeledContent("Account", value: service.accountIdentifier)
                 }
                 ConsoleLinks(service: service)
+                TagRow(service: service, target: .service, name: service.name)
                 if !service.note.isEmpty {
                     LabeledContent("Note", value: service.note)
                 }
@@ -154,9 +156,9 @@ struct ServiceDetailView: View {
             let sections = ServiceSections(isConnected: service.isConnected,
                                            hasUsageMetrics: service.connector?.descriptor.capabilities.usageMetrics == true)
             if sections.usageMetrics {
-                UsageMetricsSection(service: service, today: today)
+                UsageMetricsSection(service: service, today: today).id(ServiceSection.usage)
             }
-            if sections.breakdown { breakdownSection(service, today: today) }
+            if sections.breakdown { breakdownSection(service, today: today).id(ServiceSection.breakdown) }
             if sections.keys { keysSection(service) }
             if sections.tokens { tokensSection(service) }
             creditsSection(service, ledger: ledger, today: today)
@@ -188,6 +190,15 @@ struct ServiceDetailView: View {
         }
         .formStyle(.grouped)
         .navigationTitle(service.name)
+        .onAppear { scrollToPendingSection(proxy) }
+        }
+    }
+
+    /// Opens the section the Tags view asked for (REQ-019); without a request the page stays at the top.
+    private func scrollToPendingSection(_ proxy: ScrollViewProxy) {
+        guard let section = model.pendingServiceSection else { return }
+        model.pendingServiceSection = nil
+        DispatchQueue.main.async { withAnimation { proxy.scrollTo(section, anchor: .top) } }
     }
 
     // MARK: Keys (REQ-003)
@@ -475,7 +486,7 @@ struct ServiceDetailView: View {
                         .mapValues(\.count)
                     ForEach(BreakdownGroup.groups(offered: capabilities?.breakdownDimensions ?? [], counts: counts)) { group in
                         if group.hasData {
-                            BreakdownList(title: Self.title(of: group.dimension),
+                            BreakdownList(title: Self.title(of: group.dimension), service: service,
                                           rows: rows.filter { $0.dimensionRaw == group.dimension.rawValue })
                         } else {
                             VStack(alignment: .leading, spacing: 4) {
@@ -512,6 +523,7 @@ struct ServiceDetailView: View {
 /// Top entries of one breakdown dimension with proportional bars.
 struct BreakdownList: View {
     let title: LocalizedStringKey
+    let service: TrackedService
     let rows: [BreakdownRecord]
     @Environment(\.isLargeLayout) private var isLargeLayout
     @State private var showAll = false
@@ -524,13 +536,19 @@ struct BreakdownList: View {
         VStack(alignment: .leading, spacing: 6) {
             Text(title).font(.callout.weight(.semibold))
             ForEach(shown, id: \.label) { row in
+                // Every displayed row can be tagged; its identity is the dimension plus the exact label (REQ-017, REQ-018).
+                let target = BreakdownDimension(rawValue: row.dimensionRaw).map { TagTarget.breakdownItem(dimension: $0, label: row.label) }
                 VStack(alignment: .leading, spacing: 2) {
                     HStack {
                         Text(row.label).lineLimit(1).truncationMode(.middle)
                         Spacer()
                         Text(Format.usd(row.amount)).monospacedDigit()
+                        if let target { TagButton(service: service, target: target, name: row.label) }
                     }
                     .font(.caption)
+                    if let target, !service.tags(for: target).isEmpty {
+                        TagChips(tags: service.tags(for: target))
+                    }
                     GeometryReader { geometry in
                         Capsule().fill(Color.accentColor.opacity(0.35))
                             .frame(width: max(2, geometry.size.width * CGFloat(NSDecimalNumber(decimal: row.amount / maximum).doubleValue)))
@@ -620,8 +638,13 @@ struct UsageMetricsSection: View {
                                 Self.approximate(rows).frame(minWidth: 80, alignment: .trailing)
                             }
                             ForEach(rows.sorted { $0.value > $1.value }, id: \.persistentModelID) { row in
+                                // A project is one tag target however many metrics list it (DEC-025), so its rows share the tags.
+                                let target = TagTarget.usageProject(organization: row.organization, name: row.project)
+                                let name = row.label(showingOrganization: severalOrganizations)
                                 HStack {
-                                    Text(row.label(showingOrganization: severalOrganizations)).lineLimit(1).truncationMode(.middle)
+                                    TagButton(service: service, target: target, name: name)
+                                    Text(name).lineLimit(1).truncationMode(.middle)
+                                    TagChips(tags: service.tags(for: target))
                                     Spacer()
                                     Text(Self.number(row.value)).monospacedDigit()
                                     Self.approximate([row]).frame(minWidth: 80, alignment: .trailing)
