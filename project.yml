@@ -12,6 +12,9 @@ settings:
     CODE_SIGN_IDENTITY: "-"
     SWIFT_EMIT_LOC_STRINGS: YES
     LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+configFiles:
+  Debug: Config/Base.xcconfig
+  Release: Config/Base.xcconfig
 targets:
   ITSpendTracker:
     type: application
@@ -28,6 +31,7 @@ targets:
         LSApplicationCategoryType: public.app-category.finance
         CFBundleDevelopmentRegion: en
         CFBundleLocalizations: [en, ru]
+        LegacyBundleIdentifier: $(LEGACY_BUNDLE_ID)
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: app.itspendtracker.ITSpendTracker

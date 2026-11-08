@@ -21,6 +21,7 @@ final class AppModel {
     init() {
         // Unit tests are hosted by the app; they must not touch the user's store or start refreshes.
         let isTestHost = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+        if !isTestHost { LegacyMigration.fromBundle()?.migratePreferences() }  // before any preference is read
         #if DEBUG
         let isDemo = UserDefaults.standard.bool(forKey: "DemoData")
         #else
@@ -37,6 +38,7 @@ final class AppModel {
         self.startupError = startupError
         store = SpendStore(container: container)
         refresh = RefreshEngine(store: store)
+        if !isTestHost && !isDemo { LegacyMigration.runIfNeeded(store: store) }
         assistantBackend = UserDefaults.standard.string(forKey: Self.backendKey)
             .flatMap(AssistantBackend.init(rawValue:)) ?? .claude
         #if DEBUG

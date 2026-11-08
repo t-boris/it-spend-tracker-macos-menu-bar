@@ -6,3 +6,4 @@ DerivedData/
 *.xcodeproj/project.xcworkspace/xcuserdata/
 tasks/
 .markview/
+Config/Local.xcconfig

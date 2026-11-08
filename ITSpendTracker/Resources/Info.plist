@@ -29,5 +29,7 @@
 	<string>public.app-category.finance</string>
 	<key>LSUIElement</key>
 	<true/>
+	<key>LegacyBundleIdentifier</key>
+	<string>$(LEGACY_BUNDLE_ID)</string>
 </dict>
 </plist>

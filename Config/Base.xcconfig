@@ -1,0 +1,7 @@
+// Build settings shared by all targets.
+//
+// LEGACY_BUNDLE_ID is the bundle identifier this app used before it was renamed. It is not kept in the repository:
+// put it in Config/Local.xcconfig (git-ignored) as `LEGACY_BUNDLE_ID = <old identifier>` and the app moves the
+// credentials and preferences saved under it on its first launch (see LegacyMigration). Left empty, nothing is moved.
+LEGACY_BUNDLE_ID =
+#include? "Local.xcconfig"
