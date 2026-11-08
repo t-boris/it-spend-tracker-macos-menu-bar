@@ -1,0 +1,56 @@
+name: ITSpendTracker
+options:
+  bundleIdPrefix: app.itspendtracker
+  deploymentTarget:
+    macOS: "15.0"
+  developmentLanguage: en
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MACOSX_DEPLOYMENT_TARGET: "15.0"
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGN_IDENTITY: "-"
+    SWIFT_EMIT_LOC_STRINGS: YES
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+targets:
+  ITSpendTracker:
+    type: application
+    platform: macOS
+    sources:
+      - path: ITSpendTracker
+    info:
+      path: ITSpendTracker/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: IT Spend Tracker
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        LSUIElement: true
+        LSApplicationCategoryType: public.app-category.finance
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [en, ru]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.itspendtracker.ITSpendTracker
+        ENABLE_HARDENED_RUNTIME: YES
+        GENERATE_INFOPLIST_FILE: NO
+  ITSpendTrackerTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: ITSpendTrackerTests
+    dependencies:
+      - target: ITSpendTracker
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: app.itspendtracker.ITSpendTrackerTests
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/ITSpendTracker.app/Contents/MacOS/ITSpendTracker"
+schemes:
+  ITSpendTracker:
+    build:
+      targets:
+        ITSpendTracker: all
+        ITSpendTrackerTests: [test]
+    test:
+      targets: [ITSpendTrackerTests]

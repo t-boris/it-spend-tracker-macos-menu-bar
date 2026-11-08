@@ -1,0 +1,3978 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "%@ %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%@ (%@)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ (%2$@)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ (%2$@)"
+          }
+        }
+      }
+    },
+    "%@ (next)": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ (следующий)"
+          }
+        }
+      }
+    },
+    "%@ (no repository)": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ (без репозитория)"
+          }
+        }
+      }
+    },
+    "%@ / %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ / %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ / %2$@"
+          }
+        }
+      }
+    },
+    "%@ against %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ against %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ и %2$@"
+          }
+        }
+      }
+    },
+    "%@ as of %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ as of %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ на %2$@"
+          }
+        }
+      }
+    },
+    "%@ in credits": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ в кредитах"
+          }
+        }
+      }
+    },
+    "%@ in · %@ out": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ in · %2$@ out"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ вход · %2$@ выход"
+          }
+        }
+      }
+    },
+    "%@ is installed but not signed in.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ установлен, но вход не выполнен."
+          }
+        }
+      }
+    },
+    "%@ is not installed.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ не установлен."
+          }
+        }
+      }
+    },
+    "%@ is not installed. Install it with: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ is not installed. Install it with: %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ не установлен. Установите его командой: %2$@"
+          }
+        }
+      }
+    },
+    "%@ is not signed in. Run in Terminal: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ is not signed in. Run in Terminal: %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В %1$@ не выполнен вход. Выполните в Терминале: %2$@"
+          }
+        }
+      }
+    },
+    "%@ is thinking…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ думает…"
+          }
+        }
+      }
+    },
+    "%@ of %@ usage": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ of %2$@ usage"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ от использования %2$@"
+          }
+        }
+      }
+    },
+    "%@ so far": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@: уже потрачено"
+          }
+        }
+      }
+    },
+    "%@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ · %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "%@ – %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ – %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ – %2$@"
+          }
+        }
+      }
+    },
+    "%@, %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@, %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        }
+      }
+    },
+    "%@: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@: %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@"
+          }
+        }
+      }
+    },
+    "%@: organization credit balance %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@: organization credit balance %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: баланс кредитов организации %2$@"
+          }
+        }
+      }
+    },
+    "%@: usage not available (%@)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@: usage not available (%2$@)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: данные об использовании недоступны (%2$@)"
+          }
+        }
+      }
+    },
+    "%@: …": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@: …"
+          }
+        }
+      }
+    },
+    "%lld requests this month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld запросов в этом месяце"
+          }
+        }
+      }
+    },
+    "* The change leaves out services without data for the whole %lld days: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "* The change leaves out services without data for the whole %1$lld days: %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "* В изменении не учтены сервисы без данных за все %1$lld дней: %2$@"
+          }
+        }
+      }
+    },
+    "0.00": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0,00"
+          }
+        }
+      }
+    },
+    "12 months": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12 месяцев"
+          }
+        }
+      }
+    },
+    "30 days": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 дней"
+          }
+        }
+      }
+    },
+    "60 days": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "60 дней"
+          }
+        }
+      }
+    },
+    "7-day average": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Среднее за 7 дней"
+          }
+        }
+      }
+    },
+    "90 days": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "90 дней"
+          }
+        }
+      }
+    },
+    "AI assistant": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI-помощник"
+          }
+        }
+      }
+    },
+    "API key": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "API key"
+          }
+        }
+      }
+    },
+    "API keys of %@ not readable (%@).": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "API keys of %1$@ not readable (%2$@)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "API-ключи проекта %1$@ недоступны (%2$@)."
+          }
+        }
+      }
+    },
+    "API: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "API: %@"
+          }
+        }
+      }
+    },
+    "Access token": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Токен доступа"
+          }
+        }
+      }
+    },
+    "Account": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аккаунт"
+          }
+        }
+      }
+    },
+    "Account %@: billing not readable (%@). A classic token needs the “user” scope.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Account %1$@: billing not readable (%2$@). A classic token needs the “user” scope."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аккаунт %1$@: траты недоступны (%2$@). Классическому токену нужна область «user»."
+          }
+        }
+      }
+    },
+    "Account (username or e-mail)": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аккаунт (логин или e-mail)"
+          }
+        }
+      }
+    },
+    "Add a service with an API connection or a manual subscription.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавьте сервис с подключением по API или ручную подписку."
+          }
+        }
+      }
+    },
+    "Add credit purchase": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупка кредитов"
+          }
+        }
+      }
+    },
+    "Add credit purchase…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить покупку кредитов…"
+          }
+        }
+      }
+    },
+    "Add invoice from PDF": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить счёт из PDF"
+          }
+        }
+      }
+    },
+    "Add invoice from PDF…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить счёт из PDF…"
+          }
+        }
+      }
+    },
+    "Add service": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить сервис"
+          }
+        }
+      }
+    },
+    "Add service…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить сервис…"
+          }
+        }
+      }
+    },
+    "Add subscription": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Новая подписка"
+          }
+        }
+      }
+    },
+    "Add subscription…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить подписку…"
+          }
+        }
+      }
+    },
+    "Add tag…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить тег…"
+          }
+        }
+      }
+    },
+    "Admin API key": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Admin API key"
+          }
+        }
+      }
+    },
+    "Amount paid, USD": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оплачено, USD"
+          }
+        }
+      }
+    },
+    "Amount, USD": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сумма, USD"
+          }
+        }
+      }
+    },
+    "Amounts are in USD; convert other currencies when entering.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Суммы в USD; другие валюты переводите при вводе."
+          }
+        }
+      }
+    },
+    "Approximate: computed from usage and Neon's published rates for your plan.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Примерно: рассчитано по использованию и опубликованным тарифам Neon для вашего плана."
+          }
+        }
+      }
+    },
+    "Approximate: this project's cost per Google service is split across its keys by their share of requests. Requests differ in size, so this is an estimate.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Примерно: стоимость проекта по каждому сервису Google делится между его ключами пропорционально их доле запросов. Запросы бывают разного размера, поэтому это оценка."
+          }
+        }
+      }
+    },
+    "As of": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На дату"
+          }
+        }
+      }
+    },
+    "Ask": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спросить"
+          }
+        }
+      }
+    },
+    "Ask %@ to set up this service": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Попросить %@ подключить сервис"
+          }
+        }
+      }
+    },
+    "Ask about your spending": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спросите о своих тратах"
+          }
+        }
+      }
+    },
+    "Ask about your spending…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спросите о своих тратах…"
+          }
+        }
+      }
+    },
+    "Assistant": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Помощник"
+          }
+        }
+      }
+    },
+    "Authorization: Bearer …": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Authorization: Bearer …"
+          }
+        }
+      }
+    },
+    "Average per day": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В среднем за день"
+          }
+        }
+      }
+    },
+    "Balance not available (%@)": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Баланс недоступен (%@)"
+          }
+        }
+      }
+    },
+    "Balance, USD": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остаток, USD"
+          }
+        }
+      }
+    },
+    "Bars: spend per day by service. Line: 7-day average. Today is incomplete.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Столбцы: расходы за день по сервисам. Линия: среднее за 7 дней. Сегодняшний день неполный."
+          }
+        }
+      }
+    },
+    "Before:": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Раньше:"
+          }
+        }
+      }
+    },
+    "BigQuery datasets of the Cloud Billing export as project.dataset, comma-separated (one per billing account if they export to different projects). All export tables in them are found automatically.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Датасеты BigQuery с экспортом Cloud Billing в виде project.dataset через запятую (по одному на платёжный аккаунт, если они экспортируют в разные проекты). Все таблицы экспорта в них находятся автоматически."
+          }
+        }
+      }
+    },
+    "BigQuery location of the dataset, e.g. US or EU. Default: US.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Регион датасета BigQuery, например US или EU. По умолчанию US."
+          }
+        }
+      }
+    },
+    "Billing account ID": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ID платёжного аккаунта"
+          }
+        }
+      }
+    },
+    "Billing console": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Консоль биллинга"
+          }
+        }
+      }
+    },
+    "Billing export is set up, but Google has not written any data to the dataset yet. This takes up to a day after enabling the export.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Экспорт биллинга настроен, но Google ещё не записал данные в датасет. После включения экспорта это занимает до суток."
+          }
+        }
+      }
+    },
+    "Billing period": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Период оплаты"
+          }
+        }
+      }
+    },
+    "Built-in connector. Reads: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Встроенный коннектор. Получает: %@"
+          }
+        }
+      }
+    },
+    "By account / organization": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "По аккаунтам и организациям"
+          }
+        }
+      }
+    },
+    "By model / line item": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "По моделям и статьям"
+          }
+        }
+      }
+    },
+    "By project": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "По проектам"
+          }
+        }
+      }
+    },
+    "By service": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "По сервисам"
+          }
+        }
+      }
+    },
+    "CU-hours": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CU-часов"
+          }
+        }
+      }
+    },
+    "Cached": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кеш"
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отмена"
+          }
+        }
+      }
+    },
+    "Change": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменение"
+          }
+        }
+      }
+    },
+    "Change price": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменение цены"
+          }
+        }
+      }
+    },
+    "Change price…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменить цену…"
+          }
+        }
+      }
+    },
+    "Change*:": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменение*:"
+          }
+        }
+      }
+    },
+    "Charges before this date keep the old amount.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Списания до этой даты остаются по старой цене."
+          }
+        }
+      }
+    },
+    "Chat": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чат"
+          }
+        }
+      }
+    },
+    "Check again": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проверить снова"
+          }
+        }
+      }
+    },
+    "Check and connect": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проверить и подключить"
+          }
+        }
+      }
+    },
+    "Checking…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проверка…"
+          }
+        }
+      }
+    },
+    "Choose…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрать…"
+          }
+        }
+      }
+    },
+    "Clear": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очистить"
+          }
+        }
+      }
+    },
+    "Cline account": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аккаунт Cline"
+          }
+        }
+      }
+    },
+    "Cline has no API keys for account data, so the app signs in to your Cline account. The session is stored only in the macOS Keychain.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "У Cline нет API-ключей для данных аккаунта, поэтому приложение входит в ваш аккаунт Cline. Сессия хранится только в связке ключей macOS."
+          }
+        }
+      }
+    },
+    "Cline sign-in failed: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось войти в Cline: %@"
+          }
+        }
+      }
+    },
+    "Collapse hidden notes": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Свернуть скрытые пометки"
+          }
+        }
+      }
+    },
+    "Compute": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вычисления"
+          }
+        }
+      }
+    },
+    "Confirm this code on the Cline page that opened in your browser:": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подтвердите этот код на странице Cline, открывшейся в браузере:"
+          }
+        }
+      }
+    },
+    "Connection": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подключение"
+          }
+        }
+      }
+    },
+    "Console link (optional)": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ссылка на консоль (необязательно)"
+          }
+        }
+      }
+    },
+    "Cost by month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Траты по месяцам"
+          }
+        }
+      }
+    },
+    "Create at console.neon.tech → Account settings → API keys (personal) or Organization settings → API keys. Usage history needs a paid Neon plan.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Создайте на console.neon.tech → Account settings → API keys (личный) или Organization settings → API keys. История использования доступна только на платном тарифе Neon."
+          }
+        }
+      }
+    },
+    "Create at vercel.com/account/tokens with Full Account or team scope (not a single project).": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Создайте на vercel.com/account/tokens с областью Full Account или команда (не отдельный проект)."
+          }
+        }
+      }
+    },
+    "Created": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Создан"
+          }
+        }
+      }
+    },
+    "Created at platform.claude.com → Settings → Admin keys by an organization admin; starts with sk-ant-admin. Individual accounts (“… Individual Org”) have no Admin keys page: first click “Convert to team” in Console → Settings → Organization.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Создаётся администратором организации на platform.claude.com → Settings → Admin keys, начинается с sk-ant-admin. У индивидуального аккаунта («… Individual Org») страницы Admin keys нет: сначала нажмите «Convert to team» в Console → Settings → Organization."
+          }
+        }
+      }
+    },
+    "Created by": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кем создан"
+          }
+        }
+      }
+    },
+    "Credentials": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступ"
+          }
+        }
+      }
+    },
+    "Credit balance": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остаток кредитов"
+          }
+        }
+      }
+    },
+    "Credit purchase": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупка кредитов"
+          }
+        }
+      }
+    },
+    "Credit purchases": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупки кредитов"
+          }
+        }
+      }
+    },
+    "Credit purchases count as spend in the month of purchase.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупки кредитов учитываются как траты в месяце покупки."
+          }
+        }
+      }
+    },
+    "Credits": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кредиты"
+          }
+        }
+      }
+    },
+    "Data is refreshed every 4 hours while the app runs, on launch and after wake when older than 4 hours, and with the Refresh button.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Данные обновляются каждые 4 часа, пока приложение работает, при запуске и после пробуждения, если они старше 4 часов, и по кнопке «Обновить»."
+          }
+        }
+      }
+    },
+    "Dataset location": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Регион датасета"
+          }
+        }
+      }
+    },
+    "Day": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "День"
+          }
+        }
+      }
+    },
+    "Day %lld of %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Day %1$lld of %2$lld"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "День %1$lld из %2$lld"
+          }
+        }
+      }
+    },
+    "Day by day": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "По дням"
+          }
+        }
+      }
+    },
+    "Day of month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "День месяца"
+          }
+        }
+      }
+    },
+    "Default workspace": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Workspace по умолчанию"
+          }
+        }
+      }
+    },
+    "Delete": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удалить"
+          }
+        }
+      }
+    },
+    "Delete permanently": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удалить навсегда"
+          }
+        }
+      }
+    },
+    "Edit": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменить"
+          }
+        }
+      }
+    },
+    "Edit credit purchase": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменение покупки"
+          }
+        }
+      }
+    },
+    "Edit subscription": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменение подписки"
+          }
+        }
+      }
+    },
+    "Edit tags…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменить теги…"
+          }
+        }
+      }
+    },
+    "Edit…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменить…"
+          }
+        }
+      }
+    },
+    "Effective from": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Действует с"
+          }
+        }
+      }
+    },
+    "End date": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дата окончания"
+          }
+        }
+      }
+    },
+    "Existing tags": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Существующие теги"
+          }
+        }
+      }
+    },
+    "Expires": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Истекает"
+          }
+        }
+      }
+    },
+    "Expires within 14 days": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Истекает в течение 14 дней"
+          }
+        }
+      }
+    },
+    "Export datasets": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Датасеты экспорта"
+          }
+        }
+      }
+    },
+    "Extra branches": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дополнительные ветки"
+          }
+        }
+      }
+    },
+    "Find an API with the assistant": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Найти API с помощником"
+          }
+        }
+      }
+    },
+    "First payment date": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дата первого платежа"
+          }
+        }
+      }
+    },
+    "Fixed payments the provider API does not report, e.g. a ChatGPT plan or seats. They are added to the usage cost.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фиксированные платежи, которых нет в API провайдера, например тариф ChatGPT или места в команде. Они прибавляются к стоимости использования."
+          }
+        }
+      }
+    },
+    "For API services, spend is the usage cost reported by the provider. Credit purchases and balance are for information only.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для сервисов с API тратами считается стоимость использования, которую сообщает провайдер. Покупки кредитов и остаток — только для информации."
+          }
+        }
+      }
+    },
+    "For services without an API: enter the subscription price or record credit purchases yourself.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для сервисов без API: укажите цену подписки или записывайте покупки кредитов вручную."
+          }
+        }
+      }
+    },
+    "Forecast": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прогноз"
+          }
+        }
+      }
+    },
+    "Forecast for %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прогноз: %@"
+          }
+        }
+      }
+    },
+    "Forecast ≈ spend so far + the average daily usage of the last %lld full days for the days left + subscription charges due this month. Usage reported per month (GitHub, Neon): last month's amount during the first %lld days, then this month's pace.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Forecast ≈ spend so far + the average daily usage of the last %1$lld full days for the days left + subscription charges due this month. Usage reported per month (GitHub, Neon): last month's amount during the first %2$lld days, then this month's pace."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прогноз ≈ уже потрачено + средний дневной расход за последние %1$lld полных дней на оставшиеся дни + платежи по подпискам в этом месяце. Расход, который сервис сообщает помесячно (GitHub, Neon): в первые %2$lld дней берётся сумма прошлого месяца, затем темп текущего месяца."
+          }
+        }
+      }
+    },
+    "From %@: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "From %1$@: %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "С %1$@: %2$@"
+          }
+        }
+      }
+    },
+    "GB": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ГБ"
+          }
+        }
+      }
+    },
+    "GB-months": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ГБ-мес."
+          }
+        }
+      }
+    },
+    "GET %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GET %@"
+          }
+        }
+      }
+    },
+    "GitHub reports no billing data for %@ (“%@”).": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "GitHub reports no billing data for %1$@ (“%2$@”)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GitHub сообщает, что у %1$@ нет данных о тратах («%2$@»)."
+          }
+        }
+      }
+    },
+    "GitHub username": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Логин GitHub"
+          }
+        }
+      }
+    },
+    "Has end date": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Есть дата окончания"
+          }
+        }
+      }
+    },
+    "Hidden notes: %lld · Show": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скрыто пометок: %lld · Показать"
+          }
+        }
+      }
+    },
+    "Hide": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скрыть"
+          }
+        }
+      }
+    },
+    "History": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "История"
+          }
+        }
+      }
+    },
+    "Host": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хост"
+          }
+        }
+      }
+    },
+    "How to track it": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Как отслеживать"
+          }
+        }
+      }
+    },
+    "I reviewed this and allow the app to call these endpoints": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Я проверил и разрешаю приложению обращаться к этим адресам"
+          }
+        }
+      }
+    },
+    "IAM & Admin → Service Accounts → Keys → Add key → JSON. Needs BigQuery Job User on the project and BigQuery Data Viewer on the billing export dataset.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IAM & Admin → Service Accounts → Keys → Add key → JSON. Нужны роли BigQuery Job User на проекте и BigQuery Data Viewer на датасете экспорта."
+          }
+        }
+      }
+    },
+    "ID": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ID"
+          }
+        }
+      }
+    },
+    "IT Spend Tracker": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IT Spend Tracker"
+          }
+        }
+      }
+    },
+    "IT Spend Tracker: warnings": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IT Spend Tracker: есть предупреждения"
+          }
+        }
+      }
+    },
+    "IT spend": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Расходы на IT"
+          }
+        }
+      }
+    },
+    "Imported from the provider": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Загружено у провайдера"
+          }
+        }
+      }
+    },
+    "Include %@ in total": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Учитывать %@ в итоге"
+          }
+        }
+      }
+    },
+    "Include in total": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Учитывать в итоге"
+          }
+        }
+      }
+    },
+    "Input": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вход"
+          }
+        }
+      }
+    },
+    "Install it in Terminal, then sign in:": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Установите в Терминале, затем войдите:"
+          }
+        }
+      }
+    },
+    "Invalid configuration: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неверная настройка: %@"
+          }
+        }
+      }
+    },
+    "Invoice": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Счёт"
+          }
+        }
+      }
+    },
+    "Invoice %@ is already recorded on this service.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Счёт %@ уже записан в этом сервисе."
+          }
+        }
+      }
+    },
+    "Key": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ключ"
+          }
+        }
+      }
+    },
+    "Key expiring soon": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ключ скоро истекает"
+          }
+        }
+      }
+    },
+    "Key not found": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ключ не найден"
+          }
+        }
+      }
+    },
+    "Keys": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ключи"
+          }
+        }
+      }
+    },
+    "Keys expiring within 14 days: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ключи истекают в течение 14 дней: %@"
+          }
+        }
+      }
+    },
+    "Keys without per-key spend from the provider are not included in the total.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ключи, по которым провайдер не сообщает траты, не входят в итог."
+          }
+        }
+      }
+    },
+    "Kind": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тип"
+          }
+        }
+      }
+    },
+    "Largest": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Больше всего"
+          }
+        }
+      }
+    },
+    "Last %lld days": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Последние %lld дн."
+          }
+        }
+      }
+    },
+    "Last %lld full days": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Последние %lld полных дней"
+          }
+        }
+      }
+    },
+    "Last month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прошлый месяц"
+          }
+        }
+      }
+    },
+    "Last month:": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прошлый месяц:"
+          }
+        }
+      }
+    },
+    "Last successful update": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Последнее успешное обновление"
+          }
+        }
+      }
+    },
+    "Last update failed: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Последнее обновление не удалось: %@"
+          }
+        }
+      }
+    },
+    "Last used": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Использован"
+          }
+        }
+      }
+    },
+    "Launch at login": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запускать при входе в систему"
+          }
+        }
+      }
+    },
+    "Login items work for the installed copy in /Applications (run scripts/install.sh).": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Автозапуск работает для установленной копии в /Applications (запустите scripts/install.sh)."
+          }
+        }
+      }
+    },
+    "Manage keys": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Управление ключами"
+          }
+        }
+      }
+    },
+    "Manual entry": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ручной ввод"
+          }
+        }
+      }
+    },
+    "Manual entry (subscription or credits)": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ручной ввод (подписка или кредиты)"
+          }
+        }
+      }
+    },
+    "Missing credential field: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не заполнено поле доступа: %@"
+          }
+        }
+      }
+    },
+    "Model": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Модель"
+          }
+        }
+      }
+    },
+    "Month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Месяц"
+          }
+        }
+      }
+    },
+    "Month so far": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "С начала месяца"
+          }
+        }
+      }
+    },
+    "Monthly": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ежемесячно"
+          }
+        }
+      }
+    },
+    "Name": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Название"
+          }
+        }
+      }
+    },
+    "Name the service and ask the assistant: it finds out which keys are needed and where to get them.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Назовите сервис и спросите помощника: он выяснит, какие ключи нужны и где их получить."
+          }
+        }
+      }
+    },
+    "Needed only for a Full Account token billing a team: Team Settings → General → Team ID.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нужен только для токена Full Account с оплатой команды: Team Settings → General → Team ID."
+          }
+        }
+      }
+    },
+    "New amount, USD": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Новая сумма, USD"
+          }
+        }
+      }
+    },
+    "New service": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Новый сервис"
+          }
+        }
+      }
+    },
+    "No data for: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нет данных за: %@"
+          }
+        }
+      }
+    },
+    "No date found: choose the payment date.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дата не найдена: выберите дату платежа."
+          }
+        }
+      }
+    },
+    "No fixed subscriptions.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фиксированных подписок нет."
+          }
+        }
+      }
+    },
+    "No forecast (not enough data yet): %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нет прогноза (пока мало данных): %@"
+          }
+        }
+      }
+    },
+    "No project": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без проекта"
+          }
+        }
+      }
+    },
+    "No services yet": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сервисов пока нет"
+          }
+        }
+      }
+    },
+    "No tags": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тегов нет"
+          }
+        }
+      }
+    },
+    "No tags yet": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тегов пока нет"
+          }
+        }
+      }
+    },
+    "No token usage this month.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В этом месяце токены не использовались."
+          }
+        }
+      }
+    },
+    "No usable API found. Add the service manually instead.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подходящий API не найден. Добавьте сервис вручную."
+          }
+        }
+      }
+    },
+    "No usage this month.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В этом месяце использования не было."
+          }
+        }
+      }
+    },
+    "Not updated yet": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ещё не обновлялся"
+          }
+        }
+      }
+    },
+    "Note": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Заметка"
+          }
+        }
+      }
+    },
+    "Open a service and tag its keys, e.g. by project or client. Each tag's spend is summed here across services.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Откройте сервис и назначьте ключам теги, например по проекту или клиенту. Здесь траты по каждому тегу суммируются по всем сервисам."
+          }
+        }
+      }
+    },
+    "Open in provider console": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть в консоли провайдера"
+          }
+        }
+      }
+    },
+    "Open provider console": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть консоль провайдера"
+          }
+        }
+      }
+    },
+    "Open the page again": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть страницу снова"
+          }
+        }
+      }
+    },
+    "Optional: all your organizations are found automatically; enter one here only if it is missing. Reading an organization's billing requires organization admin and a token with “Administration” read.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Необязательно: все ваши организации находятся автоматически; укажите организацию здесь, только если её не хватает. Для чтения трат организации нужны права администратора организации и токен с разрешением «Administration» (read)."
+          }
+        }
+      }
+    },
+    "Optional: project IDs, comma-separated, whose API keys (e.g. Gemini) are listed with requests per key. The service account needs API Keys Viewer and Monitoring Viewer there.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Необязательно: ID проектов через запятую, чьи API-ключи (например, Gemini) показываются с числом запросов по каждому ключу. Сервисному аккаунту там нужны роли API Keys Viewer и Monitoring Viewer."
+          }
+        }
+      }
+    },
+    "Optional: read only this billing account, e.g. 012345-6789AB-CDEF01.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Необязательно: читать только этот платёжный аккаунт, например 012345-6789AB-CDEF01."
+          }
+        }
+      }
+    },
+    "Organization": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Организация"
+          }
+        }
+      }
+    },
+    "Organization %@: billing not readable (%@). Use a classic token with the “repo” scope (fine-grained tokens cannot read other owners); you must be an organization admin.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Organization %1$@: billing not readable (%2$@). Use a classic token with the “repo” scope (fine-grained tokens cannot read other owners); you must be an organization admin."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Организация %1$@: траты недоступны (%2$@). Используйте классический токен с областью «repo» (fine-grained токен не видит чужие организации); вы должны быть администратором организации."
+          }
+        }
+      }
+    },
+    "Organization owners create it at platform.openai.com → Settings → Organization → Admin keys. Starts with sk-admin-.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Создаётся владельцем организации на platform.openai.com → Settings → Organization → Admin keys. Начинается с sk-admin-."
+          }
+        }
+      }
+    },
+    "Origin": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Источник"
+          }
+        }
+      }
+    },
+    "Other": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прочее"
+          }
+        }
+      }
+    },
+    "Output": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выход"
+          }
+        }
+      }
+    },
+    "Owner": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Владелец"
+          }
+        }
+      }
+    },
+    "Owner e-mail": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-mail владельца"
+          }
+        }
+      }
+    },
+    "Owner role": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Роль владельца"
+          }
+        }
+      }
+    },
+    "Owner type": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тип владельца"
+          }
+        }
+      }
+    },
+    "Payment date": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дата платежа"
+          }
+        }
+      }
+    },
+    "Payments": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Платежи"
+          }
+        }
+      }
+    },
+    "Payments repeat on this day every period and appear in history in the month they are paid. Amounts are in USD; convert other currencies when entering.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Платёж повторяется в этот день каждый период и отображается в истории в месяце оплаты. Суммы в USD; другие валюты переводите при вводе."
+          }
+        }
+      }
+    },
+    "Per-key cost is available from %@.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Траты по ключу доступны с: %@."
+          }
+        }
+      }
+    },
+    "Personal": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Личный аккаунт"
+          }
+        }
+      }
+    },
+    "Personal access token": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personal access token"
+          }
+        }
+      }
+    },
+    "Previous %lld": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Предыдущие %lld"
+          }
+        }
+      }
+    },
+    "Previous %lld:": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Предыдущие %lld:"
+          }
+        }
+      }
+    },
+    "Private network transfer": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Трафик по частной сети"
+          }
+        }
+      }
+    },
+    "Project / workspace": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проект / workspace"
+          }
+        }
+      }
+    },
+    "Projects with API keys": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проекты с API-ключами"
+          }
+        }
+      }
+    },
+    "Proposed connection": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Предложенное подключение"
+          }
+        }
+      }
+    },
+    "Provider documentation": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Документация провайдера"
+          }
+        }
+      }
+    },
+    "Provider returned HTTP %lld: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Provider returned HTTP %1$lld: %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Провайдер вернул HTTP %1$lld: %2$@"
+          }
+        }
+      }
+    },
+    "Public network transfer": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Трафик по публичной сети"
+          }
+        }
+      }
+    },
+    "Purchase date": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дата покупки"
+          }
+        }
+      }
+    },
+    "Purchased (recorded)": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Куплено (записано)"
+          }
+        }
+      }
+    },
+    "Quit IT Spend Tracker": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Завершить IT Spend Tracker"
+          }
+        }
+      }
+    },
+    "Range": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Период"
+          }
+        }
+      }
+    },
+    "Read from the invoice": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прочитано из счёта"
+          }
+        }
+      }
+    },
+    "Reading the invoice with %@…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ читает счёт…"
+          }
+        }
+      }
+    },
+    "Ready: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Готов: %@"
+          }
+        }
+      }
+    },
+    "Recurring subscription": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Регулярная подписка"
+          }
+        }
+      }
+    },
+    "Refresh": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновить"
+          }
+        }
+      }
+    },
+    "Refresh now": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновить сейчас"
+          }
+        }
+      }
+    },
+    "Remaining": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остаток"
+          }
+        }
+      }
+    },
+    "Remaining is estimated from this balance, later purchases and the usage cost reported by the provider. Leave empty to clear.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остаток оценивается по этой сумме, последующим покупкам и стоимости использования, которую сообщает провайдер. Оставьте пустым, чтобы сбросить."
+          }
+        }
+      }
+    },
+    "Remove service…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удалить сервис…"
+          }
+        }
+      }
+    },
+    "Requests": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запросы"
+          }
+        }
+      }
+    },
+    "Requests per key for %@ not readable (%@).": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Requests per key for %1$@ not readable (%2$@)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запросы по ключам для %1$@ недоступны (%2$@)."
+          }
+        }
+      }
+    },
+    "Requests this month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запросов в этом месяце"
+          }
+        }
+      }
+    },
+    "Run in Terminal:": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выполните в Терминале:"
+          }
+        }
+      }
+    },
+    "Save": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сохранить"
+          }
+        }
+      }
+    },
+    "Scopes": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Области доступа"
+          }
+        }
+      }
+    },
+    "Secret sent in header": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Секрет передаётся в заголовке"
+          }
+        }
+      }
+    },
+    "Select services in the list to see their history.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отметьте сервисы в списке, чтобы увидеть их историю."
+          }
+        }
+      }
+    },
+    "Separate tags with commas. Tags group keys across services on the Tags tab.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разделяйте теги запятыми. На вкладке «Теги» ключи группируются по тегам во всех сервисах."
+          }
+        }
+      }
+    },
+    "Series": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ряд"
+          }
+        }
+      }
+    },
+    "Service": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сервис"
+          }
+        }
+      }
+    },
+    "Service account JSON key": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "JSON-ключ сервисного аккаунта"
+          }
+        }
+      }
+    },
+    "Service name": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Название сервиса"
+          }
+        }
+      }
+    },
+    "Service removed": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сервис удалён"
+          }
+        }
+      }
+    },
+    "Services": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сервисы"
+          }
+        }
+      }
+    },
+    "Services can still be added manually without the assistant.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сервисы можно добавить вручную и без помощника."
+          }
+        }
+      }
+    },
+    "Set balance…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Указать остаток…"
+          }
+        }
+      }
+    },
+    "Settings": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Настройки"
+          }
+        }
+      }
+    },
+    "Show": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показать"
+          }
+        }
+      }
+    },
+    "Show all (%lld)": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показать все (%lld)"
+          }
+        }
+      }
+    },
+    "Show less": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Свернуть"
+          }
+        }
+      }
+    },
+    "Sign in to Cline": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вход в Cline"
+          }
+        }
+      }
+    },
+    "Sign in to Cline again…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Войти в Cline снова…"
+          }
+        }
+      }
+    },
+    "Sign in with Cline": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Войти через Cline"
+          }
+        }
+      }
+    },
+    "Sign in with Cline and connect": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Войти через Cline и подключить"
+          }
+        }
+      }
+    },
+    "Since %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "С %@"
+          }
+        }
+      }
+    },
+    "Since %@ · next payment %@: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Since %1$@ · next payment %2$@: %3$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "С %1$@ · следующий платёж %2$@: %3$@"
+          }
+        }
+      }
+    },
+    "Spend": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Траты"
+          }
+        }
+      }
+    },
+    "Spend increased": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Траты выросли"
+          }
+        }
+      }
+    },
+    "Spend is the Cline credits used plus Cline Pass payments. Credit top-ups and the balance come from Cline and are for information only.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Траты — это использованные кредиты Cline плюс платежи за Cline Pass. Пополнения кредитов и баланс загружаются из Cline и показаны для информации."
+          }
+        }
+      }
+    },
+    "Spend is up: %@ vs %@ in the same days of last month": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Spend is up: %1$@ vs %2$@ in the same days of last month"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Траты выросли: %1$@ против %2$@ за те же дни прошлого месяца"
+          }
+        }
+      }
+    },
+    "Spend per day": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Расходы по дням"
+          }
+        }
+      }
+    },
+    "Spend: unavailable": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Траты: недоступно"
+          }
+        }
+      }
+    },
+    "Startup": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запуск"
+          }
+        }
+      }
+    },
+    "Status": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Статус"
+          }
+        }
+      }
+    },
+    "Storage: child branches": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хранилище: дочерние ветки"
+          }
+        }
+      }
+    },
+    "Storage: instant restore": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хранилище: мгновенное восстановление"
+          }
+        }
+      }
+    },
+    "Storage: root branches": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хранилище: корневые ветки"
+          }
+        }
+      }
+    },
+    "Storage: snapshots": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хранилище: снимки"
+          }
+        }
+      }
+    },
+    "Stored only in the macOS Keychain. Never sent to the assistant.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хранится только в связке ключей macOS. Помощнику не передаётся."
+          }
+        }
+      }
+    },
+    "Subscription": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подписка"
+          }
+        }
+      }
+    },
+    "Subscriptions": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подписки"
+          }
+        }
+      }
+    },
+    "Switch to manual entry": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перейти к ручному вводу"
+          }
+        }
+      }
+    },
+    "Tags": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Теги"
+          }
+        }
+      }
+    },
+    "Team ID": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Team ID"
+          }
+        }
+      }
+    },
+    "The Cline session has ended. Sign in to Cline again.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сессия Cline завершилась. Войдите в Cline снова."
+          }
+        }
+      }
+    },
+    "The Cline sign-in code expired. Start the sign-in again.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Срок действия кода для входа в Cline истёк. Начните вход заново."
+          }
+        }
+      }
+    },
+    "The PDF has no readable text (a scan?). Enter the invoice by hand instead.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В PDF нет читаемого текста (скан?). Введите счёт вручную."
+          }
+        }
+      }
+    },
+    "The account whose billing usage is read.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аккаунт, чьи траты читаются."
+          }
+        }
+      }
+    },
+    "The app will only send HTTPS GET requests to this host and read the data listed above.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приложение будет отправлять на этот хост только HTTPS GET-запросы и читать перечисленные данные."
+          }
+        }
+      }
+    },
+    "The assistant did not answer in time.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Помощник не ответил вовремя."
+          }
+        }
+      }
+    },
+    "The assistant did not find an invoice in this file.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Помощник не нашёл счёт в этом файле."
+          }
+        }
+      }
+    },
+    "The assistant did not return a connector description.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Помощник не вернул описание подключения."
+          }
+        }
+      }
+    },
+    "The assistant failed: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ошибка помощника: %@"
+          }
+        }
+      }
+    },
+    "The assistant is not available. See Settings → AI assistant.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Помощник недоступен. См. Настройки → AI-помощник."
+          }
+        }
+      }
+    },
+    "The assistant searches the provider's documentation for an API key that shows spend, tokens or keys. You review what it finds before anything is saved.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Помощник ищет в документации провайдера API-ключ, который показывает траты, токены или ключи. Вы проверяете найденное до сохранения."
+          }
+        }
+      }
+    },
+    "The assistant sees your services, monthly spend, breakdowns, keys and tags — never your credentials. Examples:": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Помощник видит ваши сервисы, траты по месяцам, разбивки, ключи и теги — но никогда не видит ваши данные доступа. Примеры:"
+          }
+        }
+      }
+    },
+    "The assistant's answer could not be used: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ответ помощника не удалось использовать: %@"
+          }
+        }
+      }
+    },
+    "The assistant's connector description is invalid: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Описание подключения от помощника некорректно: %@"
+          }
+        }
+      }
+    },
+    "The connection file could not be imported: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось импортировать файл подключения: %@"
+          }
+        }
+      }
+    },
+    "The console link must be an https address, e.g. https://fly.io/dashboard.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ссылка на консоль должна быть https-адресом, например https://fly.io/dashboard."
+          }
+        }
+      }
+    },
+    "The file could not be opened as a PDF.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось открыть файл как PDF."
+          }
+        }
+      }
+    },
+    "The invoice is in %@. Enter the amount in USD.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Счёт выставлен в %@. Введите сумму в USD."
+          }
+        }
+      }
+    },
+    "The provider denied access: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Провайдер отказал в доступе: %@"
+          }
+        }
+      }
+    },
+    "The provider does not report cost per key.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Провайдер не сообщает траты по отдельным ключам."
+          }
+        }
+      }
+    },
+    "The provider no longer reports this key.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Провайдер больше не сообщает об этом ключе."
+          }
+        }
+      }
+    },
+    "The provider rejected the credentials (unauthorized).": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Провайдер отклонил данные доступа (unauthorized)."
+          }
+        }
+      }
+    },
+    "The provider reports no keys.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Провайдер не сообщает ни одного ключа."
+          }
+        }
+      }
+    },
+    "The text of the invoice is sent to %@ to read the amount and dates. Nothing else leaves the app.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Текст счёта отправляется в %@, чтобы прочитать сумму и даты. Больше ничего не покидает приложение."
+          }
+        }
+      }
+    },
+    "This deletes the service, its saved credentials and all its spend, key, credit and history data.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Будут удалены сервис, его сохранённые данные доступа и все данные о тратах, ключах, кредитах и истории."
+          }
+        }
+      }
+    },
+    "This description cannot be used. Try again or add the service manually.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Это описание нельзя использовать. Попробуйте ещё раз или добавьте сервис вручную."
+          }
+        }
+      }
+    },
+    "This is a different Cline account. Sign in as %@, or add the other account as a separate service.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Это другой аккаунт Cline. Войдите как %@ или добавьте другой аккаунт отдельным сервисом."
+          }
+        }
+      }
+    },
+    "This month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Этот месяц"
+          }
+        }
+      }
+    },
+    "Token usage": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Использование токенов"
+          }
+        }
+      }
+    },
+    "Token usage this month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Токены в этом месяце"
+          }
+        }
+      }
+    },
+    "Total": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Итого"
+          }
+        }
+      }
+    },
+    "Total for the period": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Итого за период"
+          }
+        }
+      }
+    },
+    "Try again": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повторить"
+          }
+        }
+      }
+    },
+    "Type": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тип"
+          }
+        }
+      }
+    },
+    "USD": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "USD"
+          }
+        }
+      }
+    },
+    "Unexpected provider response: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неожиданный ответ провайдера: %@"
+          }
+        }
+      }
+    },
+    "Update credentials": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Данные доступа"
+          }
+        }
+      }
+    },
+    "Update credentials…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновить данные доступа…"
+          }
+        }
+      }
+    },
+    "Update failed": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновление не удалось"
+          }
+        }
+      }
+    },
+    "Updated %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновлено %@"
+          }
+        }
+      }
+    },
+    "Updating…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновление…"
+          }
+        }
+      }
+    },
+    "Usage": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Использование"
+          }
+        }
+      }
+    },
+    "Usage breakdown": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Из чего складываются траты"
+          }
+        }
+      }
+    },
+    "Use a classic token from github.com/settings/tokens with the scopes user, repo and read:org. Fine-grained tokens cover only one owner and cannot read your organizations' billing.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Используйте классический токен с github.com/settings/tokens с областями user, repo и read:org. Fine-grained токен привязан к одному владельцу и не видит траты ваших организаций."
+          }
+        }
+      }
+    },
+    "Use “Change price” to change the amount from a given date.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы изменить сумму с определённой даты, используйте «Изменить цену»."
+          }
+        }
+      }
+    },
+    "Uses the CLI installed on this Mac with your existing subscription. No AI API key is needed. The assistant never receives your credentials and runs without file or shell access.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Используется CLI, установленный на этом Mac, с вашей подпиской. AI API-ключ не нужен. Помощник не получает ваши данные доступа и работает без доступа к файлам и командной строке."
+          }
+        }
+      }
+    },
+    "Vercel's billing API has no charges for this team in the requested period (“Costs not found”). Spend is shown as no data.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "API биллинга Vercel не отдаёт платежи этой команды за запрошенный период («Costs not found»). Траты показаны как «нет данных»."
+          }
+        }
+      }
+    },
+    "Volume (optional)": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Объём (необязательно)"
+          }
+        }
+      }
+    },
+    "Waiting for confirmation…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ожидание подтверждения…"
+          }
+        }
+      }
+    },
+    "Without key (e.g. console)": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без ключа (например, консоль)"
+          }
+        }
+      }
+    },
+    "Yearly": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ежегодно"
+          }
+        }
+      }
+    },
+    "You can record credit purchases on the service page.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупки кредитов можно записать на странице сервиса."
+          }
+        }
+      }
+    },
+    "You can still set up the service manually.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сервис по-прежнему можно настроить вручную."
+          }
+        }
+      }
+    },
+    "access denied": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "доступ запрещён"
+          }
+        }
+      }
+    },
+    "an unknown currency": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "неизвестной валюте"
+          }
+        }
+      }
+    },
+    "any API (unrestricted)": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "любые API (без ограничений)"
+          }
+        }
+      }
+    },
+    "branch-months": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ветко-мес."
+          }
+        }
+      }
+    },
+    "daily spend": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "траты по дням"
+          }
+        }
+      }
+    },
+    "e.g. 1M tokens": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "например, 1M токенов"
+          }
+        }
+      }
+    },
+    "e.g. ChatGPT Pro": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "например, ChatGPT Pro"
+          }
+        }
+      }
+    },
+    "e.g. I pay $20 a month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "например, плачу $20 в месяц"
+          }
+        }
+      }
+    },
+    "e.g. OpenAI, Vercel, XDataAI": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "например, OpenAI, Vercel, XDataAI"
+          }
+        }
+      }
+    },
+    "e.g. ci-bot, client X": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "например, ci-bot, клиент X"
+          }
+        }
+      }
+    },
+    "https://…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "https://…"
+          }
+        }
+      }
+    },
+    "keys": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ключи"
+          }
+        }
+      }
+    },
+    "month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "мес."
+          }
+        }
+      }
+    },
+    "never": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "никогда"
+          }
+        }
+      }
+    },
+    "no data": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "нет данных"
+          }
+        }
+      }
+    },
+    "no expiry": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "бессрочно"
+          }
+        }
+      }
+    },
+    "no total amount": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "нет итоговой суммы"
+          }
+        }
+      }
+    },
+    "optional": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "необязательно"
+          }
+        }
+      }
+    },
+    "saved — leave empty to keep": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "сохранено — оставьте пустым, чтобы не менять"
+          }
+        }
+      }
+    },
+    "token usage": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "использование токенов"
+          }
+        }
+      }
+    },
+    "total of selected services": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "итого по выбранным сервисам"
+          }
+        }
+      }
+    },
+    "unavailable": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "недоступно"
+          }
+        }
+      }
+    },
+    "year": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "год"
+          }
+        }
+      }
+    },
+    "—": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "—"
+          }
+        }
+      }
+    },
+    "≈ %@ (estimate)": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "≈ %@ (оценка)"
+          }
+        }
+      }
+    },
+    "≈ Total for the month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "≈ Итого за месяц"
+          }
+        }
+      }
+    },
+    "≈ cost": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "≈ стоимость"
+          }
+        }
+      }
+    },
+    "≈ is an approximate cost from Neon's published rates for your plan (%@), after included allowances. It is counted in totals and history, marked ≈.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "≈ — примерная стоимость по опубликованным тарифам Neon для вашего плана (%@) с учётом бесплатных лимитов. Она входит в итоги и историю со значком ≈."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}
