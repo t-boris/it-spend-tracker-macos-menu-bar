@@ -1853,6 +1853,16 @@
         }
       }
     },
+    "Items by month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Позиции по месяцам"
+          }
+        }
+      }
+    },
     "Items without a cost this month are not included in the total.": {
       "localizations": {
         "ru": {

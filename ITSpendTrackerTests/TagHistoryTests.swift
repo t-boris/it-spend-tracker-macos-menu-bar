@@ -145,6 +145,29 @@ import Testing
         #expect(tag.monthsWithoutTotal == 1) // September has no data
     }
 
+    @Test func everyTargetHasItsOwnAmountInEveryMonthAndNoneWhereItHasNoCost() throws {
+        let history = TagHistory.compute(months: [september, october, november]) { month in
+            [service("A", present: [state(.key("k1"), "Bot", 30), state(.key("k2"), "Cron", month == september ? nil : 12)],
+                     tagged: [(.key("k1"), ["t"]), (.key("k2"), ["t"])])]
+        }
+        let tag = try #require(history.first)
+        #expect(tag.targets.count == 2)
+        let bot = try #require(tag.targets.first { $0.member.target == .key("k1") })
+        let cron = try #require(tag.targets.first { $0.member.target == .key("k2") })
+        #expect(bot.costs == [30, 30, 30])
+        #expect(cron.costs == [nil, 12, 12]) // September has no cost for it: no amount, and not zero
+    }
+
+    @Test func aTargetKeepsItsOwnEstimateFlagInEveryMonth() throws {
+        let neon = TagTarget.usageProject(organization: "Org", name: "api")
+        let history = TagHistory.compute(months: [october, november]) { month in
+            [service("N", present: [state(neon, "api", 4, estimate: month == november)], tagged: [(neon, ["t"])])]
+        }
+        let points = try #require(history.first).points
+        #expect(points.map { $0.members.first?.costIsEstimate } == [false, true])
+        #expect(points.map(\.isApproximate) == [false, true])
+    }
+
     @Test func noAssignmentsMeansNoHistory() {
         #expect(TagHistory.compute(months: [november]) { _ in [service("A", spend: 10, tagged: [])] }.isEmpty)
     }

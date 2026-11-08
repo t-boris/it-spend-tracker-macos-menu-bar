@@ -49,6 +49,25 @@ import Testing
         #expect(model.tagHistory.first?.latest?.total == 15)
     }
 
+    @Test func openingATaggedItemGoesToItsPageOrToTheSectionOfItsService() throws {
+        let model = AppModel()
+        let id = UUID()
+        let web = TagTarget.breakdownItem(dimension: .project, label: "web")
+        let input = TagServiceInput(serviceID: id, serviceName: "A", spend: 5,
+                                    present: [TagTargetState(target: .key("k1"), name: "Bot", cost: 1, costIsEstimate: false),
+                                              TagTargetState(target: web, name: "web", cost: 2, costIsEstimate: false)],
+                                    assignments: [TagTarget.service, .key("k1"), web].map {
+                                        TagAssignment(target: $0, displayName: "stored", tags: ["t"])
+                                    })
+        let members = try #require(TagTotal.compute([input]).first).members
+        func route(_ target: TagTarget) throws -> Route? { model.route(opening: try #require(members.first { $0.target == target })) }
+        #expect(try route(.service) == .service(id))
+        #expect(try route(.key("k1")) == .key(service: id, key: "k1"))
+        model.pendingServiceSection = nil
+        #expect(try route(web) == .service(id))
+        #expect(model.pendingServiceSection == .breakdown) // the service page scrolls to the breakdown
+    }
+
     @Test func buildingTheLedgerOnceGivesTheSameInputAsBuildingItEveryTime() throws {
         let model = AppModel()
         let service = try manualService(model, name: "Notes", amount: 10)

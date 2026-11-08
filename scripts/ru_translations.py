@@ -428,6 +428,7 @@ RU = {
 "Tags over time": "Теги по месяцам",
 "Tag totals can overlap, so the lines are not added up.": "Итоги тегов могут пересекаться, поэтому линии не складываются.",
 "◇ marks a month without a total (unavailable or no data). Faded bars are approximate (≈).": "◇ — месяц без итога (недоступно или нет данных). Приглушённые столбцы — приблизительные суммы (≈).",
+"Items by month": "Позиции по месяцам",
 }
 
 path = pathlib.Path(__file__).resolve().parent.parent / "ITSpendTracker/Resources/Localizable.xcstrings"

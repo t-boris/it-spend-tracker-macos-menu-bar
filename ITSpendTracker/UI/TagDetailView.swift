@@ -34,6 +34,11 @@ struct TagDetailView: View {
                         .font(.caption).foregroundStyle(.secondary)
                     ScrollView(.horizontal, showsIndicators: false) { TagMonthTable(history: history) }
                 }
+                if !history.targets.isEmpty {
+                    Section("Items by month") {
+                        ScrollView(.horizontal, showsIndicators: false) { TagTargetTable(history: history) }
+                    }
+                }
                 Section {
                     ForEach(history.targets) { series in
                         TagMemberRow(member: series.member, history: series.costs,
@@ -150,6 +155,43 @@ struct TagMonthTable: View {
                         }
                     }
                     TagPointText(point: point).fontWeight(.semibold)
+                }
+            }
+        }
+        .font(.callout)
+    }
+}
+
+/// The amount of every tagged item in every month, newest first. A month in which the item has no cost has no amount.
+/// An item's own amount is shown even where its service already covers it in the total (as on the Tags tab).
+struct TagTargetTable: View {
+    let history: TagHistory
+
+    var body: some View {
+        let targets = history.targets
+        Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 6) {
+            GridRow {
+                Text("Month").font(.caption.weight(.semibold))
+                ForEach(targets) { series in
+                    VStack(alignment: .trailing, spacing: 0) {
+                        Text(verbatim: series.member.name).font(.caption.weight(.semibold)).lineLimit(1)
+                        Text(verbatim: series.member.serviceName).font(.caption2).foregroundStyle(.secondary).lineLimit(1)
+                    }
+                    .gridColumnAlignment(.trailing)
+                }
+            }
+            Divider()
+            ForEach(history.points.reversed()) { point in
+                GridRow {
+                    Text(Format.monthLong(point.month))
+                    ForEach(targets) { series in
+                        // The month's own record of the item carries that month's estimate flag.
+                        if let member = point.members.first(where: { $0.id == series.id }), let cost = member.cost {
+                            Text(verbatim: Format.usd(cost, approximate: member.costIsEstimate)).monospacedDigit()
+                        } else {
+                            Text(verbatim: "–").foregroundStyle(.secondary)
+                        }
+                    }
                 }
             }
         }
