@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		017ECF9B55C8C622EA01C134 /* RefreshEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771AF7E8B4541A5146B7C3B5 /* RefreshEngine.swift */; };
+		01F9D2B818374A1A8BF8F13F /* AssistantGuidance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0315ACA99ABE3B029C6DAF51 /* AssistantGuidance.swift */; };
 		062A2C534F8EF7FBD3B1F7A2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 676DEF8AE36D9849C347FEA3 /* Localizable.xcstrings */; };
 		080489D253FB81F43ED4AB48 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAD853BDD0B0F990904985E /* Connector.swift */; };
 		1737258879FA0403807DEB31 /* CoverageStartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316BEA16E0C60901B7B44646 /* CoverageStartTests.swift */; };
@@ -41,6 +42,7 @@
 		85902C88C272F01965659795 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7986D3F1E27AE975213846 /* LaunchAtLogin.swift */; };
 		89BEB22AD715B173D3051599 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ECB9256D094DB7620D535D /* Formatting.swift */; };
 		93F07DEFB46049CCFF3C4869 /* GitHubConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105D76C4DDB97CEA56B35B64 /* GitHubConnector.swift */; };
+		94A28AFAE0BE840A019A2109 /* AssistantGuidanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A94942603788427C341D4 /* AssistantGuidanceTests.swift */; };
 		95D3D1A2DF3656E1EF29C515 /* ServiceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DD8E7AAEFF951B8DC25E54 /* ServiceDetailView.swift */; };
 		9613D0041A1E331AA0BD144A /* InvoiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E252FB5B9EDE42A38139A0 /* InvoiceTests.swift */; };
 		9B8EC1B85097B456BB253FAF /* AssistantPrompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640EF5F912DF12BF0D6E8E65 /* AssistantPrompts.swift */; };
@@ -80,6 +82,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0315ACA99ABE3B029C6DAF51 /* AssistantGuidance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantGuidance.swift; sourceTree = "<group>"; };
 		032EE38C3C126A19853E3CCB /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		046F4744CC1E5CE9FC6E75BB /* StatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
 		075FEDFBF560CC958859C911 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 		3CCC0C7BE69A02037598E335 /* DeclarativeConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarativeConnector.swift; sourceTree = "<group>"; };
 		4374B0DE64CF0F3B162A0C5D /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		4E2DF64840895FAC42C3E8E8 /* NeonConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonConnector.swift; sourceTree = "<group>"; };
+		550A94942603788427C341D4 /* AssistantGuidanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantGuidanceTests.swift; sourceTree = "<group>"; };
 		55CE9212E0B1AE587605F2D4 /* AssistantIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantIntegrationTests.swift; sourceTree = "<group>"; };
 		583C93B4F17AE9044207F4BC /* CalendarDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDay.swift; sourceTree = "<group>"; };
 		5EB4BAFC88C65DF3AC0663F9 /* AssistantCLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantCLI.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				98CF6B20FD9D10CD1D54FB58 /* AddServiceView.swift */,
+				0315ACA99ABE3B029C6DAF51 /* AssistantGuidance.swift */,
 				075FEDFBF560CC958859C911 /* ChatView.swift */,
 				688901FA8F09DFDB94E13806 /* ClineSignInView.swift */,
 				11B84850A679FAFFC68546A9 /* DailyHistoryView.swift */,
@@ -286,6 +291,7 @@
 		E25A85632FF86DCD150B693F /* ITSpendTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				550A94942603788427C341D4 /* AssistantGuidanceTests.swift */,
 				55CE9212E0B1AE587605F2D4 /* AssistantIntegrationTests.swift */,
 				F007A1BF1886E4B8F87D6DC5 /* ChartGrowthTests.swift */,
 				1A0C1AB50E7505305EE37E73 /* ClineTests.swift */,
@@ -417,6 +423,7 @@
 				EC28FA803EBF31923D178B65 /* AnthropicConnector.swift in Sources */,
 				F00F5A1CDB303ABC55DFDB5C /* AppModel.swift in Sources */,
 				D72FFB563DFA81420D3430F8 /* AssistantCLI.swift in Sources */,
+				01F9D2B818374A1A8BF8F13F /* AssistantGuidance.swift in Sources */,
 				9B8EC1B85097B456BB253FAF /* AssistantPrompts.swift in Sources */,
 				E18F5B8E35DAE722EA3A7A01 /* Breakdown.swift in Sources */,
 				2D2209628BFEC12542A71164 /* CalendarDay.swift in Sources */,
@@ -466,6 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94A28AFAE0BE840A019A2109 /* AssistantGuidanceTests.swift in Sources */,
 				5C0104647DA94CB410332582 /* AssistantIntegrationTests.swift in Sources */,
 				5598820495E389A51080F699 /* ChartGrowthTests.swift in Sources */,
 				36E8579F8768960C62517E6D /* ClineTests.swift in Sources */,

@@ -57,26 +57,12 @@ struct SettingsView: View {
 
     @ViewBuilder
     private var statusView: some View {
-        let backend = model.assistantBackend
-        if checking || status == nil {
+        if checking {
             HStack { ProgressView().controlSize(.small); Text("Checking…") }
-        } else if case .ready(let url)? = status {
-            Label("Ready: \(url.path)", systemImage: "checkmark.circle.fill").foregroundStyle(.green)
-        } else if case .notSignedIn? = status {
-            VStack(alignment: .leading, spacing: 4) {
-                Label("\(backend.displayName) is installed but not signed in.", systemImage: "person.crop.circle.badge.exclamationmark")
-                    .foregroundStyle(.orange)
-                Text("Run in Terminal:").font(.caption)
-                Text(backend.signInCommand).font(.caption.monospaced()).textSelection(.enabled)
-            }
+        } else if let status {
+            AssistantGuidance(status: status, backend: model.assistantBackend, showsManualHint: true)
         } else {
-            VStack(alignment: .leading, spacing: 4) {
-                Label("\(backend.displayName) is not installed.", systemImage: "xmark.circle").foregroundStyle(.orange)
-                Text("Install it in Terminal, then sign in:").font(.caption)
-                Text(backend.installCommand).font(.caption.monospaced()).textSelection(.enabled)
-                Text(backend.signInCommand).font(.caption.monospaced()).textSelection(.enabled)
-                Text("Services can still be added manually without the assistant.").font(.caption).foregroundStyle(.secondary)
-            }
+            HStack { ProgressView().controlSize(.small); Text("Checking…") }
         }
     }
 

@@ -50,8 +50,10 @@ struct ChatView: View {
                 }
             }
             .padding(12)
-            if let status, case .ready = status {} else if status != nil {
-                Text("The assistant is not available. See Settings → AI assistant.").font(.caption).foregroundStyle(.orange)
+            // Same guidance as in Settings (REQ-018): what is missing and the commands to fix it.
+            if let status, !assistantReady {
+                AssistantGuidance(status: status, backend: model.assistantBackend)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 12).padding(.bottom, 8)
             }
         }
@@ -93,6 +95,8 @@ struct ChatView: View {
     }
 
     private func send() {
+        // Return in the field must not bypass the disabled Ask button.
+        guard assistantReady, !model.chat.isAnswering, !question.trimmingCharacters(in: .whitespaces).isEmpty else { return }
         let text = question
         question = ""
         let snapshot = SpendingSnapshot.json(SpendingSnapshot.build(services: model.store.services, today: model.today))
