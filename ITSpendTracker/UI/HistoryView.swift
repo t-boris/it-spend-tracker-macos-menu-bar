@@ -57,7 +57,6 @@ struct HistoryView: View {
 /// Months without data are listed as "no data", never as zero.
 struct MonthlyHistory: View {
     @Environment(AppModel.self) private var model
-    @Environment(\.isLargeLayout) private var isLargeLayout
     static let monthsShown = 12
 
     struct Point: Identifiable {
@@ -86,7 +85,7 @@ struct MonthlyHistory: View {
             }
             .monthAxis(months)
             .chartLegend(position: .bottom, alignment: .leading)
-            .frame(height: isLargeLayout ? 380 : 200)
+            .growingChartHeight(minimum: 260, fraction: 0.40)
 
             Grid(alignment: .leading, horizontalSpacing: 12, verticalSpacing: 6) {
                 GridRow {
@@ -112,7 +111,6 @@ struct ServiceHistoryChart: View {
     let ledger: ServiceLedger
     let currentMonth: Month
     var isEstimate = false
-    @Environment(\.isLargeLayout) private var isLargeLayout
 
     struct Part: Identifiable {
         let month: Month
@@ -145,7 +143,7 @@ struct ServiceHistoryChart: View {
             }
             .monthAxis(months)
             .chartLegend(position: .bottom, alignment: .leading)
-            .frame(height: isLargeLayout ? 260 : 140)
+            .growingChartHeight(minimum: 180, fraction: 0.27)
             let missing = months.filter { ledger.spend(in: $0) == .noData }
             if !missing.isEmpty {
                 Text("No data for: \(missing.map(Format.monthName).joined(separator: ", "))")
@@ -156,6 +154,11 @@ struct ServiceHistoryChart: View {
 }
 
 extension View {
+    /// A chart height that grows with the window (REQ-014): `fraction` of the visible page height, never below `minimum`.
+    func growingChartHeight(minimum: CGFloat, fraction: CGFloat) -> some View {
+        containerRelativeFrame(.vertical) { height, _ in max(minimum, height * fraction) }
+    }
+
     /// Fixed 12-month domain with every other month labelled, so labels are not truncated.
     func monthAxis(_ months: [Month]) -> some View {
         let first = months.first?.firstDay.date ?? Date()

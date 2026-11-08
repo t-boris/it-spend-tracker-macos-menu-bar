@@ -6,7 +6,6 @@ import SwiftUI
 struct DailyHistory: View {
     let days: Int
     @Environment(AppModel.self) private var model
-    @Environment(\.isLargeLayout) private var isLargeLayout
     @State private var hoveredDate: Date?
 
     struct Series {
@@ -64,7 +63,7 @@ struct DailyHistory: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text("Spend per day").font(.headline)
                 dailyChart(points: points, average: average, range: range, totals: totals, series: series, today: today)
-                    .frame(height: isLargeLayout ? 320 : 180)
+                    .growingChartHeight(minimum: 220, fraction: 0.33)
                 Text("Bars: spend per day by service. Line: 7-day average. Today is incomplete.")
                     .font(.caption).foregroundStyle(.secondary)
             }
@@ -72,7 +71,7 @@ struct DailyHistory: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text("\(Format.monthLong(month)) against \(Format.monthLong(month.previous))").font(.headline)
                 monthChart(ledgers: ledgers, month: month, today: today, forecast: forecast)
-                    .frame(height: isLargeLayout ? 260 : 160)
+                    .growingChartHeight(minimum: 180, fraction: 0.27)
                 Text("Forecast ≈ spend so far + the average daily usage of the last \(ServiceLedger.runRateDays) full days for the days left + subscription charges due this month. Usage reported per month (GitHub, Neon): last month's amount during the first \(ServiceLedger.monthlyPaceMinimumDays) days, then this month's pace.")
                     .font(.caption).foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)

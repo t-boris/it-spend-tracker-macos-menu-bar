@@ -146,7 +146,7 @@ struct KeyCostHistory: View {
                         .foregroundStyle(Color.accentColor.gradient)
                 }
                 .monthAxis(months)
-                .frame(height: 180)
+                .growingChartHeight(minimum: 160, fraction: 0.22)
                 if let first = covered.first, first != months.first {
                     Text("Per-key cost is available from \(Format.monthLong(first)).")
                         .font(.caption).foregroundStyle(.secondary)
