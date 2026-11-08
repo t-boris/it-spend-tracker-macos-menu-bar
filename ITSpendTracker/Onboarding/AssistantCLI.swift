@@ -124,19 +124,26 @@ struct AssistantCLI: Sendable {
         case .notSignedIn: throw AssistantError.notSignedIn(backend)
         case .ready(let url): executable = url
         }
-        let sandbox = FileManager.default.temporaryDirectory
-            .appending(path: "ITSpendTracker-assistant-\(UUID().uuidString)", directoryHint: .isDirectory)
-        try FileManager.default.createDirectory(at: sandbox, withIntermediateDirectories: true)
-        defer { try? FileManager.default.removeItem(at: sandbox) }
-
-        let result = try await run(executable: executable,
-                                   arguments: backend.runArguments(workingDirectory: sandbox, allowWeb: allowWeb),
-                                   input: prompt, workingDirectory: sandbox, timeout: timeout)
+        let result = try await Self.withSandbox { sandbox in
+            try await run(executable: executable,
+                          arguments: backend.runArguments(workingDirectory: sandbox, allowWeb: allowWeb),
+                          input: prompt, workingDirectory: sandbox, timeout: timeout)
+        }
         let output = result.stdout.trimmingCharacters(in: .whitespacesAndNewlines)
         guard result.exitCode == 0, !output.isEmpty else {
             throw AssistantError.failed(String((result.stderr.isEmpty ? result.stdout : result.stderr).suffix(400)))
         }
         return output
+    }
+
+    /// Runs `body` with an empty directory of its own as the CLI's working directory, and removes it afterwards, so the
+    /// CLI never starts inside the user's files (DEC-011).
+    static func withSandbox<T>(_ body: (URL) async throws -> T) async throws -> T {
+        let sandbox = FileManager.default.temporaryDirectory
+            .appending(path: "ITSpendTracker-assistant-\(UUID().uuidString)", directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: sandbox, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: sandbox) }
+        return try await body(sandbox)
     }
 
     struct ProcessResult: Sendable {

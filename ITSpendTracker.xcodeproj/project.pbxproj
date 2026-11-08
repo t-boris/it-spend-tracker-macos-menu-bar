@@ -54,6 +54,7 @@
 		A2F4669663416A5C9BFA2EF2 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC71EB736E3FE00D69AB42A /* KeychainStore.swift */; };
 		AC89E183C8150A9ADBAB51D0 /* BreakdownGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573B1330AF7EC0C8F1354021 /* BreakdownGroupTests.swift */; };
 		ACB62DCD142335F40CA7EA84 /* KeyCostMonthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99264A02D3E425280157577D /* KeyCostMonthTests.swift */; };
+		AD2A5F79E0E27E387FFCC279 /* AssistantSandboxRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084E60C03F44806D27D7989 /* AssistantSandboxRuntimeTests.swift */; };
 		B01AFA911CBA9E7F59E48185 /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137404D402464B6474DA81ED /* Forms.swift */; };
 		B5A768ECEEF613773BBDD7D4 /* DeclarativeConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCC0C7BE69A02037598E335 /* DeclarativeConnector.swift */; };
 		B66A26A196263BA8EA85D6E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A645AA4012BF51F62519D773 /* Assets.xcassets */; };
@@ -142,6 +143,7 @@
 		99264A02D3E425280157577D /* KeyCostMonthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCostMonthTests.swift; sourceTree = "<group>"; };
 		9AF5C72A13E8FFE284B76767 /* KeyFactsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFactsTests.swift; sourceTree = "<group>"; };
 		9CAD853BDD0B0F990904985E /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
+		A084E60C03F44806D27D7989 /* AssistantSandboxRuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantSandboxRuntimeTests.swift; sourceTree = "<group>"; };
 		A375B60329EDF4A691F58478 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
 		A645AA4012BF51F62519D773 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0FDDB1552A59E5C9193AC44 /* SpendingChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingChat.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				5E5DE29862C3EBF9B23ECC80 /* ApproximateFiguresTests.swift */,
 				550A94942603788427C341D4 /* AssistantGuidanceTests.swift */,
 				55CE9212E0B1AE587605F2D4 /* AssistantIntegrationTests.swift */,
+				A084E60C03F44806D27D7989 /* AssistantSandboxRuntimeTests.swift */,
 				573B1330AF7EC0C8F1354021 /* BreakdownGroupTests.swift */,
 				F007A1BF1886E4B8F87D6DC5 /* ChartGrowthTests.swift */,
 				1A0C1AB50E7505305EE37E73 /* ClineTests.swift */,
@@ -512,6 +515,7 @@
 				E2696153906921ED5AA8A250 /* ApproximateFiguresTests.swift in Sources */,
 				94A28AFAE0BE840A019A2109 /* AssistantGuidanceTests.swift in Sources */,
 				5C0104647DA94CB410332582 /* AssistantIntegrationTests.swift in Sources */,
+				AD2A5F79E0E27E387FFCC279 /* AssistantSandboxRuntimeTests.swift in Sources */,
 				AC89E183C8150A9ADBAB51D0 /* BreakdownGroupTests.swift in Sources */,
 				5598820495E389A51080F699 /* ChartGrowthTests.swift in Sources */,
 				36E8579F8768960C62517E6D /* ClineTests.swift in Sources */,
