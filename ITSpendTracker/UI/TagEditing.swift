@@ -45,27 +45,77 @@ struct TagsForm: View {
                 .font(.caption).foregroundStyle(.secondary)
             let suggestions = model.store.allTags.filter { tag in !entered.contains { $0.lowercased() == tag.lowercased() } }
             if !suggestions.isEmpty {
-                LabeledContent("Existing tags") {
-                    HStack {
-                        ForEach(suggestions.prefix(8), id: \.self) { tag in
-                            Button { text = (entered + [tag]).joined(separator: ", ") } label: { TagChip(tag: tag) }
-                                .buttonStyle(.plain)
-                        }
-                    }
-                }
+                TagSuggestions(tags: suggestions) { text = (entered + [$0]).joined(separator: ", ") }
             }
         }
         .onAppear { text = service.tags(for: target).joined(separator: ", ") }
     }
 }
 
-/// The tags of one target as small chips.
+/// Existing tags the user can tap to add; they wrap onto further lines instead of being squeezed.
+struct TagSuggestions: View {
+    let tags: [String]
+    let pick: (String) -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Existing tags")
+            FlowLayout(spacing: 6) {
+                ForEach(tags, id: \.self) { tag in
+                    Button { pick(tag) } label: { TagChip(tag: tag) }
+                        .buttonStyle(.plain)
+                }
+            }
+        }
+    }
+}
+
+/// The tags of one target as small chips that wrap onto further lines.
 struct TagChips: View {
     let tags: [String]
 
     var body: some View {
-        HStack(spacing: 4) {
+        FlowLayout(spacing: 4) {
             ForEach(tags, id: \.self) { TagChip(tag: $0) }
+        }
+    }
+}
+
+/// Places its children left to right and starts a new line when the next one does not fit. Every child keeps its natural
+/// size, so chips are never squeezed or broken inside; a child wider than the line gets a line of its own.
+struct FlowLayout: Layout {
+    var spacing: CGFloat = 6
+
+    /// Offsets of the children and the size of the whole, for the sizes the children want and the width on offer.
+    static func arrange(_ sizes: [CGSize], maxWidth: CGFloat, spacing: CGFloat) -> (offsets: [CGPoint], size: CGSize) {
+        var offsets: [CGPoint] = []
+        var x: CGFloat = 0, y: CGFloat = 0, lineHeight: CGFloat = 0, widest: CGFloat = 0
+        for size in sizes {
+            if x > 0, x + size.width > maxWidth {
+                y += lineHeight + spacing
+                x = 0
+                lineHeight = 0
+            }
+            offsets.append(CGPoint(x: x, y: y))
+            x += size.width + spacing
+            lineHeight = max(lineHeight, size.height)
+            widest = max(widest, x - spacing)
+        }
+        return (offsets, CGSize(width: widest, height: sizes.isEmpty ? 0 : y + lineHeight))
+    }
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        let sizes = subviews.map { $0.sizeThatFits(.unspecified) }
+        return Self.arrange(sizes, maxWidth: proposal.width ?? .infinity, spacing: spacing).size
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        let sizes = subviews.map { $0.sizeThatFits(.unspecified) }
+        let arranged = Self.arrange(sizes, maxWidth: bounds.width, spacing: spacing)
+        for (index, subview) in subviews.enumerated() {
+            let offset = arranged.offsets[index]
+            subview.place(at: CGPoint(x: bounds.minX + offset.x, y: bounds.minY + offset.y), anchor: .topLeading,
+                          proposal: ProposedViewSize(width: min(sizes[index].width, bounds.width), height: sizes[index].height))
         }
     }
 }

@@ -88,7 +88,7 @@ struct KeyDetailView: View {
                     if tags.isEmpty {
                         Text("No tags").foregroundStyle(.secondary)
                     } else {
-                        ForEach(tags, id: \.self) { TagChip(tag: $0) }
+                        TagChips(tags: tags)
                     }
                     Spacer()
                     Button(tags.isEmpty ? "Add tag…" : "Edit tags…") { editingTags = true }

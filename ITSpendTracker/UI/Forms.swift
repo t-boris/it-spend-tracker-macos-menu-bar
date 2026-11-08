@@ -282,6 +282,7 @@ struct TagChip: View {
     var body: some View {
         Text(tag)
             .font(.caption)
+            .lineLimit(1)
             .padding(.horizontal, 6)
             .padding(.vertical, 2)
             .background(Color.accentColor.opacity(0.15), in: Capsule())
