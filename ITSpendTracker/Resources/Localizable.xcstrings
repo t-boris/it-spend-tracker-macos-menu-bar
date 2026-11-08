@@ -2615,6 +2615,16 @@
         }
       }
     },
+    "Read with %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прочитать через %@"
+          }
+        }
+      }
+    },
     "Reading the invoice with %@…": {
       "localizations": {
         "ru": {

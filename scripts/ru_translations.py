@@ -375,6 +375,7 @@ RU = {
 "No date found: choose the payment date.": "Дата не найдена: выберите дату платежа.",
 "Payment date": "Дата платежа",
 "Read from the invoice": "Прочитано из счёта",
+"Read with %@": "Прочитать через %@",
 "Reading the invoice with %@…": "%@ читает счёт…",
 "The PDF has no readable text (a scan?). Enter the invoice by hand instead.": "В PDF нет читаемого текста (скан?). Введите счёт вручную.",
 "The assistant did not find an invoice in this file.": "Помощник не нашёл счёт в этом файле.",
