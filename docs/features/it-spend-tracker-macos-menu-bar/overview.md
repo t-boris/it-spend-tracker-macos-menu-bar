@@ -2,7 +2,7 @@
 type: feature
 id: it-spend-tracker-macos-menu-bar
 title: IT Spend Tracker (macOS menu bar)
-status: exploring
+status: implemented
 owner: Owner
 created: 2026-09-30
 provenance: Created from the new-project intake
