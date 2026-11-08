@@ -165,6 +165,8 @@ final class KeyRecord {
     var expiresAt: Date?
     var status: String?
     var currentMonthCost: Decimal?
+    /// Month (`Month.index`) the cost was fetched for. `nil` in records saved before this was stored.
+    var currentMonthIndex: Int?
     /// JSON-encoded `[KeyDetail]` (DEC-030).
     var detailsJSON: Data?
     var requestsThisMonth: Int?
@@ -177,7 +179,15 @@ final class KeyRecord {
         detailsJSON.flatMap { try? JSONDecoder().decode([KeyDetail].self, from: $0) } ?? []
     }
 
-    init(_ key: ProviderKey) {
+    /// Cost of this key in `month`, or `nil` when it is not known for that month. The stored figure belongs to the month it
+    /// was fetched in, so after a month change it is not shown as "this month" until the next refresh (REQ-013).
+    func monthCost(in month: Month) -> Decimal? {
+        guard let currentMonthCost else { return nil }
+        // A record saved before the month was stored cannot be checked; trust it until the next refresh replaces it.
+        return currentMonthIndex.map { $0 == month.index } ?? true ? currentMonthCost : nil
+    }
+
+    init(_ key: ProviderKey, fetchedIn month: Month? = nil) {
         externalID = key.externalID
         name = key.name
         hint = key.hint
@@ -186,6 +196,7 @@ final class KeyRecord {
         expiresAt = key.expiresAt
         status = key.status
         currentMonthCost = key.currentMonthCost
+        currentMonthIndex = month?.index
         detailsJSON = key.details.isEmpty ? nil : try? JSONEncoder().encode(key.details)
         requestsThisMonth = key.requestsThisMonth
         consoleURLString = key.consoleURL?.absoluteString

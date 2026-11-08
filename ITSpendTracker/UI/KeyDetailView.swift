@@ -35,7 +35,7 @@ struct KeyDetailView: View {
                     Spacer()
                 }
                 LabeledContent("This month") {
-                    if availability.spend, let cost = key.currentMonthCost {
+                    if availability.spend, let cost = key.monthCost(in: month) {
                         VStack(alignment: .trailing, spacing: 2) {
                             Text(verbatim: (availability.spendIsEstimate ? "≈ " : "") + Format.usd(cost))
                                 .font(.title3.weight(.semibold)).monospacedDigit()
@@ -57,7 +57,7 @@ struct KeyDetailView: View {
                         }
                     }
                 }
-                if availability.spendIsEstimate, key.currentMonthCost != nil {
+                if availability.spendIsEstimate, key.monthCost(in: month) != nil {
                     Label("Approximate: this project's cost per Google service is split across its keys by their share of requests. Requests differ in size, so this is an estimate.",
                           systemImage: "equal.circle").font(.caption).foregroundStyle(.secondary)
                 }

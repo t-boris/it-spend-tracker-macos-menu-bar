@@ -52,6 +52,7 @@
 		A15EF27D207594F06CD9E0ED /* OpenAIConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACD7455DDA65BDAE990EB65 /* OpenAIConnector.swift */; };
 		A2F4669663416A5C9BFA2EF2 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC71EB736E3FE00D69AB42A /* KeychainStore.swift */; };
 		AC89E183C8150A9ADBAB51D0 /* BreakdownGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573B1330AF7EC0C8F1354021 /* BreakdownGroupTests.swift */; };
+		ACB62DCD142335F40CA7EA84 /* KeyCostMonthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99264A02D3E425280157577D /* KeyCostMonthTests.swift */; };
 		B01AFA911CBA9E7F59E48185 /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137404D402464B6474DA81ED /* Forms.swift */; };
 		B5A768ECEEF613773BBDD7D4 /* DeclarativeConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCC0C7BE69A02037598E335 /* DeclarativeConnector.swift */; };
 		B66A26A196263BA8EA85D6E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A645AA4012BF51F62519D773 /* Assets.xcassets */; };
@@ -132,6 +133,7 @@
 		921ABF593B2C514D7971C7D9 /* ConnectionImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionImport.swift; sourceTree = "<group>"; };
 		92CA38C156A5E50BAD689A38 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		98CF6B20FD9D10CD1D54FB58 /* AddServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddServiceView.swift; sourceTree = "<group>"; };
+		99264A02D3E425280157577D /* KeyCostMonthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCostMonthTests.swift; sourceTree = "<group>"; };
 		9AF5C72A13E8FFE284B76767 /* KeyFactsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFactsTests.swift; sourceTree = "<group>"; };
 		9CAD853BDD0B0F990904985E /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
 		A375B60329EDF4A691F58478 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				A375B60329EDF4A691F58478 /* DomainTests.swift */,
 				273E2C320D9D57924C567F70 /* HistoryRenderTests.swift */,
 				C7E252FB5B9EDE42A38139A0 /* InvoiceTests.swift */,
+				99264A02D3E425280157577D /* KeyCostMonthTests.swift */,
 				9AF5C72A13E8FFE284B76767 /* KeyFactsTests.swift */,
 				D6AE7EFD9BC1F8782EFACE26 /* MonthCompositionTests.swift */,
 				EB96ECCC4AAB42D6FBAA60AC /* ServiceSectionsTests.swift */,
@@ -495,6 +498,7 @@
 				4EBCD00A1AF608EF17166ABD /* DomainTests.swift in Sources */,
 				1D9430474F6CB614A236B2BA /* HistoryRenderTests.swift in Sources */,
 				9613D0041A1E331AA0BD144A /* InvoiceTests.swift in Sources */,
+				ACB62DCD142335F40CA7EA84 /* KeyCostMonthTests.swift in Sources */,
 				6572C769609483C798E425B0 /* KeyFactsTests.swift in Sources */,
 				C5BF529FB4DE24CFF2A7B69F /* MonthCompositionTests.swift in Sources */,
 				D6728C54B58ACB496F173CB8 /* ServiceSectionsTests.swift in Sources */,

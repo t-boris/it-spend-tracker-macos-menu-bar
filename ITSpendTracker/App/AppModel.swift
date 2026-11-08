@@ -73,12 +73,13 @@ final class AppModel {
     }
 
     var tagTotals: [TagTotal] {
+        let month = today.calendarMonth
         let keys = store.services.filter(\.isConnected).flatMap { service in
             let availability = KeyFieldAvailability(service: service)
             return service.keys.map { key in
                 TagTotal.TaggedKey(serviceID: service.id, keyExternalID: key.externalID,
                                    serviceName: service.name, keyName: key.name,
-                                   cost: availability.spend ? key.currentMonthCost : nil,
+                                   cost: availability.spend ? key.monthCost(in: month) : nil,
                                    costIsEstimate: availability.spendIsEstimate,
                                    tags: service.tags(forKey: key.externalID))
             }

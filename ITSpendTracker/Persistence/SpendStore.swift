@@ -244,7 +244,7 @@ final class SpendStore {
             service.breakdownStartMonthIndex = nil
             if let keys = snapshot.keys {
                 service.keys.forEach(context.delete)
-                service.keys = keys.map(KeyRecord.init)
+                service.keys = keys.map { KeyRecord($0, fetchedIn: Day(date).calendarMonth) }
                 service.hasKeyData = true
             }
             service.lastSuccessfulRefresh = date
@@ -264,7 +264,7 @@ final class SpendStore {
 
         if let keys = snapshot.keys {
             service.keys.forEach(context.delete)
-            service.keys = keys.map(KeyRecord.init)
+            service.keys = keys.map { KeyRecord($0, fetchedIn: Day(date).calendarMonth) }
             service.hasKeyData = true
         }
         if let rows = snapshot.breakdown, let fromMonth = snapshot.breakdownFrom {

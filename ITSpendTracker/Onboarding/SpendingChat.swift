@@ -57,7 +57,7 @@ enum SpendingSnapshot {
                     item["expires"] = key.expiresAt.map(Self.date) ?? "no expiry"
                     if WarningRules.isExpiringSoon(expiresAt: key.expiresAt, now: now) { item["expires_within_14_days"] = true }
                 }
-                if availability.spend, let cost = key.currentMonthCost {
+                if availability.spend, let cost = key.monthCost(in: today.calendarMonth) {
                     item[availability.spendIsEstimate ? "cost_current_month_usd_estimate" : "cost_current_month_usd"] = Self.number(cost)
                 }
                 if let requests = key.requestsThisMonth { item["requests_current_month"] = requests }

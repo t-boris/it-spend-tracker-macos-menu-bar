@@ -195,6 +195,7 @@ struct ServiceDetailView: View {
     @ViewBuilder
     private func keysSection(_ service: TrackedService) -> some View {
         let availability = KeyFieldAvailability(service: service)
+        let month = model.today.calendarMonth
         Section("Keys") {
             if !service.hasKeyData {
                 Text("no data").foregroundStyle(.secondary)
@@ -202,7 +203,7 @@ struct ServiceDetailView: View {
                 Text("The provider reports no keys.").foregroundStyle(.secondary)
             } else {
                 // Most expensive first, then by name; each row opens the key page (REQ-016).
-                ForEach(service.keys.sorted { ($0.currentMonthCost ?? -1, $1.name) > ($1.currentMonthCost ?? -1, $0.name) }) { key in
+                ForEach(service.keys.sorted { ($0.monthCost(in: month) ?? -1, $1.name) > ($1.monthCost(in: month) ?? -1, $0.name) }) { key in
                     Button { selection = .key(service: service.id, key: key.externalID) } label: {
                         HStack(alignment: .center, spacing: 8) {
                             VStack(alignment: .leading, spacing: 3) {
@@ -229,7 +230,7 @@ struct ServiceDetailView: View {
                                 .font(.caption).foregroundStyle(.secondary)
                             }
                             Spacer()
-                            if availability.spend, let cost = key.currentMonthCost {
+                            if availability.spend, let cost = key.monthCost(in: month) {
                                 VStack(alignment: .trailing, spacing: 2) {
                                     Text(verbatim: (availability.spendIsEstimate ? "≈ " : "") + Format.usd(cost)).monospacedDigit()
                                     if let requests = key.requestsThisMonth {
