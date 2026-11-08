@@ -15,6 +15,8 @@ final class SpendStore {
         context = ModelContext(container)
         context.autosaveEnabled = false
         self.keychain = keychain
+        // Tags saved by the first release are moved to the generalized records before anything reads them (DEC-036).
+        try? migrateLegacyKeyTags()
     }
 
     var services: [TrackedService] {
@@ -147,27 +149,58 @@ final class SpendStore {
         try save()
     }
 
-    /// Replaces the tags of one key (DEC-024). Tags are trimmed, de-duplicated and kept in entry order.
-    func setTags(_ tags: [String], forKey externalID: String, of service: TrackedService) throws {
-        var seen = Set<String>()
-        let cleaned = tags.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-            .filter { !$0.isEmpty && seen.insert($0.lowercased()).inserted }
-        if let record = service.keyTags.first(where: { $0.keyExternalID == externalID }) {
+    /// Replaces the tags of one target (REQ-017). Tags are trimmed, de-duplicated case-insensitively and kept in entry
+    /// order; an empty list removes the assignment. `displayName` is kept for showing the target once it is missing (DEC-037).
+    func setTags(_ tags: [String], for target: TagTarget, displayName: String, of service: TrackedService) throws {
+        let cleaned = tags.cleanedTags()
+        if let record = service.tagAssignments.first(where: { $0.target == target }) {
             if cleaned.isEmpty {
-                service.keyTags.removeAll { $0 === record }
+                service.tagAssignments.removeAll { $0 === record }
                 context.delete(record)
             } else {
                 record.tags = cleaned
+                record.displayName = displayName
             }
         } else if !cleaned.isEmpty {
-            service.keyTags.append(KeyTagRecord(keyExternalID: externalID, tags: cleaned))
+            service.tagAssignments.append(TagAssignmentRecord(target: target, displayName: displayName, tags: cleaned))
         }
         try save()
     }
 
-    /// All tags in use, for suggestions.
+    /// Replaces the tags of one key (DEC-024).
+    func setTags(_ tags: [String], forKey externalID: String, of service: TrackedService) throws {
+        let name = service.keys.first { $0.externalID == externalID }?.name ?? externalID
+        try setTags(tags, for: .key(externalID), displayName: name, of: service)
+    }
+
+    /// All tags in use across every target type, for suggestions; spellings that differ only in case appear once.
     var allTags: [String] {
-        Array(Set(services.flatMap { $0.keyTags.flatMap(\.tags) })).sorted { $0.localizedStandardCompare($1) == .orderedAscending }
+        var seen = Set<String>()
+        return services.flatMap { $0.tagAssignments.flatMap(\.tags) }
+            .filter { seen.insert($0.lowercased()).inserted }
+            .sorted { $0.localizedStandardCompare($1) == .orderedAscending }
+    }
+
+    /// Converts the first release's per-key tag records into assignments of kind key and removes them (DEC-036).
+    /// Nothing is lost: tags already assigned to the same key are merged. Safe to run repeatedly.
+    func migrateLegacyKeyTags() throws {
+        var changed = false
+        for service in services {
+            for legacy in Array(service.keyTags) {
+                let target = TagTarget.key(legacy.keyExternalID)
+                let name = service.keys.first { $0.externalID == legacy.keyExternalID }?.name ?? legacy.keyExternalID
+                if let existing = service.tagAssignments.first(where: { $0.target == target }) {
+                    existing.tags = (existing.tags + legacy.tags).cleanedTags()
+                } else if !legacy.tags.cleanedTags().isEmpty {
+                    service.tagAssignments.append(TagAssignmentRecord(target: target, displayName: name,
+                                                                      tags: legacy.tags.cleanedTags()))
+                }
+                service.keyTags.removeAll { $0 === legacy }
+                context.delete(legacy)
+                changed = true
+            }
+        }
+        if changed { try save() }
     }
 
     func setNoteHidden(_ id: String, hidden: Bool, in service: TrackedService) throws {
