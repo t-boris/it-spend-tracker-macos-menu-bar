@@ -33,6 +33,7 @@ understanding_notes:
   Analytics: Код уже считает теги за текущий месяц независимо от включения сервиса в общий итог. Обзор определяет приоритет суммы сервиса и запрет суммирования при неразрешимых пересечениях.
   Dependencies: Проверены хранение, редактор тегов, Tags view и разбивки account/project/lineItem. Новые возможности коннекторов исключены.
   Acceptance Criteria: Критериев обзора и существующего плана достаточно для подготовки спецификации. Дополнительных решений владельца продукта не требуется.
+updated: 2026-11-08
 ---
 
 # Tags for Services and Provider Items
@@ -40,6 +41,8 @@ understanding_notes:
 ## Idea
 
 Extend the existing tag system so users can organize whole services and provider-exposed items using one shared tag vocabulary.
+
+Update 2026-11-08 (DEC-042): tags are also used as projects, so the spend of a tag is shown over time as well: a page for each tag and one comparison chart, for the last 12 months. Where the Scope and Assumptions below exclude historical tag reporting or make the current month the only view, DEC-042, REQ-020, REQ-023 and REQ-024 take precedence.
 
 ## Problem
 
