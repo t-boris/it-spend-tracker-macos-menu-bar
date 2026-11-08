@@ -141,7 +141,8 @@ struct CreditPurchaseForm: View {
     }
 
     var body: some View {
-        FormSheet(title: purchase == nil ? "Add credit purchase" : "Edit credit purchase",
+        let wording = PaymentWording(isConnected: service.isConnected)
+        FormSheet(title: LocalizedStringKey(purchase == nil ? wording.formTitle.add : wording.formTitle.edit),
                   canSave: Format.parseAmount(amount) != nil) {
             guard let value = Format.parseAmount(amount) else { return }
             if let purchase {
@@ -151,7 +152,7 @@ struct CreditPurchaseForm: View {
             }
         } content: {
             USDField(title: "Amount paid, USD", text: $amount)
-            DatePicker("Purchase date", selection: $date, displayedComponents: .date)
+            DatePicker(PaymentWording(isConnected: service.isConnected).dateLabel, selection: $date, displayedComponents: .date)
             TextField("Volume (optional)", text: $volume, prompt: Text("e.g. 1M tokens"))
         }
     }

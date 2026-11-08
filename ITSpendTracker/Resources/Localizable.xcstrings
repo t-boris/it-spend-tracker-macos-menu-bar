@@ -549,6 +549,26 @@
         }
       }
     },
+    "Add payment": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить платёж"
+          }
+        }
+      }
+    },
+    "Add payment…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить платёж…"
+          }
+        }
+      }
+    },
     "Add service": {
       "localizations": {
         "ru": {
@@ -1341,6 +1361,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Изменение покупки"
+          }
+        }
+      }
+    },
+    "Edit payment": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменить платёж"
           }
         }
       }
@@ -2409,6 +2439,16 @@
         }
       }
     },
+    "Payment": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Платёж"
+          }
+        }
+      }
+    },
     "Payment date": {
       "localizations": {
         "ru": {
@@ -2425,6 +2465,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Платежи"
+          }
+        }
+      }
+    },
+    "Payments count as spend in the month they are paid.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Платежи учитываются как расход в месяце оплаты."
           }
         }
       }

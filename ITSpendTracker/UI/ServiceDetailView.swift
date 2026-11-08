@@ -347,7 +347,7 @@ struct ServiceDetailView: View {
                 .font(.callout)
             }
             HStack {
-                Button("Add credit purchase…") { sheet = .purchase(nil) }
+                Button(PaymentWording(isConnected: service.isConnected).addButton) { sheet = .purchase(nil) }
                 if !service.isConnected {
                     Button("Add invoice from PDF…") { pickingInvoice = true }
                 }
@@ -357,14 +357,14 @@ struct ServiceDetailView: View {
                 }
             }
         } header: {
-            Text("Credits")
+            Text(PaymentWording(isConnected: service.isConnected).section)
         } footer: {
             if service.connector == .cline {
                 Text("Spend is the Cline credits used plus Cline Pass payments. Credit top-ups and the balance come from Cline and are for information only.")
             } else if service.isConnected {
                 Text("For API services, spend is the usage cost reported by the provider. Credit purchases and balance are for information only.")
             } else {
-                Text("Credit purchases count as spend in the month of purchase.")
+                Text(PaymentWording(isConnected: false).footer ?? "")
             }
         }
     }

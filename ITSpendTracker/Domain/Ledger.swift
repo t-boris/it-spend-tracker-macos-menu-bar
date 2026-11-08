@@ -137,7 +137,7 @@ struct ServiceLedger: Sendable {
             plan.charges(from: from, through: through).map { Payment(day: $0.day, label: plan.name, amount: $0.amount) }
         }
         let purchases = creditPurchases.filter { $0.day >= from && $0.day <= through }
-            .map { Payment(day: $0.day, label: String(localized: "Credit purchase"), amount: $0.amount) }
+            .map { Payment(day: $0.day, label: PaymentWording(isConnected: isConnected).item, amount: $0.amount) }
         return (charges + purchases).sorted { $0.day < $1.day }
     }
 

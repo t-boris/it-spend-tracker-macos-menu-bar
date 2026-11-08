@@ -146,7 +146,7 @@ struct ServiceHistoryChart: View {
         let months = currentMonth.adding(months: -11).through(currentMonth)
         let usageLabel = ledger.isConnected && isEstimate ? "≈ " + String(localized: "Usage") : String(localized: "Usage")
         let subscriptionsLabel = String(localized: "Subscriptions")
-        let purchasesLabel = String(localized: "Credit purchases")
+        let purchasesLabel = PaymentWording(isConnected: ledger.isConnected).chartKind
         let parts = months.flatMap { month -> [Part] in
             var result: [Part] = []
             if ledger.isConnected, let usage = ledger.usage(in: month).decimal, usage != 0 {
