@@ -12,6 +12,11 @@ struct DailyHistory: View {
         let name: String
         let service: TrackedService
         let ledger: ServiceLedger
+
+        /// Whether the total of `days` over `series` contains an approximate amount (DEC-033).
+        static func isApproximate(_ series: [Series], on days: [Day], today: Day) -> Bool {
+            series.contains { item in days.contains { item.service.isApproximate(on: $0, today: today) } }
+        }
     }
 
     struct DayPoint: Identifiable {
@@ -281,13 +286,20 @@ struct DailyHistory: View {
             Divider()
             ForEach(Array(range.enumerated().reversed()), id: \.element) { index, day in
                 let largest = series.compactMap { item in
-                    item.ledger.spend(on: day, today: today).decimal.map { (name: item.service.name, amount: $0) }
+                    item.ledger.spend(on: day, today: today).decimal.map {
+                        (name: item.service.name, amount: $0, approximate: item.service.isApproximate(on: day, today: today))
+                    }
                 }.filter { $0.amount > 0 }.max { $0.amount < $1.amount }
+                // The 7-day average contains an estimate when any of the days it averages does.
+                let window = Array(range[max(0, index - 6)...index])
                 GridRow {
                     Text(Format.day(day)).gridColumnAlignment(.leading)
-                    AmountText(amount: totals[index].map(Amount.value) ?? .noData)
-                    AmountText(amount: average[index].map(Amount.value) ?? .noData).foregroundStyle(.secondary)
-                    Text(largest.map { "\($0.name) · \(Format.usd($0.amount))" } ?? "—")
+                    AmountText(amount: totals[index].map(Amount.value) ?? .noData,
+                               approximate: DailyHistory.Series.isApproximate(series, on: [day], today: today))
+                    AmountText(amount: average[index].map(Amount.value) ?? .noData,
+                               approximate: DailyHistory.Series.isApproximate(series, on: window, today: today))
+                        .foregroundStyle(.secondary)
+                    Text(largest.map { "\($0.name) · \(Format.usd($0.amount, approximate: $0.approximate))" } ?? "—")
                         .foregroundStyle(.secondary).lineLimit(1).gridColumnAlignment(.leading)
                 }
             }
@@ -344,16 +356,19 @@ private struct DayDetail: View {
 
     var body: some View {
         let parts = series.compactMap { item in
-            item.ledger.spend(on: day, today: today).decimal.map { (name: item.name, amount: $0) }
+            item.ledger.spend(on: day, today: today).decimal.map {
+                (name: item.name, amount: $0, approximate: item.service.isApproximate(on: day, today: today))
+            }
         }.filter { $0.amount != 0 }.sorted { $0.amount > $1.amount }
         VStack(alignment: .leading, spacing: 2) {
             Text(Format.day(day)).font(.caption.weight(.semibold))
-            AmountText(amount: total.map(Amount.value) ?? .noData).font(.callout.weight(.semibold))
+            AmountText(amount: total.map(Amount.value) ?? .noData, approximate: parts.contains { $0.approximate })
+                .font(.callout.weight(.semibold))
             ForEach(parts.prefix(6), id: \.name) { part in
                 HStack {
                     Text(part.name)
                     Spacer(minLength: 12)
-                    Text(Format.usd(part.amount)).monospacedDigit()
+                    Text(Format.usd(part.amount, approximate: part.approximate)).monospacedDigit()
                 }
                 .font(.caption)
             }

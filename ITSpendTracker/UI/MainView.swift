@@ -228,7 +228,7 @@ struct WarningBadges: View {
         }
         if let increase = summary.increase {
             Image(systemName: "arrow.up.right.circle.fill").foregroundStyle(.orange)
-                .help(Text("Spend is up: \(Format.usd(increase.monthToDate)) vs \(Format.usd(increase.previousSamePeriod)) in the same days of last month"))
+                .help(Text("Spend is up: \(Format.usd(increase.monthToDate, approximate: summary.isApproximate)) vs \(Format.usd(increase.previousSamePeriod, approximate: summary.isApproximate)) in the same days of last month"))
                 .accessibilityLabel(Text("Spend increased"))
         }
         if let error = summary.refreshError {

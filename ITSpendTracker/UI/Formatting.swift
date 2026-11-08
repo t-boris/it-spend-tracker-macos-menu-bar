@@ -6,6 +6,11 @@ enum Format {
         value.formatted(.currency(code: "USD").precision(.fractionLength(2)))
     }
 
+    /// `usd` with the "≈" marker of approximate figures (DEC-033).
+    static func usd(_ value: Decimal, approximate: Bool) -> String {
+        (approximate ? "≈ " : "") + usd(value)
+    }
+
     static func tokens(_ value: Int) -> String {
         value.formatted(.number.notation(.compactName))
     }
@@ -48,7 +53,7 @@ struct AmountText: View {
 
     var body: some View {
         switch amount {
-        case .value(let value): Text(verbatim: (approximate ? "≈ " : "") + Format.usd(value)).monospacedDigit()
+        case .value(let value): Text(verbatim: Format.usd(value, approximate: approximate)).monospacedDigit()
         case .noData: Text("no data").foregroundStyle(.secondary)
         }
     }

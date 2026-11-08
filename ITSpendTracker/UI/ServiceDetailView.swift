@@ -139,7 +139,7 @@ struct ServiceDetailView: View {
                                   systemImage: "key.fill").foregroundStyle(.orange)
                         }
                         if let increase = summary.increase {
-                            Label("Spend is up: \(Format.usd(increase.monthToDate)) vs \(Format.usd(increase.previousSamePeriod)) in the same days of last month",
+                            Label("Spend is up: \(Format.usd(increase.monthToDate, approximate: summary.isApproximate)) vs \(Format.usd(increase.previousSamePeriod, approximate: summary.isApproximate)) in the same days of last month",
                                   systemImage: "arrow.up.right.circle.fill").foregroundStyle(.orange)
                         }
                     }

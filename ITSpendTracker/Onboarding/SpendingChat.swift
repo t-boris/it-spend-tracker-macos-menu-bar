@@ -77,7 +77,12 @@ enum SpendingSnapshot {
         let totals = Dictionary(uniqueKeysWithValues: months.map { month -> (String, Any) in
             ("\(month)", Self.amount(included.map { $0.spend(in: month) }.reduce(Amount.noData, +)))
         })
-        return ["today": "\(today)", "currency": "USD", "services": serviceEntries, "total_of_included_services_by_month": totals]
+        // A total that contains an estimated service is an approximation too (DEC-033).
+        let estimatedMonths = months.filter { month in
+            services.contains { $0.includedInTotal && $0.isApproximate(in: month) }
+        }.map { "\($0)" }
+        return ["today": "\(today)", "currency": "USD", "services": serviceEntries, "total_of_included_services_by_month": totals,
+                "total_months_containing_estimates": estimatedMonths]
     }
 
     @MainActor
@@ -135,7 +140,7 @@ final class SpendingChat {
         return """
         You are the analyst inside a personal macOS app that tracks a single user's spending on IT and AI services.
         Answer in \(language). Be concise and concrete: cite the numbers, name services and keys, give amounts in USD.
-        Values marked as estimates are approximations; say so when you rely on them. "no data" means unknown, not zero.
+        Values marked as estimates are approximations, and so is every total whose month is listed in total_months_containing_estimates; say so when you rely on them. "no data" means unknown, not zero.
         Base every statement on the data below; if the data cannot answer, say what is missing. Do not invent figures.
         You cannot change anything in the app; when the user should act (cancel, disable a key), say where and what.
 

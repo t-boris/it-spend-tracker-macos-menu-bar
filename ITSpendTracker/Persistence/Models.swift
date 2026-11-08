@@ -106,6 +106,12 @@ final class TrackedService {
         spendIsEstimate && (ledger.usage(in: month).decimal ?? 0) != 0
     }
 
+    /// Whether the spend of `day` contains an approximation. Monthly-booked usage is spread over the days (DEC-039),
+    /// so a day of such a service is approximate too.
+    func isApproximate(on day: Day, today: Day) -> Bool {
+        spendIsEstimate && (ledger.spend(on: day, today: today).decimal ?? 0) != 0
+    }
+
     /// A full 12-month fetch is needed when there is no history yet, or when the connector offers a
     /// breakdown that was never backfilled (services connected before breakdowns existed, DEC-027).
     var needsFullBackfill: Bool {
