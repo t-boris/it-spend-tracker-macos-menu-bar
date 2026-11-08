@@ -46,6 +46,7 @@
 		A2F4669663416A5C9BFA2EF2 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC71EB736E3FE00D69AB42A /* KeychainStore.swift */; };
 		B01AFA911CBA9E7F59E48185 /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137404D402464B6474DA81ED /* Forms.swift */; };
 		B5A768ECEEF613773BBDD7D4 /* DeclarativeConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCC0C7BE69A02037598E335 /* DeclarativeConnector.swift */; };
+		B66A26A196263BA8EA85D6E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A645AA4012BF51F62519D773 /* Assets.xcassets */; };
 		C126F8E4484BE05030635CF3 /* KeyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076102B70BB865BC6ADFD40 /* KeyDetailView.swift */; };
 		C36D7E1ABBC448B2C2B8286E /* Trends.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BE0034DB72AB40CC8E89E /* Trends.swift */; };
 		C4CF68F20D095F9422363CE8 /* Ledger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9E107866F43B30C555EDFF /* Ledger.swift */; };
@@ -117,6 +118,7 @@
 		98CF6B20FD9D10CD1D54FB58 /* AddServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddServiceView.swift; sourceTree = "<group>"; };
 		9CAD853BDD0B0F990904985E /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
 		A375B60329EDF4A691F58478 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
+		A645AA4012BF51F62519D773 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0FDDB1552A59E5C9193AC44 /* SpendingChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingChat.swift; sourceTree = "<group>"; };
 		B7AC63DDF5776F7290DB9AA6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BF3AED0F0B874E5ADA349838 /* AnthropicConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicConnector.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		796F032544CF0945A1A4278A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A645AA4012BF51F62519D773 /* Assets.xcassets */,
 				25CDD93AC252472E103C56D9 /* Info.plist */,
 				676DEF8AE36D9849C347FEA3 /* Localizable.xcstrings */,
 			);
@@ -383,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B66A26A196263BA8EA85D6E7 /* Assets.xcassets in Resources */,
 				062A2C534F8EF7FBD3B1F7A2 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
