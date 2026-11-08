@@ -638,8 +638,13 @@ struct UsageMetricsSection: View {
                                 Self.approximate(rows).frame(minWidth: 80, alignment: .trailing)
                             }
                             ForEach(rows.sorted { $0.value > $1.value }, id: \.persistentModelID) { row in
+                                // A project is one tag target however many metrics list it (DEC-025), so its rows share the tags.
+                                let target = TagTarget.usageProject(organization: row.organization, name: row.project)
+                                let name = row.label(showingOrganization: severalOrganizations)
                                 HStack {
-                                    Text(row.label(showingOrganization: severalOrganizations)).lineLimit(1).truncationMode(.middle)
+                                    TagButton(service: service, target: target, name: name)
+                                    Text(name).lineLimit(1).truncationMode(.middle)
+                                    TagChips(tags: service.tags(for: target))
                                     Spacer()
                                     Text(Self.number(row.value)).monospacedDigit()
                                     Self.approximate([row]).frame(minWidth: 80, alignment: .trailing)
@@ -651,7 +656,6 @@ struct UsageMetricsSection: View {
                 }
             }
             if covered, !records.isEmpty {
-                projectTags(records, showingOrganization: severalOrganizations)
                 LabeledContent("≈ Total for the month") {
                     Self.approximate(records).font(.body.weight(.semibold))
                 }
@@ -694,25 +698,6 @@ struct UsageMetricsSection: View {
     }
 
     /// "≈ $X" for the rows' approximate cost; "≈ ?" when a plan's rates are unknown.
-    /// Tags of the projects shown for the selected month; a project is identified by organization and name (DEC-025).
-    @ViewBuilder
-    private func projectTags(_ records: [UsageMetricRecord], showingOrganization: Bool) -> some View {
-        let projects = Dictionary(grouping: records) { TagTarget.usageProject(organization: $0.organization, name: $0.project) }
-        VStack(alignment: .leading, spacing: 3) {
-            Text("Tags").font(.callout.weight(.semibold))
-            ForEach(projects.keys.sorted { $0.reference < $1.reference }, id: \.self) { target in
-                let name = projects[target]?.first?.label(showingOrganization: showingOrganization) ?? target.reference
-                HStack {
-                    Text(name).lineLimit(1).truncationMode(.middle)
-                    TagChips(tags: service.tags(for: target))
-                    Spacer()
-                    TagButton(service: service, target: target, name: name)
-                }
-                .font(.caption)
-            }
-        }
-    }
-
     static func approximate(_ rows: [UsageMetricRecord]) -> Text {
         let costs = rows.map(\.approximateCost)
         if costs.contains(where: { $0 == nil }) && costs.allSatisfy({ $0 == nil }) {
