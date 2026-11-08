@@ -20,13 +20,15 @@ enum WarningRules {
 
     /// Month-to-date spend vs. the same number of days of the previous month:
     /// warns when it is more than 20% higher and at least 5 USD higher.
+    /// Usage the provider books once per month (Neon, GitHub) is spread over the days of its month first (DEC-039),
+    /// so the previous month is prorated by day instead of being counted whole against a partial current month.
     static func spendIncrease(ledger: ServiceLedger, today: Day) -> Increase? {
         let current = today.calendarMonth
         let previous = current.previous
         let previousLastDay = Day(year: previous.year, month: previous.month,
                                   day: min(today.day, previous.dayCount))
-        guard let now = ledger.spend(from: current.firstDay, through: today).decimal,
-              let before = ledger.spend(from: previous.firstDay, through: previousLastDay).decimal
+        guard let now = ledger.dailySpend(from: current.firstDay, through: today, today: today).decimal,
+              let before = ledger.dailySpend(from: previous.firstDay, through: previousLastDay, today: today).decimal
         else { return nil }
         let exceedsRatio = now > before * (1 + increaseRatio)
         let exceedsFloor = now - before >= increaseMinimumUSD

@@ -179,6 +179,29 @@ private func m(_ year: Int, _ month: Int) -> Month { Month(year: year, month: mo
         #expect(WarningRules.spendIncrease(ledger: ledger, today: d(2026, 9, 10)) == nil)
     }
 
+    /// REQ-008: usage booked once per month (Neon, GitHub) is prorated by day, not compared whole against a partial month.
+    private func monthlyBooked(_ costs: [Day: Decimal]) -> ServiceLedger {
+        ServiceLedger(isConnected: true, providerDailyCosts: costs, providerCoverageStart: d(2026, 1, 1), usageIsDaily: false)
+    }
+
+    @Test func monthlyBookedUsageIsProratedByDay() {
+        // August 310 over 31 days = 10/day; 10 days = 100. September so far 150 (15/day): a real rise.
+        // Counting August whole (310) against 150 would never warn.
+        let ledger = monthlyBooked([d(2026, 8, 1): 310, d(2026, 9, 1): 150])
+        #expect(WarningRules.spendIncrease(ledger: ledger, today: d(2026, 9, 10)) == .init(monthToDate: 150, previousSamePeriod: 100))
+    }
+
+    @Test func monthlyBookedUsageAtTheSamePaceDoesNotWarn() {
+        let ledger = monthlyBooked([d(2026, 8, 1): 310, d(2026, 9, 1): 100])  // 10/day in both months
+        #expect(WarningRules.spendIncrease(ledger: ledger, today: d(2026, 9, 10)) == nil)
+    }
+
+    @Test func monthlyBookedUsageComparesWholePreviousMonthOnItsLastDay() {
+        // March 31 compares against all of February: 280 over 28 days = 10/day; March 465 over 31 days = 15/day.
+        let ledger = monthlyBooked([d(2026, 2, 1): 280, d(2026, 3, 1): 465])
+        #expect(WarningRules.spendIncrease(ledger: ledger, today: d(2026, 3, 31)) == .init(monthToDate: 465, previousSamePeriod: 280))
+    }
+
     @Test func clampsToShorterPreviousMonth() {
         // March 31 compares against all of February.
         let ledger = ledger([d(2026, 2, 28): 10, d(2026, 3, 31): 30])
