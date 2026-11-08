@@ -12,6 +12,7 @@
 		080489D253FB81F43ED4AB48 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAD853BDD0B0F990904985E /* Connector.swift */; };
 		175BA55C2DAC4891765DDE7E /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7137077D839B3A110E99102E /* DemoData.swift */; };
 		1AD20EC18AACD547A310F2D5 /* SpendingChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDDB1552A59E5C9193AC44 /* SpendingChat.swift */; };
+		1B1CBFA74F42967BA7266086 /* MonthComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27A1637CF915C929F31CD3 /* MonthComposition.swift */; };
 		1D9430474F6CB614A236B2BA /* HistoryRenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E2C320D9D57924C567F70 /* HistoryRenderTests.swift */; };
 		24B28CF69600E6E65E8DC482 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032EE38C3C126A19853E3CCB /* Models.swift */; };
 		2D2209628BFEC12542A71164 /* CalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583C93B4F17AE9044207F4BC /* CalendarDay.swift */; };
@@ -51,6 +52,7 @@
 		C126F8E4484BE05030635CF3 /* KeyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076102B70BB865BC6ADFD40 /* KeyDetailView.swift */; };
 		C36D7E1ABBC448B2C2B8286E /* Trends.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BE0034DB72AB40CC8E89E /* Trends.swift */; };
 		C4CF68F20D095F9422363CE8 /* Ledger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9E107866F43B30C555EDFF /* Ledger.swift */; };
+		C5BF529FB4DE24CFF2A7B69F /* MonthCompositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AE7EFD9BC1F8782EFACE26 /* MonthCompositionTests.swift */; };
 		CC75C9AF671DC0B158BC4D37 /* ClineAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF873A0330ADF90E881AD8E4 /* ClineAuth.swift */; };
 		D6728C54B58ACB496F173CB8 /* ServiceSectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96ECCC4AAB42D6FBAA60AC /* ServiceSectionsTests.swift */; };
 		D72FFB563DFA81420D3430F8 /* AssistantCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB4BAFC88C65DF3AC0663F9 /* AssistantCLI.swift */; };
@@ -80,6 +82,7 @@
 		032EE38C3C126A19853E3CCB /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		046F4744CC1E5CE9FC6E75BB /* StatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
 		075FEDFBF560CC958859C911 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		0C27A1637CF915C929F31CD3 /* MonthComposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthComposition.swift; sourceTree = "<group>"; };
 		100A7D318C4E01443356EB5E /* TagTotals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTotals.swift; sourceTree = "<group>"; };
 		105D76C4DDB97CEA56B35B64 /* GitHubConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubConnector.swift; sourceTree = "<group>"; };
 		11B84850A679FAFFC68546A9 /* DailyHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyHistoryView.swift; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 		C35EEEA91C7330A2B565D994 /* DeclarativeAndOnboardingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarativeAndOnboardingTests.swift; sourceTree = "<group>"; };
 		C777FE283DDDEB9945AFF884 /* RefreshPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshPolicy.swift; sourceTree = "<group>"; };
 		C7E252FB5B9EDE42A38139A0 /* InvoiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTests.swift; sourceTree = "<group>"; };
+		D6AE7EFD9BC1F8782EFACE26 /* MonthCompositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCompositionTests.swift; sourceTree = "<group>"; };
 		DC1DC01835D73D6D6443D372 /* ITSpendTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ITSpendTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9E107866F43B30C555EDFF /* Ledger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ledger.swift; sourceTree = "<group>"; };
 		DF873A0330ADF90E881AD8E4 /* ClineAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClineAuth.swift; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 				2E21C8B09537006CEE51BE6F /* Breakdown.swift */,
 				583C93B4F17AE9044207F4BC /* CalendarDay.swift */,
 				DD9E107866F43B30C555EDFF /* Ledger.swift */,
+				0C27A1637CF915C929F31CD3 /* MonthComposition.swift */,
 				C777FE283DDDEB9945AFF884 /* RefreshPolicy.swift */,
 				100A7D318C4E01443356EB5E /* TagTotals.swift */,
 				FE8BE0034DB72AB40CC8E89E /* Trends.swift */,
@@ -288,6 +293,7 @@
 				A375B60329EDF4A691F58478 /* DomainTests.swift */,
 				273E2C320D9D57924C567F70 /* HistoryRenderTests.swift */,
 				C7E252FB5B9EDE42A38139A0 /* InvoiceTests.swift */,
+				D6AE7EFD9BC1F8782EFACE26 /* MonthCompositionTests.swift */,
 				EB96ECCC4AAB42D6FBAA60AC /* ServiceSectionsTests.swift */,
 			);
 			path = ITSpendTrackerTests;
@@ -435,6 +441,7 @@
 				C4CF68F20D095F9422363CE8 /* Ledger.swift in Sources */,
 				F840A9EAAED0152D962A80C8 /* MainView.swift in Sources */,
 				24B28CF69600E6E65E8DC482 /* Models.swift in Sources */,
+				1B1CBFA74F42967BA7266086 /* MonthComposition.swift in Sources */,
 				3A74CCE51352C4054BFAE67B /* NeonConnector.swift in Sources */,
 				A15EF27D207594F06CD9E0ED /* OpenAIConnector.swift in Sources */,
 				017ECF9B55C8C622EA01C134 /* RefreshEngine.swift in Sources */,
@@ -465,6 +472,7 @@
 				4EBCD00A1AF608EF17166ABD /* DomainTests.swift in Sources */,
 				1D9430474F6CB614A236B2BA /* HistoryRenderTests.swift in Sources */,
 				9613D0041A1E331AA0BD144A /* InvoiceTests.swift in Sources */,
+				C5BF529FB4DE24CFF2A7B69F /* MonthCompositionTests.swift in Sources */,
 				D6728C54B58ACB496F173CB8 /* ServiceSectionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

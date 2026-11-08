@@ -50,7 +50,7 @@ struct ServiceDetailView: View {
     @State private var sheet: Sheet?
     @State private var confirmingRemoval = false
     @State private var actionError: String?
-    @State private var breakdownMonth: Month?
+    @State private var selectedMonth: Month?
     @State private var pickingInvoice = false
     @State private var invoiceFile: InvoiceFile?
 
@@ -103,15 +103,6 @@ struct ServiceDetailView: View {
                     Label("Approximate: computed from usage and Neon's published rates for your plan.", systemImage: "equal.circle")
                         .font(.caption).foregroundStyle(.secondary)
                 }
-                if service.isConnected && !service.subscriptionRecords.isEmpty {
-                    // Usage vs subscription split (DEC-026, DEC-027).
-                    LabeledContent("Usage") {
-                        AmountText(amount: ledger.usage(in: today.calendarMonth), approximate: service.spendIsEstimate)
-                    }
-                    LabeledContent("Subscriptions") {
-                        Text(Format.usd(ledger.subscriptionTotal(in: today.calendarMonth))).monospacedDigit()
-                    }
-                }
                 if service.isConnected {
                     LabeledContent("Last successful update") {
                         if let last = service.lastSuccessfulRefresh { Text(Format.relative(last)) } else { Text("never") }
@@ -158,6 +149,7 @@ struct ServiceDetailView: View {
                 Text(service.name).font(.title2.weight(.semibold)).foregroundStyle(.primary)
             }
 
+            monthSection(service, today: today)
             subscriptionsSection(service, today: today)
             let sections = ServiceSections(isConnected: service.isConnected,
                                            hasUsageMetrics: service.connector?.descriptor.capabilities.usageMetrics == true)
@@ -434,21 +426,43 @@ struct ServiceDetailView: View {
         }
     }
 
+    // MARK: Selected month (REQ-015)
+
+    /// Usage, subscriptions and total for the month chosen here; the breakdown below follows the same month.
+    @ViewBuilder
+    private func monthSection(_ service: TrackedService, today: Day) -> some View {
+        let month = selectedMonth ?? today.calendarMonth
+        let months = today.calendarMonth.adding(months: -11).through(today.calendarMonth).reversed()
+        let composition = MonthComposition(ledger: service.ledger, month: month)
+        Section {
+            Picker("Month", selection: Binding(get: { month }, set: { selectedMonth = $0 })) {
+                ForEach(Array(months), id: \.self) { Text(Format.monthLong($0)).tag($0) }
+            }
+            if let usage = composition.usage {
+                LabeledContent("Usage") { AmountText(amount: usage, approximate: service.spendIsEstimate) }
+            }
+            if let subscriptions = composition.subscriptions {
+                LabeledContent("Subscriptions") { Text(Format.usd(subscriptions)).monospacedDigit() }
+            }
+            LabeledContent("Total") {
+                AmountText(amount: composition.total, approximate: service.spendIsEstimate).fontWeight(.semibold)
+            }
+        } header: {
+            Text("Month")
+        }
+    }
+
     // MARK: Breakdown (REQ-015, DEC-027)
 
     @ViewBuilder
     private func breakdownSection(_ service: TrackedService, today: Day) -> some View {
         let capabilities = service.connector?.descriptor.capabilities
         let supported = capabilities.map { $0.breakdownByLineItem || $0.breakdownByProject || $0.breakdownByAccount } ?? false
-        let months = today.calendarMonth.adding(months: -11).through(today.calendarMonth).reversed()
-        let month = breakdownMonth ?? today.calendarMonth
+        let month = selectedMonth ?? today.calendarMonth
         Section {
             if !supported {
                 Text("no data").foregroundStyle(.secondary)
             } else {
-                Picker("Month", selection: Binding(get: { month }, set: { breakdownMonth = $0 })) {
-                    ForEach(Array(months), id: \.self) { Text(Format.monthLong($0)).tag($0) }
-                }
                 let covered = service.breakdownStartMonthIndex.map { month.index >= $0 } ?? false
                 let rows = service.breakdown.filter { $0.monthIndex == month.index }
                 if !covered {
