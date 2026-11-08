@@ -2,7 +2,7 @@
 type: feature
 id: tags-for-services-and-provider-items
 title: Tags for Services and Provider Items
-status: implementing
+status: implemented
 owner: Owner
 created: 2026-11-08
 provenance: Created from the quick feature intake
