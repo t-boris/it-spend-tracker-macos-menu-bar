@@ -35,10 +35,12 @@ struct NeonConnector: Connector {
                 // Monthly buckets for history; the month in progress is not in them yet, so it is summed from
                 // daily buckets (Neon keeps 60 days of daily data).
                 let currentMonth = request.today.calendarMonth
-                let monthly = try await consumption(key: key, organizationID: organization.id, from: firstMonth.firstDay,
-                                                    to: currentMonth.next.firstDay, granularity: "monthly", projectNames: names)
-                let daily = try await consumption(key: key, organizationID: organization.id, from: currentMonth.firstDay,
-                                                  to: request.today.nextDay, granularity: "daily", projectNames: names)
+                let monthly = try await consumption(key: key, organizationID: organization.id, organizationName: organization.name ?? organization.id,
+                                                    from: firstMonth.firstDay, to: currentMonth.next.firstDay,
+                                                    granularity: "monthly", projectNames: names)
+                let daily = try await consumption(key: key, organizationID: organization.id, organizationName: organization.name ?? organization.id,
+                                                  from: currentMonth.firstDay, to: request.today.nextDay,
+                                                  granularity: "daily", projectNames: names)
                 metrics += monthly.filter { $0.month != currentMonth } + daily.filter { $0.month == currentMonth }
             } catch let error as ConnectorError {
                 // A free organization has no consumption history: informational, not an error.
@@ -52,12 +54,13 @@ struct NeonConnector: Connector {
         // The approximate cost (usage × plan rates, DEC-033) is Neon's spend, booked on the first day of each month.
         var daily: [Day: Decimal] = [:]
         var breakdown: [BreakdownRow] = []
+        let severalOrganizations = Set(usage.compactMap(\.organization)).count > 1
         for row in usage {
             guard let cost = NeonPricing.cost(metric: row.metric, value: row.value, plan: row.plan), cost != 0 else { continue }
             daily[row.month.firstDay, default: 0] += cost
             let title = UsageMetricKind(rawValue: row.metric).map { String(localized: $0.title) } ?? row.metric
             breakdown.append(BreakdownRow(month: row.month, dimension: .lineItem, label: title, amount: cost))
-            breakdown.append(BreakdownRow(month: row.month, dimension: .project, label: row.project, amount: cost))
+            breakdown.append(BreakdownRow(month: row.month, dimension: .project, label: row.label(showingOrganization: severalOrganizations), amount: cost))
         }
         return ConnectorSnapshot(dailyCosts: daily, coveredFrom: firstMonth.firstDay, keys: keys, tokenUsage: nil,
                                  breakdown: breakdown.merged(), breakdownFrom: firstMonth,
@@ -115,8 +118,8 @@ struct NeonConnector: Connector {
 
     /// `to` is the exclusive end of the bucket that contains now. Neon rounds `from` and `to` down to the bucket
     /// start, so `to = now` would drop the bucket in progress and, on its first day, send an empty range (HTTP 400).
-    private func consumption(key: String, organizationID: String, from: Day, to: Day, granularity: String,
-                             projectNames: [String: String]) async throws -> [UsageMetricRow] {
+    private func consumption(key: String, organizationID: String, organizationName: String, from: Day, to: Day,
+                             granularity: String, projectNames: [String: String]) async throws -> [UsageMetricRow] {
         let metricNames = UsageMetricKind.allCases.map(\.rawValue).joined(separator: ",")
         var rows: [UsageMetricRow] = []
         var cursor: String?
@@ -134,7 +137,8 @@ struct NeonConnector: Connector {
                         for metric in timeframe.metrics ?? [] {
                             guard let kind = UsageMetricKind(rawValue: metric.metric_name), let raw = metric.value?.value else { continue }
                             rows.append(UsageMetricRow(month: month, project: name, metric: kind.rawValue,
-                                                       value: raw / kind.divisor, plan: period.period_plan))
+                                                       value: raw / kind.divisor, plan: period.period_plan,
+                                                       organization: organizationName))
                         }
                     }
                 }

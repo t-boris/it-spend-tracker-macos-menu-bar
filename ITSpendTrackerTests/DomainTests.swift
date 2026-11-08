@@ -280,6 +280,35 @@ private func m(_ year: Int, _ month: Int) -> Month { Month(year: year, month: mo
     }
 }
 
+@Suite struct UsageMetricOrganizationTests {
+    private let august = Month(year: 2026, month: 8)
+
+    @Test func mergeKeepsOrganizationsApartButSumsWithinOne() {
+        func row(_ organization: String?, _ value: Decimal) -> UsageMetricRow {
+            UsageMetricRow(month: august, project: "app", metric: "compute_unit_seconds", value: value, organization: organization)
+        }
+        let merged = [row("Alpha", 1), row("Beta", 2), row("Alpha", 3)].merged()
+        #expect(merged.count == 2)
+        #expect(merged.first { $0.organization == "Alpha" }?.value == 4)   // daily buckets of one organization add up
+        #expect(merged.first { $0.organization == "Beta" }?.value == 2)
+    }
+
+    @Test func labelShowsTheOrganizationOnlyWhenThereAreSeveral() {
+        let row = UsageMetricRow(month: august, project: "app", metric: "m", value: 1, organization: "Alpha")
+        #expect(row.label(showingOrganization: true) == "app (Alpha)")
+        #expect(row.label(showingOrganization: false) == "app")
+        let legacy = UsageMetricRow(month: august, project: "app", metric: "m", value: 1)      // saved before organizations were stored
+        #expect(legacy.label(showingOrganization: true) == "app")
+        #expect(UsageMetricLabel.project("app", organization: "", showingOrganization: true) == "app")
+    }
+
+    @Test func recordKeepsTheOrganization() {
+        let record = UsageMetricRecord(UsageMetricRow(month: august, project: "app", metric: "m", value: 1, organization: "Beta"))
+        #expect(record.organization == "Beta")
+        #expect(record.label(showingOrganization: true) == "app (Beta)")
+    }
+}
+
 @Suite struct KeyCostSplitTests {
     typealias Cost = KeyCostSplit.ServiceCost
 

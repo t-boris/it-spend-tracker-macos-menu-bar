@@ -595,6 +595,8 @@ struct UsageMetricsSection: View {
         let selected = month ?? latestWithData ?? today.calendarMonth
         let records = service.usageMetrics.filter { $0.monthIndex == selected.index }
         let covered = service.usageMetricsStartMonthIndex.map { selected.index >= $0 } ?? false
+        // With several organizations a project is shown as "Project (Org)", so equal names stay apart.
+        let severalOrganizations = Set(service.usageMetrics.compactMap(\.organization)).count > 1
         Section {
             if !service.usageMetrics.isEmpty {
                 overviewTable(months: months, selected: selected)
@@ -617,9 +619,9 @@ struct UsageMetricsSection: View {
                                 Text("\(Self.number(rows.reduce(0) { $0 + $1.value })) \(String(localized: kind.unit))").monospacedDigit()
                                 Self.approximate(rows).frame(minWidth: 80, alignment: .trailing)
                             }
-                            ForEach(rows.sorted { $0.value > $1.value }, id: \.project) { row in
+                            ForEach(rows.sorted { $0.value > $1.value }, id: \.persistentModelID) { row in
                                 HStack {
-                                    Text(row.project).lineLimit(1).truncationMode(.middle)
+                                    Text(row.label(showingOrganization: severalOrganizations)).lineLimit(1).truncationMode(.middle)
                                     Spacer()
                                     Text(Self.number(row.value)).monospacedDigit()
                                     Self.approximate([row]).frame(minWidth: 80, alignment: .trailing)

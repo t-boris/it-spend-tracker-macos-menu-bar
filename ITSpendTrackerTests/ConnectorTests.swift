@@ -396,7 +396,7 @@ private func fetch(_ credentials: [String: String], from: Day = Day(year: 2026, 
 @Suite struct NeonConnectorTests {
     @Test func readsUsageMetricsPerOrganizationAndProject() async throws {
         let http = StubHTTP()
-        http.on("/api/v2/users/me/organizations", #"{"organizations":[{"id":"org-1","name":"Alex"},{"id":"org-free","name":"Free org"}]}"#)
+        http.on("/api/v2/users/me/organizations", #"{"organizations":[{"id":"org-1","name":"Example Org"},{"id":"org-free","name":"Free org"}]}"#)
         http.on("/api/v2/projects", query: "org_id=org-1", #"{"projects":[{"id":"p1","name":"web-app"}]}"#)
         http.on("/api/v2/projects", query: "org_id=org-free", #"{"projects":[]}"#)
         http.on("/api/v2/consumption_history/v2/projects", query: "granularity=daily", """
@@ -418,11 +418,11 @@ private func fetch(_ credentials: [String: String], from: Day = Day(year: 2026, 
         let september = Month(year: 2026, month: 9)
         let metrics = try #require(snapshot.usageMetrics)
         // The month in progress comes from daily buckets (1 + 0.5 CU-hours), not from the monthly bucket.
-        #expect(metrics.contains(UsageMetricRow(month: september, project: "web-app", metric: "compute_unit_seconds", value: 1.5)))
+        #expect(metrics.contains(UsageMetricRow(month: september, project: "web-app", metric: "compute_unit_seconds", value: 1.5, organization: "Example Org")))
         #expect(metrics.first { $0.month == september }?.plan == nil) // the daily stub has no period_plan
         #expect(metrics.filter { $0.month == september && $0.metric == "compute_unit_seconds" }.count == 1)
-        #expect(metrics.contains(UsageMetricRow(month: Month(year: 2026, month: 8), project: "web-app", metric: "root_branch_bytes_month", value: 2.5, plan: "launch")))
-        #expect(metrics.contains(UsageMetricRow(month: Month(year: 2026, month: 8), project: "web-app", metric: "extra_branches_month", value: 2, plan: "launch")))
+        #expect(metrics.contains(UsageMetricRow(month: Month(year: 2026, month: 8), project: "web-app", metric: "root_branch_bytes_month", value: 2.5, plan: "launch", organization: "Example Org")))
+        #expect(metrics.contains(UsageMetricRow(month: Month(year: 2026, month: 8), project: "web-app", metric: "extra_branches_month", value: 2, plan: "launch", organization: "Example Org")))
         #expect(snapshot.usageMetricsFrom == Month(year: 2025, month: 10)) // monthly history: last year only
         #expect(snapshot.spendUnavailableReason == nil)
         // ≈ spend (DEC-033): August on Launch — compute 2 CU-h × 0.106 = 0.212, storage 2.5 GB-mo × 0.35 = 0.875,
@@ -434,11 +434,38 @@ private func fetch(_ credentials: [String: String], from: Day = Day(year: 2026, 
         #expect(snapshot.keys?.first?.externalID == "123")
     }
 
+    /// Project names are only unique inside an organization (REQ-011): two organizations can each have "app".
+    @Test func sameProjectNameInTwoOrganizationsStaysSeparate() async throws {
+        let http = StubHTTP()
+        http.on("/api/v2/users/me/organizations", #"{"organizations":[{"id":"org-a","name":"Alpha"},{"id":"org-b","name":"Beta"}]}"#)
+        http.on("/api/v2/projects", query: "org_id=org-a", #"{"projects":[{"id":"pa","name":"app"}]}"#)
+        http.on("/api/v2/projects", query: "org_id=org-b", #"{"projects":[{"id":"pb","name":"app"}]}"#)
+        http.on("/api/v2/consumption_history/v2/projects", query: "granularity=daily", #"{"projects":[]}"#)
+        func monthly(_ project: String, seconds: Int) -> String {
+            """
+            {"projects":[{"project_id":"\(project)","periods":[{"period_plan":"launch","consumption":[
+              {"timeframe_start":"2026-08-01T00:00:00Z","metrics":[{"metric_name":"compute_unit_seconds","value":\(seconds)}]}]}]}]}
+            """
+        }
+        http.on("/api/v2/consumption_history/v2/projects", query: "org_id=org-a&from=2025-10-01", monthly("pa", seconds: 3600))
+        http.on("/api/v2/consumption_history/v2/projects", query: "org_id=org-b&from=2025-10-01", monthly("pb", seconds: 7200))
+        http.on("/api/v2/api_keys", "[]")
+        let snapshot = try await NeonConnector(http: http).fetch(fetch(["apiKey": "napi_x"], from: Day(year: 2025, month: 9, day: 1)))
+        let august = Month(year: 2026, month: 8)
+        let metrics = try #require(snapshot.usageMetrics)
+        #expect(metrics.contains(UsageMetricRow(month: august, project: "app", metric: "compute_unit_seconds", value: 1, plan: "launch", organization: "Alpha")))
+        #expect(metrics.contains(UsageMetricRow(month: august, project: "app", metric: "compute_unit_seconds", value: 2, plan: "launch", organization: "Beta")))
+        #expect(metrics.count == 2)  // not merged into one "app" of 3 CU-hours
+        // The project breakdown tells them apart as "Project (Org)".
+        let projects = (snapshot.breakdown ?? []).filter { $0.dimension == .project }.map(\.label).sorted()
+        #expect(projects == ["app (Alpha)", "app (Beta)"])
+    }
+
     /// Neon rounds `from`/`to` down to the bucket start; `to` must be the end of the bucket in progress, or the first
     /// UTC day of a month (and a service added this month) sends an empty range and gets HTTP 400.
     @Test func requestsEndAfterBucketInProgress() async throws {
         let http = StubHTTP()
-        http.on("/api/v2/users/me/organizations", #"{"organizations":[{"id":"org-1","name":"Alex"}]}"#)
+        http.on("/api/v2/users/me/organizations", #"{"organizations":[{"id":"org-1","name":"Example Org"}]}"#)
         http.on("/api/v2/projects", #"{"projects":[{"id":"p1","name":"web-app"}]}"#)
         http.on("/api/v2/consumption_history/v2/projects", query: "granularity=daily", """
         {"projects":[{"project_id":"p1","periods":[{"period_plan":"launch","consumption":[
@@ -455,7 +482,7 @@ private func fetch(_ credentials: [String: String], from: Day = Day(year: 2026, 
         #expect(queries.contains { $0.contains("from=2026-10-01T00:00:00Z&to=2026-11-01T00:00:00Z&granularity=monthly") })
         #expect(snapshot.notes.isEmpty)
         #expect(snapshot.usageMetrics?.contains(UsageMetricRow(month: Month(year: 2026, month: 10), project: "web-app",
-                                                              metric: "compute_unit_seconds", value: 0.2, plan: "launch")) == true)
+                                                              metric: "compute_unit_seconds", value: 0.2, plan: "launch", organization: "Example Org")) == true)
     }
 }
 

@@ -73,6 +73,21 @@ struct UsageMetricRow: Sendable, Equatable {
     var value: Decimal
     /// Provider plan for this project and period (Neon `period_plan`), used for the ≈ cost (DEC-033).
     var plan: String? = nil
+    /// Organization the project belongs to. Project names are only unique inside an organization, so two organizations
+    /// can each have a project with the same name; they must stay separate rows (REQ-011).
+    var organization: String? = nil
+
+    /// The project's name, with its organization when the account has several: "Project (Org)".
+    func label(showingOrganization: Bool) -> String {
+        UsageMetricLabel.project(project, organization: organization, showingOrganization: showingOrganization)
+    }
+}
+
+enum UsageMetricLabel {
+    static func project(_ project: String, organization: String?, showingOrganization: Bool) -> String {
+        guard showingOrganization, let organization, !organization.isEmpty else { return project }
+        return "\(project) (\(organization))"
+    }
 }
 
 extension Array where Element == UsageMetricRow {
@@ -81,7 +96,7 @@ extension Array where Element == UsageMetricRow {
         var sums: [String: UsageMetricRow] = [:]
         var order: [String] = []
         for row in self {
-            let key = "\(row.month)|\(row.project)|\(row.metric)"
+            let key = "\(row.month)|\(row.organization ?? "")|\(row.project)|\(row.metric)"
             if var existing = sums[key] {
                 existing.value += row.value
                 existing.plan = existing.plan ?? row.plan

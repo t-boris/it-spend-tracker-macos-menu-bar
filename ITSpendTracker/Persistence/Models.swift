@@ -282,6 +282,8 @@ final class UsageMetricRecord {
     var metric: String
     var value: Decimal
     var plan: String?
+    /// Organization of the project; `nil` in records saved before it was stored (refilled by the next refresh).
+    var organization: String?
     var service: TrackedService?
 
     init(_ row: UsageMetricRow) {
@@ -290,6 +292,11 @@ final class UsageMetricRecord {
         metric = row.metric
         value = row.value
         plan = row.plan
+        organization = row.organization
+    }
+
+    func label(showingOrganization: Bool) -> String {
+        UsageMetricLabel.project(project, organization: organization, showingOrganization: showingOrganization)
     }
 
     /// ≈ cost for orientation (DEC-033); `nil` when the plan's rates are unknown.
