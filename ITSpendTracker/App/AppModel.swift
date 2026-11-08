@@ -74,6 +74,9 @@ final class AppModel {
             .reduce(Amount.noData, +)
     }
 
+    /// The part of the next opened service page to scroll to, set by the Tags view (REQ-019).
+    var pendingServiceSection: ServiceSection?
+
     /// Current-month spend per tag across all services, for every kind of tagged target (REQ-019, REQ-020).
     var tagTotals: [TagTotal] {
         let month = today.calendarMonth
@@ -117,4 +120,10 @@ struct ServiceSummary: Identifiable {
     }
 
     var hasWarning: Bool { !expiringKeys.isEmpty || increase != nil }
+}
+
+/// A part of the service page that other pages can open directly.
+enum ServiceSection: Hashable {
+    case breakdown
+    case usage
 }

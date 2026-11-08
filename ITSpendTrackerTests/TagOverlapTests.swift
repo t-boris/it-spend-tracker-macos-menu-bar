@@ -156,4 +156,22 @@ import Testing
         let estimated = TagTotal.compute([service("A", spend: 100, estimate: true, tagged: [(.service, ["t"])])])
         #expect(estimated.first?.isApproximate == true)
     }
+
+    // MARK: Where a row opens (REQ-019)
+
+    @Test func eachRowOpensItsOwnPageOrSectionAndAMissingTargetOpensItsService() {
+        let totals = TagTotal.compute([service("A", spend: 5,
+                                               present: [state(.key("k1"), "Bot", 1), state(project("web"), "web", 2),
+                                                         state(.usageProject(organization: "Org", name: "api"), "api", 3)],
+                                               tagged: [(.service, ["t"]), (.key("k1"), ["t"]), (project("web"), ["t"]),
+                                                        (.usageProject(organization: "Org", name: "api"), ["t"]),
+                                                        (.key("gone"), ["t"]), (project("gone"), ["t"])])])
+        let destinations = Dictionary(uniqueKeysWithValues: (totals.first?.members ?? []).map { ($0.target, $0.destination) })
+        #expect(destinations[.service] == .service)
+        #expect(destinations[.key("k1")] == .key("k1"))
+        #expect(destinations[project("web")] == .breakdownSection)
+        #expect(destinations[.usageProject(organization: "Org", name: "api")] == .usageSection)
+        #expect(destinations[.key("gone")] == .service) // missing: no page of its own
+        #expect(destinations[project("gone")] == .service)
+    }
 }

@@ -49,6 +49,25 @@ struct TagTotal: Identifiable, Equatable, Sendable {
 
         var id: String { "\(serviceID?.uuidString ?? serviceName)|\(target.kind.rawValue)|\(target.scope)|\(target.reference)" }
 
+        /// Where opening this row goes (REQ-019). A target the provider no longer lists has no page of its own, so it
+        /// opens its parent service.
+        enum Destination: Equatable {
+            case service
+            case key(String)
+            case breakdownSection
+            case usageSection
+        }
+
+        var destination: Destination {
+            guard isPresent else { return .service }
+            switch target.kind {
+            case .service: return .service
+            case .key: return .key(target.reference)
+            case .breakdownItem: return .breakdownSection
+            case .usageProject: return .usageSection
+            }
+        }
+
         /// Costs in one class are provably disjoint from each other; costs in different classes may be the same money
         /// seen from two sides (DEC-035).
         fileprivate var disjointClass: String {

@@ -181,9 +181,7 @@ RU = {
 "Existing tags": "Существующие теги",
 "For API services, spend is the usage cost reported by the provider. Credit purchases and balance are for information only.": "Для сервисов с API тратами считается стоимость использования, которую сообщает провайдер. Покупки кредитов и остаток — только для информации.",
 "Key": "Ключ",
-"Keys without per-key spend from the provider are not included in the total.": "Ключи, по которым провайдер не сообщает траты, не входят в итог.",
 "No tags yet": "Тегов пока нет",
-"Open a service and tag its keys, e.g. by project or client. Each tag's spend is summed here across services.": "Откройте сервис и назначьте ключам теги, например по проекту или клиенту. Здесь траты по каждому тегу суммируются по всем сервисам.",
 "Open in window": "Открыть в окне",
 "Remaining is estimated from this balance, later purchases and the usage cost reported by the provider. Leave empty to clear.": "Остаток оценивается по этой сумме, последующим покупкам и стоимости использования, которую сообщает провайдер. Оставьте пустым, чтобы сбросить.",
 "Tags": "Теги",
@@ -417,6 +415,11 @@ RU = {
 "Project": "Проект",
 "Model / line item": "Модель / статья",
 "Separate tags with commas. Tags group services, keys and items across services on the Tags tab.": "Разделяйте теги запятыми. На вкладке «Теги» сервисы, ключи и статьи группируются по тегам во всех сервисах.",
+"Tag a service, a key or a breakdown row, e.g. by project or client. Each tag's spend is summed here across services.": "Назначьте тег сервису, ключу или строке разбивки, например по проекту или клиенту. Здесь траты по каждому тегу суммируются во всех сервисах.",
+"Not listed this month": "В этом месяце не найден",
+"Included in the tagged service": "Входит в сумму отмеченного сервиса",
+"Items without a cost this month are not included in the total.": "Позиции без суммы за этот месяц не входят в итог.",
+"The tagged costs in %@ may overlap, so this total is not shown. Each item shows its own amount.": "Отмеченные расходы в %@ могут пересекаться, поэтому итог не показан. У каждой позиции указана её собственная сумма.",
 }
 
 path = pathlib.Path(__file__).resolve().parent.parent / "ITSpendTracker/Resources/Localizable.xcstrings"

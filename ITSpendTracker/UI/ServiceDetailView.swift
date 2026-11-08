@@ -94,7 +94,8 @@ struct ServiceDetailView: View {
         let summary = model.summary(for: service)
         let ledger = service.ledger
         let today = model.today
-        return Form {
+        return ScrollViewReader { proxy in
+        Form {
             Section {
                 LabeledContent("This month") {
                     AmountText(amount: summary.currentMonthSpend, approximate: summary.isApproximate).font(.title3.weight(.semibold))
@@ -155,9 +156,9 @@ struct ServiceDetailView: View {
             let sections = ServiceSections(isConnected: service.isConnected,
                                            hasUsageMetrics: service.connector?.descriptor.capabilities.usageMetrics == true)
             if sections.usageMetrics {
-                UsageMetricsSection(service: service, today: today)
+                UsageMetricsSection(service: service, today: today).id(ServiceSection.usage)
             }
-            if sections.breakdown { breakdownSection(service, today: today) }
+            if sections.breakdown { breakdownSection(service, today: today).id(ServiceSection.breakdown) }
             if sections.keys { keysSection(service) }
             if sections.tokens { tokensSection(service) }
             creditsSection(service, ledger: ledger, today: today)
@@ -189,6 +190,15 @@ struct ServiceDetailView: View {
         }
         .formStyle(.grouped)
         .navigationTitle(service.name)
+        .onAppear { scrollToPendingSection(proxy) }
+        }
+    }
+
+    /// Opens the section the Tags view asked for (REQ-019); without a request the page stays at the top.
+    private func scrollToPendingSection(_ proxy: ScrollViewProxy) {
+        guard let section = model.pendingServiceSection else { return }
+        model.pendingServiceSection = nil
+        DispatchQueue.main.async { withAnimation { proxy.scrollTo(section, anchor: .top) } }
     }
 
     // MARK: Keys (REQ-003)

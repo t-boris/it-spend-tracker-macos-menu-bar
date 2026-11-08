@@ -115,6 +115,18 @@ import Testing
         #expect(service.tagAssignments.first?.displayName == "Bot")
     }
 
+    @Test func theTagsOfAMissingTargetCanStillBeRemoved() throws {
+        let store = try makeStore()
+        let service = try openAI(store)
+        let gone = TagTarget.breakdownItem(dimension: .lineItem, label: "gpt-5")
+        try store.setTags(["llm"], for: gone, displayName: "gpt-5", of: service) // never listed in the current data
+        try store.setTags(["llm", "old"], for: gone, displayName: "gpt-5", of: service)
+        #expect(service.tags(for: gone) == ["llm", "old"])
+        try store.setTags([], for: gone, displayName: "gpt-5", of: service)
+        #expect(service.tags(for: gone).isEmpty)
+        #expect(try store.context.fetchCount(FetchDescriptor<TagAssignmentRecord>()) == 0)
+    }
+
     @Test func renamedLabelIsANewTargetAndTheOldAssignmentStays() throws {
         let store = try makeStore()
         let service = try openAI(store)

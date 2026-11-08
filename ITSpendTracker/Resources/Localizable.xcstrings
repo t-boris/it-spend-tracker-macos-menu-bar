@@ -1783,6 +1783,16 @@
         }
       }
     },
+    "Included in the tagged service": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Входит в сумму отмеченного сервиса"
+          }
+        }
+      }
+    },
     "Input": {
       "localizations": {
         "ru": {
@@ -1833,6 +1843,16 @@
         }
       }
     },
+    "Items without a cost this month are not included in the total.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Позиции без суммы за этот месяц не входят в итог."
+          }
+        }
+      }
+    },
     "Key": {
       "localizations": {
         "ru": {
@@ -1879,16 +1899,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ключи истекают в течение 14 дней: %@"
-          }
-        }
-      }
-    },
-    "Keys without per-key spend from the provider are not included in the total.": {
-      "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ключи, по которым провайдер не сообщает траты, не входят в итог."
           }
         }
       }
@@ -2253,6 +2263,16 @@
         }
       }
     },
+    "Not listed this month": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В этом месяце не найден"
+          }
+        }
+      }
+    },
     "Not updated yet": {
       "localizations": {
         "ru": {
@@ -2269,16 +2289,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Заметка"
-          }
-        }
-      }
-    },
-    "Open a service and tag its keys, e.g. by project or client. Each tag's spend is summed here across services.": {
-      "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Откройте сервис и назначьте ключам теги, например по проекту или клиенту. Здесь траты по каждому тегу суммируются по всем сервисам."
           }
         }
       }
@@ -3223,6 +3233,16 @@
         }
       }
     },
+    "Tag a service, a key or a breakdown row, e.g. by project or client. Each tag's spend is summed here across services.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Назначьте тег сервису, ключу или строке разбивки, например по проекту или клиенту. Здесь траты по каждому тегу суммируются во всех сервисах."
+          }
+        }
+      }
+    },
     "Tags": {
       "localizations": {
         "ru": {
@@ -3469,6 +3489,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Провайдер не сообщает ни одного ключа."
+          }
+        }
+      }
+    },
+    "The tagged costs in %@ may overlap, so this total is not shown. Each item shows its own amount.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отмеченные расходы в %@ могут пересекаться, поэтому итог не показан. У каждой позиции указана её собственная сумма."
           }
         }
       }
