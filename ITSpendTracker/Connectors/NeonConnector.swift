@@ -1,7 +1,8 @@
 import Foundation
 
-/// Neon: usage metrics from the consumption history API (DEC-031, SRC-002). Neon reports usage, not money,
-/// so spend comes from subscriptions the user enters; no cost is estimated.
+/// Neon: usage metrics from the consumption history API (DEC-031, SRC-002). Neon reports usage, not money, so the
+/// spend shown is an approximation from usage and the published rates of the project's plan (DEC-033), marked ≈
+/// everywhere; subscriptions the user enters are added on top.
 struct NeonConnector: Connector {
     static let descriptor = ConnectorDescriptor(
         id: .neon,

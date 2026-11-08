@@ -1,7 +1,8 @@
 import Foundation
 
-/// Built-in v1 connectors (DEC-012, DEC-028, DEC-040, REQ-011). Neon and Fly.io have no usable spend API (SRC-002)
-/// and, like every other service, are added through manual entry.
+/// Built-in v1 connectors (DEC-012, DEC-028, DEC-040, REQ-011). Neon reports usage, not money: its spend is an
+/// approximation from usage and published plan rates, marked ≈ (DEC-031, DEC-033). Fly.io has no usable spend API
+/// (SRC-002); like every service without a connector it is added manually, for example from its invoice (DEC-046).
 enum ConnectorID: String, Codable, CaseIterable, Sendable, Identifiable {
     case openAI = "openai"
     case anthropic
