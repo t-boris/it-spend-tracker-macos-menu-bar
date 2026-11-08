@@ -48,8 +48,14 @@ struct KeyDetailView: View {
                         Text("unavailable").foregroundStyle(.secondary)
                     }
                 }
-                if let requests = key.requestsThisMonth {
-                    LabeledContent("Requests this month") { Text(requests.formatted()).monospacedDigit() }
+                if service.connector?.descriptor.capabilities.keyRequests == true {
+                    LabeledContent("Requests this month") {
+                        if let requests = key.requestsThisMonth {
+                            Text(requests.formatted()).monospacedDigit()
+                        } else {
+                            Text("unavailable").foregroundStyle(.secondary)
+                        }
+                    }
                 }
                 if availability.spendIsEstimate, key.currentMonthCost != nil {
                     Label("Approximate: this project's cost per Google service is split across its keys by their share of requests. Requests differ in size, so this is an estimate.",
@@ -67,16 +73,10 @@ struct KeyDetailView: View {
 
             Section("Key") {
                 LabeledContent("Service", value: service.name)
-                if let hint = key.hint, !hint.isEmpty {
-                    LabeledContent("Key") {
-                        Text(OpenAIConnector.compactRedacted(hint)).font(.callout.monospaced()).textSelection(.enabled)
-                    }
-                }
                 LabeledContent("ID") { Text(key.externalID).font(.callout.monospaced()).textSelection(.enabled) }
-                ForEach(Array(key.details.enumerated()), id: \.offset) { _, detail in
-                    LabeledContent { Text(detail.value).textSelection(.enabled) } label: { Text(detail.kind.title) }
+                ForEach(KeyFacts(hint: key.hint, status: key.status, details: key.details).rows, id: \.field.rawValue) { row in
+                    factRow(row)
                 }
-                if let status = key.status { LabeledContent("Status", value: status) }
                 dateRow("Created", available: key.createdAt != nil, date: key.createdAt, emptyText: "unavailable")
                 dateRow("Last used", available: availability.lastUsed, date: key.lastUsedAt, emptyText: "never")
                 dateRow("Expires", available: availability.expiry, date: key.expiresAt, emptyText: "no expiry")
@@ -104,6 +104,33 @@ struct KeyDetailView: View {
             }
         }
         .formStyle(.grouped)
+    }
+
+    /// A provider fact of the key: its values, or "unavailable" when the provider does not report it (REQ-016).
+    @ViewBuilder
+    private func factRow(_ row: KeyFacts.Row) -> some View {
+        switch row.field {
+        case .maskedValue:
+            LabeledContent("Key") {
+                if let text = row.text {
+                    Text(OpenAIConnector.compactRedacted(text)).font(.callout.monospaced()).textSelection(.enabled)
+                } else {
+                    Text("unavailable").foregroundStyle(.secondary)
+                }
+            }
+        case .status:
+            LabeledContent("Status") {
+                if let text = row.text { Text(text) } else { Text("unavailable").foregroundStyle(.secondary) }
+            }
+        case .project, .owner, .scopes:
+            if row.details.isEmpty {
+                LabeledContent(row.field.title) { Text("unavailable").foregroundStyle(.secondary) }
+            } else {
+                ForEach(Array(row.details.enumerated()), id: \.offset) { _, detail in
+                    LabeledContent { Text(detail.value).textSelection(.enabled) } label: { Text(detail.kind.title) }
+                }
+            }
+        }
     }
 
     private func dateRow(_ title: LocalizedStringKey, available: Bool, date: Date?, emptyText: LocalizedStringKey) -> some View {
@@ -200,6 +227,20 @@ struct KeyTokenUsage: View {
                     .font(.callout.monospacedDigit())
                 }
             }
+        }
+    }
+}
+
+extension KeyFacts.Field {
+    var rawValue: String { String(describing: self) }
+
+    var title: LocalizedStringKey {
+        switch self {
+        case .project: "Project / workspace"
+        case .maskedValue: "Key"
+        case .owner: "Owner"
+        case .status: "Status"
+        case .scopes: "Scopes"
         }
     }
 }
