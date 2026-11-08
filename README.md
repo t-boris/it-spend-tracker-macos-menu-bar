@@ -36,7 +36,7 @@ The confirmed brief, decisions and requirements are in [`docs/features/it-spend-
 - REQ-018 Spending chat
 - REQ-019 Daily history, trends and month forecast
 
-Decisions DEC-001..DEC-039 in `decisions/`; provider API facts in `references/SRC-002.md`.
+Decisions DEC-001..DEC-041 in `decisions/`; provider API facts in `references/SRC-002.md`.
 
 ## Install (local, launch at login)
 
