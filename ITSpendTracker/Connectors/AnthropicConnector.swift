@@ -30,7 +30,8 @@ struct AnthropicConnector: Connector {
         async let usage = fetchTokenUsage(key: key, from: monthStart)
         async let breakdown = fetchBreakdown(key: key, from: request.from)
         let rows = try await breakdown
-        return ConnectorSnapshot(dailyCosts: try await costs, coveredFrom: request.from,
+        let daily = try await costs
+        return ConnectorSnapshot(dailyCosts: daily, coveredFrom: request.coverageStart(for: daily),
                                  keys: try await keys, tokenUsage: try await usage,
                                  breakdown: rows, breakdownFrom: rows == nil ? nil : request.from.calendarMonth)
     }

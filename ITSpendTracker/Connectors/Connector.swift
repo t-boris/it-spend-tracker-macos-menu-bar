@@ -238,6 +238,13 @@ struct FetchRequest: Sendable {
     var credentials: [String: String]
     var from: Day
     var now: Date
+
+    /// First day the provider's answer covers (DEC-015): the start of the first month with any cost, never before `from`.
+    /// Months before an account existed come back empty; they are "no data", not a real $0. With no cost at all the
+    /// whole request stays covered: an idle account has genuine zero months. Zero-valued entries do not count as data.
+    func coverageStart(for dailyCosts: [Day: Decimal]) -> Day {
+        dailyCosts.filter { $0.value != 0 }.keys.min().map { max($0.calendarMonth.firstDay, from) } ?? from
+    }
 }
 
 protocol Connector: Sendable {

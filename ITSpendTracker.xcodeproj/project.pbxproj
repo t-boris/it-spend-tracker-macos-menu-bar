@@ -10,6 +10,7 @@
 		017ECF9B55C8C622EA01C134 /* RefreshEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771AF7E8B4541A5146B7C3B5 /* RefreshEngine.swift */; };
 		062A2C534F8EF7FBD3B1F7A2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 676DEF8AE36D9849C347FEA3 /* Localizable.xcstrings */; };
 		080489D253FB81F43ED4AB48 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAD853BDD0B0F990904985E /* Connector.swift */; };
+		1737258879FA0403807DEB31 /* CoverageStartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316BEA16E0C60901B7B44646 /* CoverageStartTests.swift */; };
 		175BA55C2DAC4891765DDE7E /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7137077D839B3A110E99102E /* DemoData.swift */; };
 		1AD20EC18AACD547A310F2D5 /* SpendingChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDDB1552A59E5C9193AC44 /* SpendingChat.swift */; };
 		1B1CBFA74F42967BA7266086 /* MonthComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27A1637CF915C929F31CD3 /* MonthComposition.swift */; };
@@ -96,6 +97,7 @@
 		273E2C320D9D57924C567F70 /* HistoryRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRenderTests.swift; sourceTree = "<group>"; };
 		2E21C8B09537006CEE51BE6F /* Breakdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breakdown.swift; sourceTree = "<group>"; };
 		3076102B70BB865BC6ADFD40 /* KeyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyDetailView.swift; sourceTree = "<group>"; };
+		316BEA16E0C60901B7B44646 /* CoverageStartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageStartTests.swift; sourceTree = "<group>"; };
 		325AD9DAC46EDAFDA095F97B /* InvoiceImportSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceImportSheet.swift; sourceTree = "<group>"; };
 		3ACD7455DDA65BDAE990EB65 /* OpenAIConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIConnector.swift; sourceTree = "<group>"; };
 		3CCC0C7BE69A02037598E335 /* DeclarativeConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclarativeConnector.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				1A0C1AB50E7505305EE37E73 /* ClineTests.swift */,
 				74C1BB97986CD421AAD38E3B /* ConnectorTests.swift */,
 				27266FEB4E9C90E3BA6A5F9E /* ConsoleLinkTests.swift */,
+				316BEA16E0C60901B7B44646 /* CoverageStartTests.swift */,
 				C35EEEA91C7330A2B565D994 /* DeclarativeAndOnboardingTests.swift */,
 				A375B60329EDF4A691F58478 /* DomainTests.swift */,
 				273E2C320D9D57924C567F70 /* HistoryRenderTests.swift */,
@@ -468,6 +471,7 @@
 				36E8579F8768960C62517E6D /* ClineTests.swift in Sources */,
 				637D28BCC4E3E537A56FC09B /* ConnectorTests.swift in Sources */,
 				3C03E288E694A82D8F1189B4 /* ConsoleLinkTests.swift in Sources */,
+				1737258879FA0403807DEB31 /* CoverageStartTests.swift in Sources */,
 				309143D4FF5A9F61573228C1 /* DeclarativeAndOnboardingTests.swift in Sources */,
 				4EBCD00A1AF608EF17166ABD /* DomainTests.swift in Sources */,
 				1D9430474F6CB614A236B2BA /* HistoryRenderTests.swift in Sources */,

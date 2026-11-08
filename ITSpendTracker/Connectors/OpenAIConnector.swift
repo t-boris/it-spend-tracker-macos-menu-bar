@@ -42,7 +42,7 @@ struct OpenAIConnector: Connector {
             }
         }
         let (rows, rowsFrom) = try await breakdown
-        return ConnectorSnapshot(dailyCosts: daily, coveredFrom: request.from,
+        return ConnectorSnapshot(dailyCosts: daily, coveredFrom: request.coverageStart(for: daily),
                                  keys: providerKeys, tokenUsage: try await usage,
                                  breakdown: rows, breakdownFrom: rowsFrom,
                                  keyMonthlyCosts: monthlyKeyCosts, keyCostsFrom: keyCostsFrom)

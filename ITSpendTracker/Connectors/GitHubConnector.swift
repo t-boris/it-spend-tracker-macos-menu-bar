@@ -61,7 +61,7 @@ struct GitHubConnector: Connector {
             }
         }
         if readable == 0, let firstError { throw firstError }
-        return ConnectorSnapshot(dailyCosts: daily, coveredFrom: request.from, keys: nil, tokenUsage: nil,
+        return ConnectorSnapshot(dailyCosts: daily, coveredFrom: request.coverageStart(for: daily), keys: nil, tokenUsage: nil,
                                  breakdown: breakdown.merged(), breakdownFrom: request.from.calendarMonth, notes: notes)
     }
 

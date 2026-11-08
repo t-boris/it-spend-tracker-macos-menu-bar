@@ -113,7 +113,7 @@ struct ClineConnector: SessionConnector {
                 continue
             }
         }
-        return ConnectorSnapshot(dailyCosts: daily, coveredFrom: request.from, keys: nil,
+        return ConnectorSnapshot(dailyCosts: daily, coveredFrom: request.coverageStart(for: daily), keys: nil,
                                  tokenUsage: tokens.values.sorted { $0.model < $1.model },
                                  breakdown: breakdown.merged(), breakdownFrom: request.from.calendarMonth,
                                  notes: notes, providerBalance: balance, providerBalanceUnavailable: balance == nil,
