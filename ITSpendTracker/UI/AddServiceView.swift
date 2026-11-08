@@ -352,10 +352,15 @@ struct AssistantAnswer: View {
             .background(.quaternary.opacity(0.5), in: RoundedRectangle(cornerRadius: 6))
     }
 
-    /// Markdown (inline) plus plain https URLs turned into links.
+    /// Markdown (inline) plus plain https URLs turned into links. Only https destinations stay clickable: a Markdown
+    /// link to `file:`, `x-apple.systempreferences:`, `javascript:` or any other scheme is shown as plain text, because
+    /// the text comes from an AI and a click would hand its destination to the system (REQ-005).
     static func linkified(_ text: String) -> AttributedString {
         var attributed = (try? AttributedString(markdown: text, options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace)))
             ?? AttributedString(text)
+        for run in attributed.runs {
+            if let link = run.link, link.scheme?.lowercased() != "https" { attributed[run.range].link = nil }
+        }
         let plain = String(attributed.characters)
         guard let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else { return attributed }
         for match in detector.matches(in: plain, range: NSRange(plain.startIndex..., in: plain)) {

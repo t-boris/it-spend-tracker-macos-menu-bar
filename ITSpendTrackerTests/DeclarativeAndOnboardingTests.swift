@@ -124,6 +124,20 @@ private func definition(baseURL: String = "https://api.example-ai.test", spendPa
         #expect(AssistantAnswer.linkified("run file:///etc/passwd").runs.allSatisfy { $0.link == nil })
     }
 
+    @Test func onlyHttpsDestinationsStayClickableInAIText() {
+        // Markdown links with other schemes must not become clickable (REQ-005); the link text stays visible.
+        for destination in ["file:///etc/passwd", "x-apple.systempreferences:com.apple.preference.security", "javascript:alert(1)",
+                            "http://example.com", "tel:+10000000000", "HTTP://EXAMPLE.COM", "mailto:me@example.com"] {
+            let text = AssistantAnswer.linkified("Open [settings](\(destination)) now")
+            #expect(text.runs.allSatisfy { $0.link == nil }, "\(destination) must not be clickable")
+            #expect(String(text.characters) == "Open settings now")
+        }
+        let mixed = AssistantAnswer.linkified("[a](file:///x) and [b](https://example.com/b) and https://example.org/c")
+        #expect(mixed.runs.compactMap(\.link).map(\.absoluteString) == ["https://example.com/b", "https://example.org/c"])
+        // The scheme check is case-insensitive for the allowed scheme too.
+        #expect(AssistantAnswer.linkified("[x](HTTPS://EXAMPLE.COM)").runs.compactMap(\.link).count == 1)
+    }
+
     @Test func everyConnectorHasConsoleLinks() {
         for id in ConnectorID.allCases {
             #expect(id.billingConsoleURL.scheme == "https")
