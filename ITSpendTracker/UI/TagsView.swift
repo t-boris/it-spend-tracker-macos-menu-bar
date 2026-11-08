@@ -21,11 +21,12 @@ struct TagsView: View {
                         ForEach(Array(total.members.enumerated()), id: \.offset) { _, member in
                             Button {
                                 if let serviceID = member.serviceID {
-                                    selection = .key(service: serviceID, key: member.keyExternalID)
+                                    selection = member.target.kind == .key && member.isPresent
+                                        ? .key(service: serviceID, key: member.target.reference) : .service(serviceID)
                                 }
                             } label: {
                             HStack {
-                                Text(member.keyName)
+                                Text(member.name)
                                 Text(member.serviceName).foregroundStyle(.secondary)
                                 Spacer()
                                 if let cost = member.cost {
@@ -44,7 +45,7 @@ struct TagsView: View {
                         HStack {
                             TagChip(tag: total.tag)
                             Spacer()
-                            Text(verbatim: (total.isApproximate ? "≈ " : "") + Format.usd(total.total)).font(.headline).monospacedDigit()
+                            Text(verbatim: (total.isApproximate ? "≈ " : "") + Format.usd(total.total ?? 0)).font(.headline).monospacedDigit()
                         }
                     } footer: {
                         if total.hasUnavailable {

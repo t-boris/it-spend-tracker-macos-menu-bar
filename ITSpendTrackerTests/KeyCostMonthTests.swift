@@ -43,12 +43,7 @@ import Testing
                                           keys: [ProviderKey(externalID: "k1", name: "Bot", currentMonthCost: 7)], tokenUsage: nil),
                         to: service, at: Day(year: 2026, month: 9, day: 30).startDate())
         try store.setTags(["client"], forKey: "k1", of: service)
-        func totals(in month: Month) -> [TagTotal] {
-            TagTotal.compute(service.keys.map {
-                TagTotal.TaggedKey(serviceName: service.name, keyName: $0.name, cost: $0.monthCost(in: month),
-                                   tags: service.tags(forKey: $0.externalID))
-            })
-        }
+        func totals(in month: Month) -> [TagTotal] { TagTotal.compute([service.tagInput(in: month)]) }
         #expect(totals(in: september).first?.total == 7)
         let october = try #require(totals(in: september.next).first)
         #expect(october.total == 0 && october.hasUnavailable)  // listed as "unavailable", not last month's 7
