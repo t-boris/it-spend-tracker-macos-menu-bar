@@ -27,6 +27,22 @@ struct KeyFieldAvailability {
     }
 }
 
+/// Which optional sections a service page shows. A usage-metrics connector (Neon) shows its metrics instead of the money
+/// breakdown and tokens, but still lists its keys so they can be opened and tagged (REQ-003, REQ-013).
+struct ServiceSections: Equatable {
+    var usageMetrics: Bool
+    var breakdown: Bool
+    var keys: Bool
+    var tokens: Bool
+
+    init(isConnected: Bool, hasUsageMetrics: Bool) {
+        usageMetrics = hasUsageMetrics
+        breakdown = isConnected && !hasUsageMetrics
+        keys = isConnected
+        tokens = isConnected && !hasUsageMetrics
+    }
+}
+
 struct ServiceDetailView: View {
     @Environment(AppModel.self) private var model
     let serviceID: UUID
@@ -143,14 +159,14 @@ struct ServiceDetailView: View {
             }
 
             subscriptionsSection(service, today: today)
-            if service.connector?.descriptor.capabilities.usageMetrics == true {
+            let sections = ServiceSections(isConnected: service.isConnected,
+                                           hasUsageMetrics: service.connector?.descriptor.capabilities.usageMetrics == true)
+            if sections.usageMetrics {
                 UsageMetricsSection(service: service, today: today)
             }
-            if service.isConnected && service.connector?.descriptor.capabilities.usageMetrics != true {
-                breakdownSection(service, today: today)
-                keysSection(service)
-                tokensSection(service)
-            }
+            if sections.breakdown { breakdownSection(service, today: today) }
+            if sections.keys { keysSection(service) }
+            if sections.tokens { tokensSection(service) }
             creditsSection(service, ledger: ledger, today: today)
 
             Section("History") {

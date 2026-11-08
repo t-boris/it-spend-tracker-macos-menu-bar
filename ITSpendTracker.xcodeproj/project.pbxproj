@@ -51,6 +51,7 @@
 		C36D7E1ABBC448B2C2B8286E /* Trends.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BE0034DB72AB40CC8E89E /* Trends.swift */; };
 		C4CF68F20D095F9422363CE8 /* Ledger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9E107866F43B30C555EDFF /* Ledger.swift */; };
 		CC75C9AF671DC0B158BC4D37 /* ClineAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF873A0330ADF90E881AD8E4 /* ClineAuth.swift */; };
+		D6728C54B58ACB496F173CB8 /* ServiceSectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96ECCC4AAB42D6FBAA60AC /* ServiceSectionsTests.swift */; };
 		D72FFB563DFA81420D3430F8 /* AssistantCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB4BAFC88C65DF3AC0663F9 /* AssistantCLI.swift */; };
 		DA322921D96C919E15B64AEA /* RefreshPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C777FE283DDDEB9945AFF884 /* RefreshPolicy.swift */; };
 		DC77EC51D0C792A81868C65A /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C7B770B9D71C3B87F2F021 /* HistoryView.swift */; };
@@ -130,6 +131,7 @@
 		DD9E107866F43B30C555EDFF /* Ledger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ledger.swift; sourceTree = "<group>"; };
 		DF873A0330ADF90E881AD8E4 /* ClineAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClineAuth.swift; sourceTree = "<group>"; };
 		E083D030F4C10D96E4B7B169 /* SpendStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendStore.swift; sourceTree = "<group>"; };
+		EB96ECCC4AAB42D6FBAA60AC /* ServiceSectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSectionsTests.swift; sourceTree = "<group>"; };
 		F054B0DF2F332D33D5936CB3 /* Warnings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warnings.swift; sourceTree = "<group>"; };
 		FD7986D3F1E27AE975213846 /* LaunchAtLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
 		FE8BE0034DB72AB40CC8E89E /* Trends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trends.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				A375B60329EDF4A691F58478 /* DomainTests.swift */,
 				273E2C320D9D57924C567F70 /* HistoryRenderTests.swift */,
 				C7E252FB5B9EDE42A38139A0 /* InvoiceTests.swift */,
+				EB96ECCC4AAB42D6FBAA60AC /* ServiceSectionsTests.swift */,
 			);
 			path = ITSpendTrackerTests;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				4EBCD00A1AF608EF17166ABD /* DomainTests.swift in Sources */,
 				1D9430474F6CB614A236B2BA /* HistoryRenderTests.swift in Sources */,
 				9613D0041A1E331AA0BD144A /* InvoiceTests.swift in Sources */,
+				D6728C54B58ACB496F173CB8 /* ServiceSectionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
