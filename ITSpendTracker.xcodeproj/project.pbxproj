@@ -58,6 +58,7 @@
 		B5A768ECEEF613773BBDD7D4 /* DeclarativeConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCC0C7BE69A02037598E335 /* DeclarativeConnector.swift */; };
 		B66A26A196263BA8EA85D6E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A645AA4012BF51F62519D773 /* Assets.xcassets */; };
 		C126F8E4484BE05030635CF3 /* KeyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076102B70BB865BC6ADFD40 /* KeyDetailView.swift */; };
+		C16365CB2C8483862C4711A3 /* GoogleBreakdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D318DECE9E05207D8C1198 /* GoogleBreakdownTests.swift */; };
 		C36D7E1ABBC448B2C2B8286E /* Trends.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8BE0034DB72AB40CC8E89E /* Trends.swift */; };
 		C4CF68F20D095F9422363CE8 /* Ledger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9E107866F43B30C555EDFF /* Ledger.swift */; };
 		C5BF529FB4DE24CFF2A7B69F /* MonthCompositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AE7EFD9BC1F8782EFACE26 /* MonthCompositionTests.swift */; };
@@ -153,6 +154,7 @@
 		CA3BBD322C9884BDE25F1557 /* LegacyMigrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyMigrationTests.swift; sourceTree = "<group>"; };
 		CDD347C67310B755240D20BD /* LegacyMigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyMigration.swift; sourceTree = "<group>"; };
 		D6AE7EFD9BC1F8782EFACE26 /* MonthCompositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCompositionTests.swift; sourceTree = "<group>"; };
+		D9D318DECE9E05207D8C1198 /* GoogleBreakdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBreakdownTests.swift; sourceTree = "<group>"; };
 		DC1DC01835D73D6D6443D372 /* ITSpendTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ITSpendTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9E107866F43B30C555EDFF /* Ledger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ledger.swift; sourceTree = "<group>"; };
 		DF873A0330ADF90E881AD8E4 /* ClineAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClineAuth.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				316BEA16E0C60901B7B44646 /* CoverageStartTests.swift */,
 				C35EEEA91C7330A2B565D994 /* DeclarativeAndOnboardingTests.swift */,
 				A375B60329EDF4A691F58478 /* DomainTests.swift */,
+				D9D318DECE9E05207D8C1198 /* GoogleBreakdownTests.swift */,
 				273E2C320D9D57924C567F70 /* HistoryRenderTests.swift */,
 				C7E252FB5B9EDE42A38139A0 /* InvoiceTests.swift */,
 				99264A02D3E425280157577D /* KeyCostMonthTests.swift */,
@@ -517,6 +520,7 @@
 				1737258879FA0403807DEB31 /* CoverageStartTests.swift in Sources */,
 				309143D4FF5A9F61573228C1 /* DeclarativeAndOnboardingTests.swift in Sources */,
 				4EBCD00A1AF608EF17166ABD /* DomainTests.swift in Sources */,
+				C16365CB2C8483862C4711A3 /* GoogleBreakdownTests.swift in Sources */,
 				1D9430474F6CB614A236B2BA /* HistoryRenderTests.swift in Sources */,
 				9613D0041A1E331AA0BD144A /* InvoiceTests.swift in Sources */,
 				ACB62DCD142335F40CA7EA84 /* KeyCostMonthTests.swift in Sources */,
